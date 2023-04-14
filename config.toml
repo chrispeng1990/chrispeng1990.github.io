@@ -1,0 +1,4 @@
+baseURL = 'http://christh0x.github.io/'
+languageCode = 'en-us'
+title = 'Chris Wiki'
+theme = ["hugo-book"]
