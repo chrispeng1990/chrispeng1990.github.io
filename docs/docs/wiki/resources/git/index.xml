@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/resources/git/</link>
+    <description>Recent content in git on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/resources/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常用命令</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>1. git proxy # git config --global http.proxy http://10.95.26.17:8888/ git clone http://user:pass@10.88.88.100:8088/morii/morii-core.git git config --local http.proxy http://10.95.26.17:8888/ git config --global --unset http.proxy 2.git mirror(克隆远程库，推送到本地服务器) # git clone --bare ${远程仓库URL} git push --mirror git@${另一个仓库域名}:${group}/${repository} 3. git统计user的代码量 # git log --author=&amp;#34;username&amp;#34; --pretty=tformat: --numstat | awk &amp;#39;{ add += $1; subs += $2; loc += $1 - $2 } END { printf &amp;#34;added lines: %s, removed lines: %s, total lines: %s\n&amp;#34;, add, subs, loc }&amp;#39; - 4.</description>
+    </item>
+    
+    <item>
+      <title>使用Github作为资源库(图床)</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</guid>
+      <description>1. 创建一个资源库专用Repository # 2. 生成免密token # 点击用户头像 -&amp;gt; Settings -&amp;gt; Developers Settings;
+创建新token: Personal access tokens -&amp;gt; Tokens -&amp;gt; Generate New Token
+过期时间选择永不过期; 权限范围勾选repo所有权限.
+创建生成token, 注意保存token, 关闭页面后无法再查询.
+3. 安装 PicGo # Github/PicGo
+4. 配置 PicGo Github # 参考文档 # 使用Github+picGo搭建图床</description>
+    </item>
+    
+    <item>
+      <title>AmWiki</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
+      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
+支持全文档搜索，自动生成首页索引页等
+References # amwiki</description>
+    </item>
+    
+  </channel>
+</rss>

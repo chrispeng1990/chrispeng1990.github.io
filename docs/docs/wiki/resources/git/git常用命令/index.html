@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1. git proxy # git config --global http.proxy http://10.95.26.17:8888/ git clone http://user:pass@10.88.88.100:8088/morii/morii-core.git git config --local http.proxy http://10.95.26.17:8888/ git config --global --unset http.proxy 2.git mirror(克隆远程库，推送到本地服务器) # git clone --bare ${远程仓库URL} git push --mirror git@${另一个仓库域名}:${group}/${repository} 3. git统计user的代码量 # git log --author=&#34;username&#34; --pretty=tformat: --numstat | awk &#39;{ add &#43;= $1; subs &#43;= $2; loc &#43;= $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39; - 4.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Git常用命令" />
+<meta property="og:description" content="1. git proxy # git config --global http.proxy http://10.95.26.17:8888/ git clone http://user:pass@10.88.88.100:8088/morii/morii-core.git git config --local http.proxy http://10.95.26.17:8888/ git config --global --unset http.proxy 2.git mirror(克隆远程库，推送到本地服务器) # git clone --bare ${远程仓库URL} git push --mirror git@${另一个仓库域名}:${group}/${repository} 3. git统计user的代码量 # git log --author=&#34;username&#34; --pretty=tformat: --numstat | awk &#39;{ add &#43;= $1; subs &#43;= $2; loc &#43;= $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39; - 4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://christh0x.github.io/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><meta property="article:section" content="docs" />
+
+
+<title>Git常用命令 | Chris Wiki</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.78166b9d46e23e0ea915cb6887a30b633e7bc4fad10c8b6b9f6fa532271c19ba.js" integrity="sha256-eBZrnUbiPg6pFctoh6MLYz57xPrRDItrn2&#43;lMiccGbo=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Chris Wiki</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01a9abdd638ce3226538b97dbfe9e0d5" class="toggle"  />
+    <label for="section-01a9abdd638ce3226538b97dbfe9e0d5" class="flex justify-between">
+      <a href="/docs/examples/" class="">Examples</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/examples/markdown-example/" class="">MarkDown Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/shortcuts/" class="">Shortcuts</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Wiki</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-55b284f1d1d8ea8e9756ba0437730f93" class="toggle"  />
+    <label for="section-55b284f1d1d8ea8e9756ba0437730f93" class="flex justify-between">
+      <a role="button" class="">Research</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e17e091a6475277823949d0ecda27ed" class="toggle"  />
+    <label for="section-7e17e091a6475277823949d0ecda27ed" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-69e6271c7cbfbf74085430ec02bbba5c" class="toggle"  />
+    <label for="section-69e6271c7cbfbf74085430ec02bbba5c" class="flex justify-between">
+      <a role="button" class="">Spring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b8650b79cdaaeb51e1fda708c92957f6" class="toggle"  />
+    <label for="section-b8650b79cdaaeb51e1fda708c92957f6" class="flex justify-between">
+      <a role="button" class="">Spring Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f87c064c1f6d088c4c939042868c188a" class="toggle"  />
+    <label for="section-f87c064c1f6d088c4c939042868c188a" class="flex justify-between">
+      <a role="button" class="">Spring Boot</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="toggle"  />
+    <label for="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="flex justify-between">
+      <a role="button" class="">Spring Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7debb0148ca8816bc8aef24f5ac0384d" class="toggle"  />
+    <label for="section-7debb0148ca8816bc8aef24f5ac0384d" class="flex justify-between">
+      <a role="button" class="">BIRT</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/birt/%E5%B8%B8%E7%94%A8%E8%B7%AF%E7%94%B1/" class="">Birt常用路由</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc3a1d8166a9bd16e7386655c1caf20" class="toggle"  />
+    <label for="section-6fc3a1d8166a9bd16e7386655c1caf20" class="flex justify-between">
+      <a role="button" class="">bigdata</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="toggle"  />
+    <label for="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="flex justify-between">
+      <a role="button" class="">ecmascript</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bfdfed148894f5c66f7678fbb72e9b63" class="toggle"  />
+    <label for="section-bfdfed148894f5c66f7678fbb72e9b63" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e08891e42827080dbe19b39b7297cee5" class="toggle"  />
+    <label for="section-e08891e42827080dbe19b39b7297cee5" class="flex justify-between">
+      <a role="button" class="">server</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-78f14cfd37f81ea6255ac33f349e9bc7" class="toggle" checked />
+    <label for="section-78f14cfd37f81ea6255ac33f349e9bc7" class="flex justify-between">
+      <a role="button" class="">Resources</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8677ac40f74b0778dfe9af060940096a" class="toggle"  />
+    <label for="section-8677ac40f74b0778dfe9af060940096a" class="flex justify-between">
+      <a role="button" class="">windows</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-066eec9db899891794ed5270712deaff" class="toggle"  />
+    <label for="section-066eec9db899891794ed5270712deaff" class="flex justify-between">
+      <a href="/docs/wiki/resources/macosx/" class="">macosx</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/iterm/" class="">iTerm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/alfred/" class="">Alfred</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e4ec56a36961c6ce5535f9a0af80c203" class="toggle"  />
+    <label for="section-e4ec56a36961c6ce5535f9a0af80c203" class="flex justify-between">
+      <a role="button" class="">ios</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a60618f91860ad1d5016561b9c89e09c" class="toggle"  />
+    <label for="section-a60618f91860ad1d5016561b9c89e09c" class="flex justify-between">
+      <a href="/docs/wiki/resources/tampermonkey/" class="">tampermonkey</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">知乎去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">简书去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">Bilibili去标题和广告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="toggle" checked />
+    <label for="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="flex justify-between">
+      <a role="button" class="">git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="active">Git常用命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/" class="">使用Github作为资源库(图床)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/amwiki/" class="">AmWiki</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="toggle"  />
+    <label for="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="flex justify-between">
+      <a href="/docs/wiki/resources/idea/" class="">idea</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/idea/idea-%E6%8F%92%E4%BB%B6/" class="">IDEA 插件</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7cc9f04d12554b882a5164b5d479d036" class="toggle"  />
+    <label for="section-7cc9f04d12554b882a5164b5d479d036" class="flex justify-between">
+      <a role="button" class="">hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/hugo/hugo-wiki-example/" class="">Hugo Wiki Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0b081a8e45b8f23b35bddfeafc84a3da" class="toggle"  />
+    <label for="section-0b081a8e45b8f23b35bddfeafc84a3da" class="flex justify-between">
+      <a role="button" class="">Work</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-769edb45934884090f96d6b0b0ff663e" class="toggle"  />
+    <label for="section-769edb45934884090f96d6b0b0ff663e" class="flex justify-between">
+      <a role="button" class="">Others</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Git常用命令</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-git-proxy">1. git proxy</a></li>
+    <li><a href="#2git-mirror克隆远程库推送到本地服务器">2.git mirror(克隆远程库，推送到本地服务器)</a></li>
+    <li><a href="#3-git统计user的代码量">3. git统计user的代码量</a></li>
+    <li><a href="#4-回滚已merge的master代码">4. 回滚已merge的master代码</a></li>
+    <li><a href="#5-修改仓库所有commit的用户名和email">5. 修改仓库所有commit的用户名和email</a></li>
+    <li><a href="#常见错误">常见错误</a>
+      <ul>
+        <li><a href="#1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="1-git-proxy">
+  1. git proxy
+  <a class="anchor" href="#1-git-proxy">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config --global http.proxy http://10.95.26.17:8888/
+</span></span><span style="display:flex;"><span>git clone http://user:pass@10.88.88.100:8088/morii/morii-core.git
+</span></span><span style="display:flex;"><span>git config --local http.proxy http://10.95.26.17:8888/
+</span></span><span style="display:flex;"><span>git config --global --unset http.proxy
+</span></span></code></pre></div><h2 id="2git-mirror克隆远程库推送到本地服务器">
+  2.git mirror(克隆远程库，推送到本地服务器)
+  <a class="anchor" href="#2git-mirror%e5%85%8b%e9%9a%86%e8%bf%9c%e7%a8%8b%e5%ba%93%e6%8e%a8%e9%80%81%e5%88%b0%e6%9c%ac%e5%9c%b0%e6%9c%8d%e5%8a%a1%e5%99%a8">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --bare <span style="color:#e6db74">${</span>远程仓库URL<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>git push --mirror git@<span style="color:#e6db74">${</span>另一个仓库域名<span style="color:#e6db74">}</span>:<span style="color:#e6db74">${</span>group<span style="color:#e6db74">}</span>/<span style="color:#e6db74">${</span>repository<span style="color:#e6db74">}</span>
+</span></span></code></pre></div><h2 id="3-git统计user的代码量">
+  3. git统计user的代码量
+  <a class="anchor" href="#3-git%e7%bb%9f%e8%ae%a1user%e7%9a%84%e4%bb%a3%e7%a0%81%e9%87%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log --author<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> --pretty<span style="color:#f92672">=</span>tformat: --numstat | awk <span style="color:#e6db74">&#39;{ add += $1; subs += $2; loc += $1 - $2 } END { printf &#34;added lines: %s, removed lines: %s, total lines: %s\n&#34;, add, subs, loc }&#39;</span> -
+</span></span></code></pre></div><h2 id="4-回滚已merge的master代码">
+  4. 回滚已merge的master代码
+  <a class="anchor" href="#4-%e5%9b%9e%e6%bb%9a%e5%b7%b2merge%e7%9a%84master%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
+</span></span><span style="display:flex;"><span>git reset --soft 43dc0de914173a1a8793a7eac31dbb26057bbee4
+</span></span><span style="display:flex;"><span>git push origin master --force
+</span></span></code></pre></div><h2 id="5-修改仓库所有commit的用户名和email">
+  5. 修改仓库所有commit的用户名和email
+  <a class="anchor" href="#5-%e4%bf%ae%e6%94%b9%e4%bb%93%e5%ba%93%e6%89%80%e6%9c%89commit%e7%9a%84%e7%94%a8%e6%88%b7%e5%90%8d%e5%92%8cemail">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --bare https://github.com/user/repo.git
+</span></span><span style="display:flex;"><span>cd repo.git
+</span></span></code></pre></div><p>修改OLD_EMAIL、CORRECT_NAME、CORRECT_EMAIL三个变量的值并执行如下脚本:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/sh
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>git filter-branch --env-filter <span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">OLD_EMAIL=&#34;your-old-email@example.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CORRECT_NAME=&#34;Your Correct Name&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CORRECT_EMAIL=&#34;your-correct-email@example.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">if [ &#34;$GIT_COMMITTER_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    export GIT_COMMITTER_NAME=&#34;$CORRECT_NAME&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    export GIT_COMMITTER_EMAIL=&#34;$CORRECT_EMAIL&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">if [ &#34;$GIT_AUTHOR_EMAIL&#34; = &#34;$OLD_EMAIL&#34; ]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">then
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    export GIT_AUTHOR_NAME=&#34;$CORRECT_NAME&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    export GIT_AUTHOR_EMAIL=&#34;$CORRECT_EMAIL&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">fi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> --tag-name-filter cat -- --branches --tags
+</span></span></code></pre></div><p>把变更 push 到 Github</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push --force --tags origin <span style="color:#e6db74">&#39;refs/heads/*&#39;</span>
+</span></span></code></pre></div><h2 id="常见错误">
+  常见错误
+  <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af">#</a>
+</h2>
+<h3 id="1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">
+  1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large
+  <a class="anchor" href="#1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git config http.postBuffer <span style="color:#ae81ff">524288000</span>
+</span></span></code></pre></div><h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<p><a href="https://www.cnblogs.com/fb010001/p/16785452.html">修改git所有commit中的用户名和email</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-git-proxy">1. git proxy</a></li>
+    <li><a href="#2git-mirror克隆远程库推送到本地服务器">2.git mirror(克隆远程库，推送到本地服务器)</a></li>
+    <li><a href="#3-git统计user的代码量">3. git统计user的代码量</a></li>
+    <li><a href="#4-回滚已merge的master代码">4. 回滚已merge的master代码</a></li>
+    <li><a href="#5-修改仓库所有commit的用户名和email">5. 修改仓库所有commit的用户名和email</a></li>
+    <li><a href="#常见错误">常见错误</a>
+      <ul>
+        <li><a href="#1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

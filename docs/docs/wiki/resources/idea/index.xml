@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>idea on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/resources/idea/</link>
+    <description>Recent content in idea on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/resources/idea/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IDEA 插件</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/idea/idea-%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/idea/idea-%E6%8F%92%E4%BB%B6/</guid>
+      <description>Json Parser: 验证和格式化JSON字符串 # Markdown Navigator: 支持MarkDown编辑和预览 # CodeGlance: 滚动条代码缩略图 # Statistic: 代码统计 # References # IDEA优秀插件</description>
+    </item>
+    
+  </channel>
+</rss>

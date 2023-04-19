@@ -134,4 +134,5 @@ dmypy.json
 
 # hugo
 .hugo_build.lock
+public/*
 

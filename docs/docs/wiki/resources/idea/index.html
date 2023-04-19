@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1. 破解 # 1.1. Agent方式 # jetbrains-agent.jar
+试用版本 2019.2 及以下
+打开IDEA -&gt; Help -&gt; Edit Custom VM Options 首次需要创建文件, 并且按照模版填写内容 并在文件最后追加内容: -javaagent:/absolute/path/to/jetbrains-agent.jar 重启 IDEA Help -&gt; Register
+两种注册方式: License server方式
+地址填入: http://jetbrains-license-server （应该会自动填上） Activation code方式离线激活
+使用如下激活码, 如果激活窗口一直弹出(error 1653219), 在hosts文件里移除jetbrains相关的项目, 如果需要自定义License name, 参考: https://zhile.io/custom-license.html 3AGXEJXFK9-eyJsaWNlbnNlSWQiOiIzQUdYRUpYRks5IiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly96aGlsZS5pbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiIiLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkFDIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRQTiIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJQUyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJHTyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJETSIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSUzAiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkQiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUEMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUk0iLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiV1MiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlNVIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9XSwiaGFzaCI6IjEyNzk2ODc3LzAiLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-WGTHs6XpDhr&#43;uumvbwQPOdlxWnQwgnGaL4eRnlpGKApEEkJyYvNEuPWBSrQkPmVpim/8Sab6HV04Dw3IzkJT0yTc29sPEXBf69&#43;7y6Jv718FaJu4MWfsAk/ZGtNIUOczUQ0iGKKnSSsfQ/3UoMv0q/yJcfvj&#43;me5Zd/gfaisCCMUaGjB/lWIPpEPzblDtVJbRexB1MALrLCEoDv3ujcPAZ7xWb54DiZwjYhQvQ&#43;CvpNNF2jeTku7lbm5v&#43;BoDsdeRq7YBt9ANLUKPr2DahcaZ4gctpHZXhG96IyKx232jYq9jQrFDbQMtVr3E&#43;GsCekMEWSD//dLT&#43;HuZdc1sAIYrw==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW&#43;RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D&#43;sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej&#43;Z5OUxF33zzm&#43;vg/nYV31HLF7fJUAplI/1nM&#43;ZG8K&#43;AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD&#43;AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l&#43;yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm&#43;8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6&#43;HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5&#43;k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5&#43;g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv&#43;krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4&#43;ze1l94wVUhdkCfL0GpJrMSCDEK&#43;XEurU18Hb7WT&#43;ThXbkdl6VpFdHsRvqAnhR2g4b&#43;Qzgidmuky5NUZVfEaZqV/g==% 1.2. License Server方式 # http://fls.jetbrains-agent.com 1.4. 搭建 License Server # Github/JrebelLicenseServerforJava
+References # https://zhile.io/2018/08/25/jetbrains-license-server-crack.html">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="idea" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://christh0x.github.io/docs/wiki/resources/idea/" />
+<title>idea | Chris Wiki</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.78166b9d46e23e0ea915cb6887a30b633e7bc4fad10c8b6b9f6fa532271c19ba.js" integrity="sha256-eBZrnUbiPg6pFctoh6MLYz57xPrRDItrn2&#43;lMiccGbo=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://christh0x.github.io/docs/wiki/resources/idea/index.xml" title="Chris Wiki" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Chris Wiki</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01a9abdd638ce3226538b97dbfe9e0d5" class="toggle"  />
+    <label for="section-01a9abdd638ce3226538b97dbfe9e0d5" class="flex justify-between">
+      <a href="/docs/examples/" class="">Examples</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/examples/markdown-example/" class="">MarkDown Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/shortcuts/" class="">Shortcuts</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Wiki</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-55b284f1d1d8ea8e9756ba0437730f93" class="toggle"  />
+    <label for="section-55b284f1d1d8ea8e9756ba0437730f93" class="flex justify-between">
+      <a role="button" class="">Research</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e17e091a6475277823949d0ecda27ed" class="toggle"  />
+    <label for="section-7e17e091a6475277823949d0ecda27ed" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-69e6271c7cbfbf74085430ec02bbba5c" class="toggle"  />
+    <label for="section-69e6271c7cbfbf74085430ec02bbba5c" class="flex justify-between">
+      <a role="button" class="">Spring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b8650b79cdaaeb51e1fda708c92957f6" class="toggle"  />
+    <label for="section-b8650b79cdaaeb51e1fda708c92957f6" class="flex justify-between">
+      <a role="button" class="">Spring Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f87c064c1f6d088c4c939042868c188a" class="toggle"  />
+    <label for="section-f87c064c1f6d088c4c939042868c188a" class="flex justify-between">
+      <a role="button" class="">Spring Boot</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="toggle"  />
+    <label for="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="flex justify-between">
+      <a role="button" class="">Spring Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7debb0148ca8816bc8aef24f5ac0384d" class="toggle"  />
+    <label for="section-7debb0148ca8816bc8aef24f5ac0384d" class="flex justify-between">
+      <a role="button" class="">BIRT</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/birt/%E5%B8%B8%E7%94%A8%E8%B7%AF%E7%94%B1/" class="">Birt常用路由</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc3a1d8166a9bd16e7386655c1caf20" class="toggle"  />
+    <label for="section-6fc3a1d8166a9bd16e7386655c1caf20" class="flex justify-between">
+      <a role="button" class="">bigdata</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="toggle"  />
+    <label for="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="flex justify-between">
+      <a role="button" class="">ecmascript</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bfdfed148894f5c66f7678fbb72e9b63" class="toggle"  />
+    <label for="section-bfdfed148894f5c66f7678fbb72e9b63" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e08891e42827080dbe19b39b7297cee5" class="toggle"  />
+    <label for="section-e08891e42827080dbe19b39b7297cee5" class="flex justify-between">
+      <a role="button" class="">server</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-78f14cfd37f81ea6255ac33f349e9bc7" class="toggle" checked />
+    <label for="section-78f14cfd37f81ea6255ac33f349e9bc7" class="flex justify-between">
+      <a role="button" class="">Resources</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8677ac40f74b0778dfe9af060940096a" class="toggle"  />
+    <label for="section-8677ac40f74b0778dfe9af060940096a" class="flex justify-between">
+      <a role="button" class="">windows</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-066eec9db899891794ed5270712deaff" class="toggle"  />
+    <label for="section-066eec9db899891794ed5270712deaff" class="flex justify-between">
+      <a href="/docs/wiki/resources/macosx/" class="">macosx</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/iterm/" class="">iTerm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/alfred/" class="">Alfred</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e4ec56a36961c6ce5535f9a0af80c203" class="toggle"  />
+    <label for="section-e4ec56a36961c6ce5535f9a0af80c203" class="flex justify-between">
+      <a role="button" class="">ios</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a60618f91860ad1d5016561b9c89e09c" class="toggle"  />
+    <label for="section-a60618f91860ad1d5016561b9c89e09c" class="flex justify-between">
+      <a href="/docs/wiki/resources/tampermonkey/" class="">tampermonkey</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">知乎去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">简书去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">Bilibili去标题和广告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="toggle"  />
+    <label for="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="flex justify-between">
+      <a role="button" class="">git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="">Git常用命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/" class="">使用Github作为资源库(图床)</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/amwiki/" class="">AmWiki</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="toggle" checked />
+    <label for="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="flex justify-between">
+      <a href="/docs/wiki/resources/idea/" class="active">idea</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/idea/idea-%E6%8F%92%E4%BB%B6/" class="">IDEA 插件</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7cc9f04d12554b882a5164b5d479d036" class="toggle"  />
+    <label for="section-7cc9f04d12554b882a5164b5d479d036" class="flex justify-between">
+      <a role="button" class="">hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/hugo/hugo-wiki-example/" class="">Hugo Wiki Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0b081a8e45b8f23b35bddfeafc84a3da" class="toggle"  />
+    <label for="section-0b081a8e45b8f23b35bddfeafc84a3da" class="flex justify-between">
+      <a role="button" class="">Work</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-769edb45934884090f96d6b0b0ff663e" class="toggle"  />
+    <label for="section-769edb45934884090f96d6b0b0ff663e" class="flex justify-between">
+      <a role="button" class="">Others</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>idea</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-破解">1. 破解</a>
+      <ul>
+        <li><a href="#11-agent方式">1.1. Agent方式</a></li>
+        <li><a href="#12-license-server方式">1.2. License Server方式</a></li>
+        <li><a href="#14-搭建-license-server">1.4. 搭建 License Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="1-破解">
+  1. 破解
+  <a class="anchor" href="#1-%e7%a0%b4%e8%a7%a3">#</a>
+</h2>
+<h3 id="11-agent方式">
+  1.1. Agent方式
+  <a class="anchor" href="#11-agent%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<p><a href="https://raw.githubusercontent.com/nctsc/resources/master/files/jetbrains-agent.jar">jetbrains-agent.jar</a></p>
+<blockquote>
+<p>试用版本 2019.2 及以下</p>
+</blockquote>
+<ol>
+<li>打开IDEA -&gt; Help -&gt; Edit Custom VM Options</li>
+<li>首次需要创建文件, 并且按照<a href="https://intellij-support.jetbrains.com/hc/en-us/articles/206544869">模版</a>填写内容</li>
+<li>并在文件最后追加内容:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-javaagent:/absolute/path/to/jetbrains-agent.jar
+</span></span></code></pre></div><ol start="4">
+<li>重启 IDEA</li>
+<li>Help -&gt; Register<br>
+两种注册方式:</li>
+</ol>
+<ul>
+<li>License server方式<br>
+地址填入: <code>http://jetbrains-license-server</code> （应该会自动填上）</li>
+<li>Activation code方式离线激活<br>
+使用如下激活码, 如果激活窗口一直弹出(error 1653219), 在hosts文件里移除jetbrains相关的项目, 如果需要自定义License name, 参考: <a href="https://zhile.io/custom-license.html">https://zhile.io/custom-license.html</a></li>
+</ul>
+<pre tabindex="0"><code>3AGXEJXFK9-eyJsaWNlbnNlSWQiOiIzQUdYRUpYRks5IiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly96aGlsZS5pbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiIiLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkFDIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRQTiIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJQUyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJHTyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJETSIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSUzAiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkQiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUEMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUk0iLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiV1MiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlNVIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9XSwiaGFzaCI6IjEyNzk2ODc3LzAiLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-WGTHs6XpDhr+uumvbwQPOdlxWnQwgnGaL4eRnlpGKApEEkJyYvNEuPWBSrQkPmVpim/8Sab6HV04Dw3IzkJT0yTc29sPEXBf69+7y6Jv718FaJu4MWfsAk/ZGtNIUOczUQ0iGKKnSSsfQ/3UoMv0q/yJcfvj+me5Zd/gfaisCCMUaGjB/lWIPpEPzblDtVJbRexB1MALrLCEoDv3ujcPAZ7xWb54DiZwjYhQvQ+CvpNNF2jeTku7lbm5v+BoDsdeRq7YBt9ANLUKPr2DahcaZ4gctpHZXhG96IyKx232jYq9jQrFDbQMtVr3E+GsCekMEWSD//dLT+HuZdc1sAIYrw==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW+RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D+sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej+Z5OUxF33zzm+vg/nYV31HLF7fJUAplI/1nM+ZG8K+AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l+yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm+8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6+HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5+k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5+g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv+krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4+ze1l94wVUhdkCfL0GpJrMSCDEK+XEurU18Hb7WT+ThXbkdl6VpFdHsRvqAnhR2g4b+Qzgidmuky5NUZVfEaZqV/g==%
+</code></pre><h3 id="12-license-server方式">
+  1.2. License Server方式
+  <a class="anchor" href="#12-license-server%e6%96%b9%e5%bc%8f">#</a>
+</h3>
+<pre tabindex="0"><code>http://fls.jetbrains-agent.com
+</code></pre><h3 id="14-搭建-license-server">
+  1.4. 搭建 License Server
+  <a class="anchor" href="#14-%e6%90%ad%e5%bb%ba-license-server">#</a>
+</h3>
+<p><a href="https://github.com/Byron4j/JrebelLicenseServerforJava">Github/JrebelLicenseServerforJava</a></p>
+<h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<p><a href="https://zhile.io/2018/08/25/jetbrains-license-server-crack.html">https://zhile.io/2018/08/25/jetbrains-license-server-crack.html</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-破解">1. 破解</a>
+      <ul>
+        <li><a href="#11-agent方式">1.1. Agent方式</a></li>
+        <li><a href="#12-license-server方式">1.2. License Server方式</a></li>
+        <li><a href="#14-搭建-license-server">1.4. 搭建 License Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

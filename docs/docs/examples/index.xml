@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Examples on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/examples/</link>
+    <description>Recent content in Examples on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/examples/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MarkDown Example</title>
+      <link>http://christh0x.github.io/docs/examples/markdown-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/examples/markdown-example/</guid>
+      <description>1. 转义字符 # 在需要转义的字符前加&amp;quot;\&amp;ldquo;进行转义显示
+或者使用Html转义字符替换, 如 &amp;amp; = &amp;amp;amp;
+2. 换行 # 第一种方式: 任意地方使用Html标签&amp;lt;br\&amp;gt;
+第二种方式: 行尾处使用字符 \
+第三种方式: 行尾处使用字符两个空格
+3. 缩进 # 使用Html转义字符输入一个空格: &amp;amp;ensp;
+使用Html转义字符输入一个空格: &amp;amp;nbsp;
+使用Html转义字符输入两个空格: &amp;amp;emsp;
+4. 标题 # # 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+5. 字体 # 斜体: *内容*
+粗体: **内容**
+加斜加粗: ***内容***
+删除线: ~~内容~~
+6. 表格 # |列1|列2|列3|
+|&amp;mdash;|&amp;mdash;:|:&amp;mdash;:|
+|左对齐|右对齐|居中对齐|
+显示效果:
+列1 列2 列3 左对齐 右对齐 居中对齐 7. 无序列表 # 上下要各留一行空白, &amp;ldquo;+&amp;rdquo;, &amp;ldquo;-&amp;rdquo;, &amp;ldquo;*&amp;rdquo; 均可, 多级每级增加2-5个空格</description>
+    </item>
+    
+  </channel>
+</rss>

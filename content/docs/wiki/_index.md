@@ -1,5 +1,6 @@
 ---
-weight: 2
-bookFlatSection: true
+weight: 3
 title: "Wiki"
+bookFlatSection: true
+bookCollapseSection: false
 ---
