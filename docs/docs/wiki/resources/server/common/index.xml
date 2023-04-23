@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>common on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/resources/server/common/</link>
+    <description>Recent content in common on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/resources/server/common/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>域名申请</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</guid>
+      <description>1. 国内域名 # 域名提供商: 阿里云、腾讯云、花生壳
+限制:
+需要备案才能使用域名, 可在小程序上备案; 必须要有 3 个租期(月)以上的服务器才能开始备案，而且一台服务器只能为一个域名备案。 2. 国外域名 # 域名服务商: NameSilo 和 GoDaddy
+修改CNAME、A记录后24小时生效
+3. 其他说明 # 国内的域名是不能用在国外服务器的, 所以代理Github只能购买国外域名 域名可以更换服务商, 也支持国内国外互转, 但转完 3 个月内域名是被冻结的状态, 不能使用 References # Github 部署个人网页 | 自定义域名</description>
+    </item>
+    
+    <item>
+      <title>CDN</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</guid>
+      <description>1. 使用腾讯云CDN加速国外站点 # 原始部署架构:
+使用CDN后架构:
+腾讯云CDN控制台:
+https://console.cloud.tencent.com/cdn
+2. Github资源库使用免费CDN加速 # 模版:
+https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
+https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
+    </item>
+    
+  </channel>
+</rss>

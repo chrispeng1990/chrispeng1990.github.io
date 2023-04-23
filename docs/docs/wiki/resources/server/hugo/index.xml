@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/resources/server/hugo/</link>
+    <description>Recent content in hugo on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/resources/server/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Wiki Example</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/hugo/hugo-wiki-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/hugo/hugo-wiki-example/</guid>
+      <description>1. GitHub Pages # 1.1. 创建Pages仓库 # 仓库名必须为 ${username}.github.io
+如果设置为其他名称, 最终访问URL为 https://${username}.github.io/${otherName}.github.io
+1.2. 设置Github Pages # 分支仅允许选择根分支;
+根目录可以设置为 / 或 /docs, 默认URL会访问根目录中的 index.html
+2. Hugo # 流行的静态站点框架有以下几个:
+Jekyll (基于 Ruby 容易上手) https://www.jekyll.com.cn/docs/home/
+Hexo (基于 Node.js 容易上手) https://hexo.io/docs/
+Hugo (基于 Go) https://gohugo.io/documentation/
+2.1. 安装hogo # MacOSX:
+brew install hugo hugo version 输出 v0.111.3+extended darwin/amd64 BuildDate=unknown 证明安装成功.
+其他系统安装方式参考
+2.2. 创建Hugo项目 # hugo new site wikis cd wikis 生成的项目结构如下:
+├── archetypes 使用Hugo New命令创建Hugo中的新文件会按照里面的模版生成 │ └── default.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -43,10 +43,10 @@ PS:这里所说的是针对web应用的集成，但是这种方法同样也可�
     
     <item>
       <title>Hugo Wiki Example</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/hugo/hugo-wiki-example/</link>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/hugo/hugo-wiki-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christh0x.github.io/docs/wiki/resources/hugo/hugo-wiki-example/</guid>
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/hugo/hugo-wiki-example/</guid>
       <description>1. GitHub Pages # 1.1. 创建Pages仓库 # 仓库名必须为 ${username}.github.io
 如果设置为其他名称, 最终访问URL为 https://${username}.github.io/${otherName}.github.io
 1.2. 设置Github Pages # 分支仅允许选择根分支;
@@ -117,11 +117,24 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
-      <title>知乎去标题和广告</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
+      <title>域名申请</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christh0x.github.io/docs/wiki/resources/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</guid>
+      <description>1. 国内域名 # 域名提供商: 阿里云、腾讯云、花生壳
+限制:
+需要备案才能使用域名, 可在小程序上备案; 必须要有 3 个租期(月)以上的服务器才能开始备案，而且一台服务器只能为一个域名备案。 2. 国外域名 # 域名服务商: NameSilo 和 GoDaddy
+修改CNAME、A记录后24小时生效
+3. 其他说明 # 国内的域名是不能用在国外服务器的, 所以代理Github只能购买国外域名 域名可以更换服务商, 也支持国内国外互转, 但转完 3 个月内域名是被冻结的状态, 不能使用 References # Github 部署个人网页 | 自定义域名</description>
+    </item>
+    
+    <item>
+      <title>知乎去标题和广告</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
       <description>// ==UserScript== // @name ZhihuHeaderHidden // @namespace http://tampermonkey.net/ // @version 0.1 // @description try to take over the world! // @author You // @match *://*.zhihu.com/* // @icon data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw== // @grant none // ==/UserScript== (function() { &amp;#39;use strict&amp;#39;; // Your code here... try { document.querySelector(&amp;#39;.AppHeader&amp;#39;).style.display = &amp;#39;none&amp;#39;; } catch (err) {} try { document.querySelector(&amp;#39;.PageHeader&amp;#39;).style.display = &amp;#39;none&amp;#39;; } catch (err) {} try { document.querySelector(&amp;#39;.ColumnPageHeader-Wrapper&amp;#39;).style.visibility = &amp;#39;hidden&amp;#39;; } catch (err) {} setTimeout(function () { try { // document.</description>
     </item>
     
@@ -141,26 +154,44 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
     </item>
     
     <item>
+      <title>CDN</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</guid>
+      <description>1. 使用腾讯云CDN加速国外站点 # 原始部署架构:
+使用CDN后架构:
+腾讯云CDN控制台:
+https://console.cloud.tencent.com/cdn
+2. Github资源库使用免费CDN加速 # 模版:
+https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
+https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
+    </item>
+    
+    <item>
+      <title>简书去标题和广告</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
+      <description>// ==UserScript== // @name JianshuHeaderHidden // @namespace https://www.jianshu.com/ // @version 0.1 // @description hidden JianShu Header. // @author Chris // @match https://www.jianshu.com/p/* // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=jianshu.com // @grant none // ==/UserScript== (function() { &amp;#39;use strict&amp;#39;; // Your code here... setTimeout(function(){ document.querySelector(&amp;#39;header&amp;#39;).hidden = true; document.querySelectorAll(&amp;#39;a[title=&amp;#34;动力广告联盟&amp;#34;]&amp;#39;).forEach(function(a){ if (a.target == &amp;#39;_blank&amp;#39;) { a.parentElement.remove(); } else { a.parentElement.parentElement.remove(); } }); document.querySelector(&amp;#39;#note&amp;#39;).remove(); }, 500); })(); </description>
+    </item>
+    
+    <item>
       <title>使用Github作为资源库(图床)</title>
       <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</guid>
-      <description>1. 创建一个资源库专用Repository # 2. 生成免密token # 点击用户头像 -&amp;gt; Settings -&amp;gt; Developers Settings;
+      <description>Tips # https://raw.githubusercontent.com 域名需要vpn才能访问
+1. 创建一个资源库专用Repository # 2. 生成免密token # 点击用户头像 -&amp;gt; Settings -&amp;gt; Developers Settings;
 创建新token: Personal access tokens -&amp;gt; Tokens -&amp;gt; Generate New Token
 过期时间选择永不过期; 权限范围勾选repo所有权限.
 创建生成token, 注意保存token, 关闭页面后无法再查询.
 3. 安装 PicGo # Github/PicGo
-4. 配置 PicGo Github # 参考文档 # 使用Github+picGo搭建图床</description>
-    </item>
-    
-    <item>
-      <title>简书去标题和广告</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/wiki/resources/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
-      <description>// ==UserScript== // @name JianshuHeaderHidden // @namespace https://www.jianshu.com/ // @version 0.1 // @description hidden JianShu Header. // @author Chris // @match https://www.jianshu.com/p/* // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=jianshu.com // @grant none // ==/UserScript== (function() { &amp;#39;use strict&amp;#39;; // Your code here... setTimeout(function(){ document.querySelector(&amp;#39;header&amp;#39;).hidden = true; document.querySelectorAll(&amp;#39;a[title=&amp;#34;动力广告联盟&amp;#34;]&amp;#39;).forEach(function(a){ if (a.target == &amp;#39;_blank&amp;#39;) { a.parentElement.remove(); } else { a.parentElement.parentElement.remove(); } }); document.querySelector(&amp;#39;#note&amp;#39;).remove(); }, 500); })(); </description>
+4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问 # 模版:
+https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
+https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
     </item>
     
     <item>
@@ -176,10 +207,10 @@ References # amwiki</description>
     
     <item>
       <title>Bilibili去标题和广告</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
+      <link>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christh0x.github.io/docs/wiki/resources/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
+      <guid>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
       <description>// ==UserScript== // @name BilibiliHeaderHidden // @namespace https://www.bilibili.com/ // @version 0.1 // @description hidden Bilibili Header. // @author Chris // @match https://www.bilibili.com/* // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=bilibili.com // @grant none // ==/UserScript== (function() { &amp;#39;use strict&amp;#39;; // Your code here... setTimeout(function() { document.querySelector(&amp;#39;.fixed-top-header&amp;#39;).hidden = true; document.querySelector(&amp;#39;.mini-header&amp;#39;).hidden = true; }, 1000); })(); </description>
     </item>
     

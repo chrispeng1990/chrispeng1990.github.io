@@ -1,5 +1,5 @@
 ---
-weight: 6
+weight: 7
 title: "idea"
 bookFlatSection: false
 bookCollapseSection: true
@@ -8,7 +8,7 @@ bookCollapseSection: true
 ## 1. 破解
 
 ### 1.1. Agent方式
-[jetbrains-agent.jar](https://raw.githubusercontent.com/nctsc/resources/master/files/jetbrains-agent.jar)  
+[jetbrains-agent.jar](/files/jetbrains-agent.jar)  
 > 试用版本 2019.2 及以下  
   
 1. 打开IDEA -> Help -> Edit Custom VM Options  
