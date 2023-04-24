@@ -88,6 +88,11 @@ git push origin master
 需要vpn才可访问 raw.githubusercontent.com, jsdelivr CDN也已被屏蔽  
 使用hugo本地目录作为资源目录, /static  
   
+## 其他主题
+### 1. 改版hugobook
+https://github.com/idealvin/hugo-book/  
+eg: https://coostdocs.gitee.io/cn/about/co/  
+  
 
 ## 常见问题
 1. [hugo-book 同时支持中英文搜索](https://blog.csdn.net/weixin_42425959/article/details/126849231)  

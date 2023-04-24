@@ -6,5 +6,30 @@
     <description>Recent content in java on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HotSpot是什么？</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <description>1. HotSpot历史 # SUN的JDK版本从1.3.1开始运用HotSpot虚拟机， 2006年底开源，主要使用C++实现，JNI接口部分用C实现。
+HotSpot是较新的Java虚拟机，用来代替JIT(Just in Time)，可以大大提高Java运行的性能。
+Java原先是把源代码编译为字节码在虚拟机执行，这样执行速度较慢。而HotSpot将常用的部分代码编译为本地(原生，native)代码，这样显着提高了性能。
+HotSpot JVM 参数可以分为规则参数(standard options)和非规则参数(non-standard options)。
+规则参数相对稳定，在JDK未来的版本里不会有太大的改动。
+非规则参数则有因升级JDK而改动的可能。
+规则和非规则参数这里不做介绍了，网上资料很多。
+2. HotSpot基础知识 # HotSpot包括一个解释器和两个编译器（client 和 server，二选一的），解释与编译混合执行模式，默认启动解释执行。
+编译器：java源代码被编译器编译成class文件（字节码），java字节码在运行时可以被动态编译（JIT）成本地代码(前提是解释与编译混合执行模式且虚拟机不是刚启动时)。
+解释器： 解释器用来解释class文件（字节码），java是解释语言（书上这么说的）。
+server启动慢，占用内存多，执行效率高，适用于服务器端应用；
+client启动快，占用内存小，执行效率没有server快，默认情况下不进行动态编译，适用于桌面应用程序。
+由-XX:+RewriteFrequentPairs参数控制 client模式默认关闭，server模式默认开启
+在jre安装目录下的lib/i386/jvm.cfg 文件下。
+java -version Java HotSpot(TM) Client VM (build 14.3-b01, mixed mode, sharing), mixed mode 解释与编译 混合的执行模式 默认使用这种模式
+java -Xint -version Java HotSpot(TM) Client VM (build 14.3-b01, interpreted mode, sharing), interpreted 纯解释模式 禁用JIT编译
+java -Xcomp -version Java HotSpot(TM) Client VM (build 14.</description>
+    </item>
+    
   </channel>
 </rss>

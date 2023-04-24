@@ -9,24 +9,28 @@ title: "Alfred"
 Afred Preferences → Features → Web Search  
 ![](/images/202304191525609.png)  
   
+
 #### 1.1.1. 添加 baidu  
 ```
 https://www.baidu.com/s?wd={query}
 ```
 ![](/images/202304191526396.png)  
   
+
 #### 1.1.2. 添加 mvnrepository
 ```
 https://mvnrepository.com/search?q={query}
 ```
 ![](/images/202304191527264.png)  
   
+
 #### 1.1.3. 添加 unpkg
 ```
 https://unpkg.com/browse/{query}/
 ```
 ![](/images/202304191528690.png)  
   
+
 ### 1.2. Clipboard History
 文本保留时间修改为 3 Months, 图片保留时间修改为 7 Days, 文件保留 24 Hours  
 打开剪切板历史关键字修改为 cp  
@@ -88,3 +92,4 @@ end alfred_script
   
 
 ## References
+

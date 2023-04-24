@@ -2,6 +2,7 @@
 weight: 200
 title: "使用Github作为资源库(图床)"
 ---
+
 ## Tips
 https://raw.githubusercontent.com 域名需要vpn才能访问
   
@@ -29,7 +30,7 @@ https://raw.githubusercontent.com 域名需要vpn才能访问
 ![](/images/202304171701090.png)  
   
 
-## 5. 使用CDN(jsdelivr)加速资源访问
+## 5. 使用CDN(jsdelivr)加速资源访问(Deprecated)
 模版:  
 ```bash
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt

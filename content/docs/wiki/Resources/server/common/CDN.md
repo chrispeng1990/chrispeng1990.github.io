@@ -14,7 +14,7 @@ title: "CDN"
 [https://console.cloud.tencent.com/cdn](https://console.cloud.tencent.com/cdn)  
   
 
-## 2. Github资源库使用免费CDN加速
+## 2. Github资源库使用免费CDN加速(Deprecated)
 模版:  
 ```bash
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt

@@ -42,6 +42,31 @@ PS:这里所说的是针对web应用的集成，但是这种方法同样也可�
     </item>
     
     <item>
+      <title>HotSpot是什么？</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/</guid>
+      <description>1. HotSpot历史 # SUN的JDK版本从1.3.1开始运用HotSpot虚拟机， 2006年底开源，主要使用C++实现，JNI接口部分用C实现。
+HotSpot是较新的Java虚拟机，用来代替JIT(Just in Time)，可以大大提高Java运行的性能。
+Java原先是把源代码编译为字节码在虚拟机执行，这样执行速度较慢。而HotSpot将常用的部分代码编译为本地(原生，native)代码，这样显着提高了性能。
+HotSpot JVM 参数可以分为规则参数(standard options)和非规则参数(non-standard options)。
+规则参数相对稳定，在JDK未来的版本里不会有太大的改动。
+非规则参数则有因升级JDK而改动的可能。
+规则和非规则参数这里不做介绍了，网上资料很多。
+2. HotSpot基础知识 # HotSpot包括一个解释器和两个编译器（client 和 server，二选一的），解释与编译混合执行模式，默认启动解释执行。
+编译器：java源代码被编译器编译成class文件（字节码），java字节码在运行时可以被动态编译（JIT）成本地代码(前提是解释与编译混合执行模式且虚拟机不是刚启动时)。
+解释器： 解释器用来解释class文件（字节码），java是解释语言（书上这么说的）。
+server启动慢，占用内存多，执行效率高，适用于服务器端应用；
+client启动快，占用内存小，执行效率没有server快，默认情况下不进行动态编译，适用于桌面应用程序。
+由-XX:+RewriteFrequentPairs参数控制 client模式默认关闭，server模式默认开启
+在jre安装目录下的lib/i386/jvm.cfg 文件下。
+java -version Java HotSpot(TM) Client VM (build 14.3-b01, mixed mode, sharing), mixed mode 解释与编译 混合的执行模式 默认使用这种模式
+java -Xint -version Java HotSpot(TM) Client VM (build 14.3-b01, interpreted mode, sharing), interpreted 纯解释模式 禁用JIT编译
+java -Xcomp -version Java HotSpot(TM) Client VM (build 14.</description>
+    </item>
+    
+    <item>
       <title>Hugo Wiki Example</title>
       <link>http://christh0x.github.io/docs/wiki/resources/server/hugo/hugo-wiki-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -117,6 +142,22 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
+      <title>后端模块化开发思考与实践</title>
+      <link>http://christh0x.github.io/docs/wiki/work/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/work/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/</guid>
+      <description>1 前言 # John Ousterhout 在《软件设计哲学(A Philosophy of Software Design)》中谈到：“计算机科学最基础的问题是问题拆解，即如何把复杂的问题拆解为可以独立解决的问题”。将范围缩小到软件开发领域，这种基础问题的定义仍然适用，软件开发用企业应用解决业务问题，进一步，通过将应用拆分为不同服务系统，服务系统拆分为不同模块的手段降低问题复杂度。相应的，这种将系统分解为独立且相互连接的模块的行为即为模块化。但是真正的模块化，不仅包含在模块拆分层面上，还包含一系列如模块隔离、共享、监控、动态化等更深层次的领域问题。
+模块化的优势在于提供了一种管理大型企业应用复杂度的方式，一种降低复杂度的手段。越是复杂的系统（业务复杂、代码量大、外部交互多等），模块化带来的优势越明显。相比规范约束、流程约束或者依赖人员熟练度保证系统的高质量，模块化通过定义内聚性高、边界清晰的功能模块，并借助模块化框架管理模块两种手段构建出自约束能力更强的系统，降低随系统复杂度升高带来的架构腐化程度。通过模块化，研发同学只需关注自身边界与依赖，降低了认知成本与协作成本；重用性强的模块本身就是企业业务资产，通过模块复用，有助于提升研发效率。除此之外，借助模块化框架的模块管理、运行态隔离等能力，可实现更鲁棒的软件系统，这种能力，对于平台型、容器型应用或底层运行框架至关重要。但是，任何一种技术都有它的使用场景与最佳实践，模块化并不能解决所有系统问题，相反，模块化的引入可能会与现有开发习惯、运维体系存在冲突，是否愿意为了更好的隔离性、动态化能力去适应或解决这种冲突，也是权衡是否要引入深层次模块化的重要指标，当然这种权衡指标只能作为业务系统架构升级的参考，如果是底层框架或容器，仅需要考虑模块化能力是否是自身核心能力就可以了。
+2019 年以来，基于业务需求与技术演进，到店业务平台框架研发团队发布了插件框架，也与多团队合作研发了应用容器等模块化相关产品。这些产品在业务平台化演进、机器资源利用率提升、Serverless 等场景下得到了广泛的应用。在产品建设过程中，在不同能力的设计实现、不同问题解决的过程中，我们在模块化框架、模块开发域运行域等方向沉淀了一些思考与实践，现在通过本文分享给大家。关键内容上，本文分为两部分，核心原则部分为阐述模块化领域中的关键原则，如关键模式、隔离共享等，实践部分以插件框架的设计与使用为例，进一步说明核心原则在实际场景下的应用。
+2 模块化核心原则 # 2.1 模块的定义 # 在开始之前，我们首先讨论下模块化领域中模块的定义。
+从规范上讲，模块是包含描述元数据的一组资源集合。资源集合物理实体可以是一个 JAR 协议文件，也可以是任何可以被模块化框架解析的实体。以 OSGi 为例，OSGi 将模块定义为 Bundle，Bundle 复用JAR 包中的元数据信息，并在 MANIFEST.MF 中增加 OSGi 必须的扩展信息，如用于声明多模块协作关系的导入导出路径，用来描述 Bundle 唯一标识、授权协议等信息。
+从属性上讲，模块是可部署、可管理、可重用、可组合的软件单元。模块是一个可部署的软件单元，如上所述，软件单元可以是独立的 JAR、WAR 等任何形式的物理实体。模块的可管理是指模块的动态化特性，即运行态下，模块可被动态加载、启动、卸载，进而构建可插拔、定制化的软件系统。模块是一个进程内重用单元，模块的重用效果取决于模块的拆分标准，取决于模块是否具有强封装性以及良好的接口定义。模块是无状态的可组合单元，通过多模块组合，实现具备不同能力的系统，以 Eclipse 为例，可通过安装多个不同功能插件，丰富自身集成开发环境不同能力。
+以上面两个概念为标准，包(Package)和服务(Application)都可以抽象为模块进行管理。需要补充说明的是，服务是进程间重用单元，并不严格符合模块化的属性要求，但是从服务物理包角度讲，其同样可被模块化框架抽象为模块管理，所以，将其一并纳入模块定义范畴。
+2.2 模块化模式 # 模块化模式与模块化原则，是模块化设计与架构的关键。良好的设计原则可提高模块化系统的可维护性、灵活性与重用性，对系统稳定性提升有帮助。早在 1970 年，Gouthier 和 Pont 在《Designing Systems Programs》一书中清晰描述了模块化设计哲学，提到“模块化将系统划分为独立的、不同的程序模块，每个模块定义自身的输入与输出，并保证与系统中其它模块不混淆。整个系统以模块化的方式进行维护，系统的错误与缺陷可以定位到特定模块，限制错误搜索范围，降低排查成本”。但是，对于系统划分模块使用的标准，此书并无描述。在此之后，D.L.Parnas 在 1972 年的论文《On the criteria to be used in decomposing systems into modules》中提出了模块化标准的重要性，论文中提出了一种 Parnas partitioning 模块化方法，并通过实际例子描述了不同模块化方法带来的不同效果。</description>
+    </item>
+    
+    <item>
       <title>域名申请</title>
       <link>http://christh0x.github.io/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -163,7 +204,7 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
 使用CDN后架构:
 腾讯云CDN控制台:
 https://console.cloud.tencent.com/cdn
-2. Github资源库使用免费CDN加速 # 模版:
+2. Github资源库使用免费CDN加速(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
     </item>
@@ -189,7 +230,7 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png Reference
 过期时间选择永不过期; 权限范围勾选repo所有权限.
 创建生成token, 注意保存token, 关闭页面后无法再查询.
 3. 安装 PicGo # Github/PicGo
-4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问 # 模版:
+4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
     </item>
@@ -212,6 +253,28 @@ References # amwiki</description>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</guid>
       <description>// ==UserScript== // @name BilibiliHeaderHidden // @namespace https://www.bilibili.com/ // @version 0.1 // @description hidden Bilibili Header. // @author Chris // @match https://www.bilibili.com/* // @icon https://www.google.com/s2/favicons?sz=64&amp;amp;domain=bilibili.com // @grant none // ==/UserScript== (function() { &amp;#39;use strict&amp;#39;; // Your code here... setTimeout(function() { document.querySelector(&amp;#39;.fixed-top-header&amp;#39;).hidden = true; document.querySelector(&amp;#39;.mini-header&amp;#39;).hidden = true; }, 1000); })(); </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://christh0x.github.io/docs/wiki/research/kubenetes/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/kubenetes/overview/</guid>
+      <description>https://www.cnblogs.com/qsing/p/15263713.html
+https://www.cnblogs.com/qsing/p/15272351.html
+基本概念和组件
+NameSpace：命名空间是对一组资源和对象的抽象集合， 是 Linux 内核用来隔离内核资源的方式。NameSpace做隔离，Cgroups 做限制，rootfs 做文件系统。
+Label：标签以 key/value 的方式附加到资源对象上如Pod， 其他对象可以使用 Label Selector 来选择一组相同 label 的对象。
+Pod：Kubernetes 项目中最小的 API 资源对象，Pod可以由一个或多个业务容器和一个根容器(Pause容器)组成。一个Pod表示某个应用的一个实例。
+ReplicaSet：Pod副本的抽象，用于解决Pod的扩容和伸缩。
+Deployment：通常用来部署无状态应用，如Web服务， 该服务的实例不会在本地存储需要持久化的数据，并且多个实例对于同一个请求响应的结果是完全一致的。在内部使用ReplicaSet来实现Pod副本的创建。Deployment确保指定数量的Pod“副本”在运行，并且支持回滚和滚动升级。
+StatefulSet：通常用来部署有状态应用，如Mysql服务，服务运行的实例需要在本地存储持久化数据，多个实例之间有依赖拓扑关系，比如：主从关系、主备关系。如果停止掉依赖中的一个Pod，就会导致数据丢失或者集群崩溃。他的核心功能就是通过某种方式记录这些状态，然后在 Pod 被重新创建时，能够为新 Pod 恢复这些状态。它包含Deployment控制器ReplicaSet的所有功能，增加可以处理Pod的启动顺序，为保留每个Pod的状态设置唯一标识。
+DaemonSet：服务守护进程，它的主要作用是在Kubernetes集群的所有节点中运行我们部署的守护进程，相当于在集群节点上分别部署Pod副本，如果有新节点加入集群，Daemonset会自动的在该节点上运行我们需要部署的Pod副本，相反如果有节点退出集群，Daemonset也会移除掉部署在旧节点的Pod副本。特点：这个 Pod 运行在 Kubernetes 集群里的每一个节点（Node）上；每个节点上只会运行一个这样的 Pod 实例；如果新的节点加入 Kubernetes 集群后，该 Pod 会自动地在新节点上被创建出来；而当旧节点被删除后，它上面的 Pod 也相应地会被回收掉。监控系统的数据收集组件，如Prometheus Node Exporter。
+HPA：Horizontal Pod Autoscaling（Pod水平自动伸缩），简称HPA。通过监控分析RC或者Deployment控制的所有Pod的负载变化情况来确定是否需要调整Pod的副本数量。
+Service：是一种抽象的对象，它定义了一组Pod的逻辑集合和一个用于访问它们的策略，我们可以通过访问Service来访问到后端的Pod服务，其实这个概念和微服务非常类似。一个Serivce下面包含的Pod集合一般是由Label Selector来决定的。
+CRD：对 Kubernetes API 的扩展，Kubernetes 中的每个资源都是一个 API 对象的集合，例如我们在YAML文件里定义的那些spec都是对 Kubernetes 中的资源对象的定义，所有的自定义资源可以跟 Kubernetes 中内建的资源一样使用 kubectl 操作。
+Operator：由CoreOS公司开发的，用来扩展 Kubernetes API，特定的应用程序控制器，它用来创建、配置和管理复杂的有状态应用，如数据库、缓存和监控系统。Operator基于 Kubernetes 的资源和控制器概念之上构建，但同时又包含了应用程序特定的一些专业知识，比如创建一个数据库的Operator，则必须对创建的数据库的各种运维方式非常了解，创建Operator的关键是CRD（自定义资源）的设计。Operator是将运维人员对软件操作的知识给代码化，同时利用 Kubernetes 强大的抽象来管理大规模的软件应用。</description>
     </item>
     
   </channel>

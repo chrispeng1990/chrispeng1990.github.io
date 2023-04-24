@@ -27,7 +27,7 @@
 过期时间选择永不过期; 权限范围勾选repo所有权限.
 创建生成token, 注意保存token, 关闭页面后无法再查询.
 3. 安装 PicGo # Github/PicGo
-4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问 # 模版:
+4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
     </item>

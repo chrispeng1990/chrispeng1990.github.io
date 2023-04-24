@@ -29,7 +29,7 @@
 使用CDN后架构:
 腾讯云CDN控制台:
 https://console.cloud.tencent.com/cdn
-2. Github资源库使用免费CDN加速 # 模版:
+2. Github资源库使用免费CDN加速(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
     </item>
