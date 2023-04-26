@@ -4,4 +4,4 @@ bookFlatSection: true
 title: "Shortcuts"
 ---
 
-## Common Shortcuts
+## Shortcuts

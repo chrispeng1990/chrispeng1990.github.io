@@ -5,4 +5,4 @@ bookFlatSection: true
 bookCollapseSection: true
 ---
 
-## Common Examples
+## Examples

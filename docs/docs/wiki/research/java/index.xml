@@ -31,5 +31,17 @@ java -Xint -version Java HotSpot(TM) Client VM (build 14.3-b01, interpreted mode
 java -Xcomp -version Java HotSpot(TM) Client VM (build 14.</description>
     </item>
     
+    <item>
+      <title>保持顺序的Properties类</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</guid>
+      <description>保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
+总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
+只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
+import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;Object&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
+    </item>
+    
   </channel>
 </rss>

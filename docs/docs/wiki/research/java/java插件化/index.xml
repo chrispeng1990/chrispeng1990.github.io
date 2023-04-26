@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java插件化 on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/</link>
+    <description>Recent content in Java插件化 on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>后端模块化开发思考与实践</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/</guid>
+      <description>1 前言 # John Ousterhout 在《软件设计哲学(A Philosophy of Software Design)》中谈到：“计算机科学最基础的问题是问题拆解，即如何把复杂的问题拆解为可以独立解决的问题”。将范围缩小到软件开发领域，这种基础问题的定义仍然适用，软件开发用企业应用解决业务问题，进一步，通过将应用拆分为不同服务系统，服务系统拆分为不同模块的手段降低问题复杂度。相应的，这种将系统分解为独立且相互连接的模块的行为即为模块化。但是真正的模块化，不仅包含在模块拆分层面上，还包含一系列如模块隔离、共享、监控、动态化等更深层次的领域问题。
+模块化的优势在于提供了一种管理大型企业应用复杂度的方式，一种降低复杂度的手段。越是复杂的系统（业务复杂、代码量大、外部交互多等），模块化带来的优势越明显。相比规范约束、流程约束或者依赖人员熟练度保证系统的高质量，模块化通过定义内聚性高、边界清晰的功能模块，并借助模块化框架管理模块两种手段构建出自约束能力更强的系统，降低随系统复杂度升高带来的架构腐化程度。通过模块化，研发同学只需关注自身边界与依赖，降低了认知成本与协作成本；重用性强的模块本身就是企业业务资产，通过模块复用，有助于提升研发效率。除此之外，借助模块化框架的模块管理、运行态隔离等能力，可实现更鲁棒的软件系统，这种能力，对于平台型、容器型应用或底层运行框架至关重要。但是，任何一种技术都有它的使用场景与最佳实践，模块化并不能解决所有系统问题，相反，模块化的引入可能会与现有开发习惯、运维体系存在冲突，是否愿意为了更好的隔离性、动态化能力去适应或解决这种冲突，也是权衡是否要引入深层次模块化的重要指标，当然这种权衡指标只能作为业务系统架构升级的参考，如果是底层框架或容器，仅需要考虑模块化能力是否是自身核心能力就可以了。
+2019 年以来，基于业务需求与技术演进，到店业务平台框架研发团队发布了插件框架，也与多团队合作研发了应用容器等模块化相关产品。这些产品在业务平台化演进、机器资源利用率提升、Serverless 等场景下得到了广泛的应用。在产品建设过程中，在不同能力的设计实现、不同问题解决的过程中，我们在模块化框架、模块开发域运行域等方向沉淀了一些思考与实践，现在通过本文分享给大家。关键内容上，本文分为两部分，核心原则部分为阐述模块化领域中的关键原则，如关键模式、隔离共享等，实践部分以插件框架的设计与使用为例，进一步说明核心原则在实际场景下的应用。
+2 模块化核心原则 # 2.1 模块的定义 # 在开始之前，我们首先讨论下模块化领域中模块的定义。
+从规范上讲，模块是包含描述元数据的一组资源集合。资源集合物理实体可以是一个 JAR 协议文件，也可以是任何可以被模块化框架解析的实体。以 OSGi 为例，OSGi 将模块定义为 Bundle，Bundle 复用JAR 包中的元数据信息，并在 MANIFEST.MF 中增加 OSGi 必须的扩展信息，如用于声明多模块协作关系的导入导出路径，用来描述 Bundle 唯一标识、授权协议等信息。
+从属性上讲，模块是可部署、可管理、可重用、可组合的软件单元。模块是一个可部署的软件单元，如上所述，软件单元可以是独立的 JAR、WAR 等任何形式的物理实体。模块的可管理是指模块的动态化特性，即运行态下，模块可被动态加载、启动、卸载，进而构建可插拔、定制化的软件系统。模块是一个进程内重用单元，模块的重用效果取决于模块的拆分标准，取决于模块是否具有强封装性以及良好的接口定义。模块是无状态的可组合单元，通过多模块组合，实现具备不同能力的系统，以 Eclipse 为例，可通过安装多个不同功能插件，丰富自身集成开发环境不同能力。
+以上面两个概念为标准，包(Package)和服务(Application)都可以抽象为模块进行管理。需要补充说明的是，服务是进程间重用单元，并不严格符合模块化的属性要求，但是从服务物理包角度讲，其同样可被模块化框架抽象为模块管理，所以，将其一并纳入模块定义范畴。
+2.2 模块化模式 # 模块化模式与模块化原则，是模块化设计与架构的关键。良好的设计原则可提高模块化系统的可维护性、灵活性与重用性，对系统稳定性提升有帮助。早在 1970 年，Gouthier 和 Pont 在《Designing Systems Programs》一书中清晰描述了模块化设计哲学，提到“模块化将系统划分为独立的、不同的程序模块，每个模块定义自身的输入与输出，并保证与系统中其它模块不混淆。整个系统以模块化的方式进行维护，系统的错误与缺陷可以定位到特定模块，限制错误搜索范围，降低排查成本”。但是，对于系统划分模块使用的标准，此书并无描述。在此之后，D.L.Parnas 在 1972 年的论文《On the criteria to be used in decomposing systems into modules》中提出了模块化标准的重要性，论文中提出了一种 Parnas partitioning 模块化方法，并通过实际例子描述了不同模块化方法带来的不同效果。</description>
+    </item>
+    
+    <item>
+      <title>几种实现方式</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</guid>
+      <description> Java Module # OSGi # Java Plugin Framwork
+http://blog.csdn.net/earbao/article/details/16879191
+自定义类加载器 # http://blog.csdn.net/top_code/article/details/43052731
+模块化开发 # https://www.zhihu.com/question/21553226
+动态加载jar # http://blog.csdn.net/wawmg/article/details/17961815
+References # </description>
+    </item>
+    
+  </channel>
+</rss>

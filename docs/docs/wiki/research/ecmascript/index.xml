@@ -6,5 +6,15 @@
     <description>Recent content in ecmascript on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/ecmascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>环境部署</title>
+      <link>http://christh0x.github.io/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
+      <description>1. 安装node版本管理器 - nvm # 1.1. 下载nvm # Github/nvm
+1.2. 配置nvm源 # nvm node_mirror https://npm.taobao.org/mirrors/node/ nvm npm_mirror https://npm.taobao.org/mirrors/npm/ 2. 安装nodejs # 2.1. 安装node # # 查看远程库可用版本列表 nvm list available # 安装指定版本 nvm instsall 8.11.2 # 查看本地版本列表 nvm ls 2.2. 使用指定版本 # nvm use 8.11.2 2.3. 设置默认版本 # nvm alias default 8.11.2 nvm ls 2.4. 设置版本别名 # nvm alias nickname 8.11.2 nvm use nickname 2.5. 取消别名 # nvm unalias nickname 3.</description>
+    </item>
+    
   </channel>
 </rss>

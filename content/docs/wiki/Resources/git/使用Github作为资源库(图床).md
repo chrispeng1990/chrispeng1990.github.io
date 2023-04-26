@@ -1,5 +1,5 @@
 ---
-weight: 200
+weight: 300
 title: "使用Github作为资源库(图床)"
 ---
 

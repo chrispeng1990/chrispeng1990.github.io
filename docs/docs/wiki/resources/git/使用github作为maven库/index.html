@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1. 创建Github Maven Repository # https://www.github.com
+2. 创建Github免密token # Settings -&gt; Development Settings
+3. 配置Maven Github链接 # vim ~/.m2/settings.xml 两种方式:
+通过账号密码的形式 &lt;server&gt; &lt;id&gt;github&lt;/id&gt; &lt;username&gt;YOUR_USERNAME&lt;/username&gt; &lt;password&gt;YOUR_PASSWORD&lt;/password&gt; &lt;/server&gt; 通过免密token &lt;server&gt; &lt;id&gt;github&lt;/id&gt; &lt;password&gt;OAUTH2TOKEN&lt;/password&gt; &lt;/server&gt; 4. 创建待上传的库项目 # eg: org.test:testrepo
+5. 配置Maven插件生成依赖包格式输出到本地 # vim testrepo/pom.xml &lt;project&gt; &lt;distributionManagement&gt; &lt;repository&gt; &lt;id&gt;maven.repo&lt;/id&gt; &lt;name&gt;Local Staging Repository&lt;/name&gt; &lt;!-- 生成到${project}/target/mvn-repo目录下 --&gt; &lt;url&gt;file://${project.build.directory}/mvn-repo&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;artifactId&gt;maven-deploy-plugin&lt;/artifactId&gt; &lt;version&gt;2.8.1&lt;/version&gt; &lt;configuration&gt; &lt;altDeploymentRepository&gt;maven.repo::default::file://${project.build.directory}/mvn-repo&lt;/altDeploymentRepository&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;/project&gt; 6. 配置Maven插件将本地输出上传到Github # vim testrepo/pom.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="使用Github作为Maven库" />
+<meta property="og:description" content="1. 创建Github Maven Repository # https://www.github.com
+2. 创建Github免密token # Settings -&gt; Development Settings
+3. 配置Maven Github链接 # vim ~/.m2/settings.xml 两种方式:
+通过账号密码的形式 &lt;server&gt; &lt;id&gt;github&lt;/id&gt; &lt;username&gt;YOUR_USERNAME&lt;/username&gt; &lt;password&gt;YOUR_PASSWORD&lt;/password&gt; &lt;/server&gt; 通过免密token &lt;server&gt; &lt;id&gt;github&lt;/id&gt; &lt;password&gt;OAUTH2TOKEN&lt;/password&gt; &lt;/server&gt; 4. 创建待上传的库项目 # eg: org.test:testrepo
+5. 配置Maven插件生成依赖包格式输出到本地 # vim testrepo/pom.xml &lt;project&gt; &lt;distributionManagement&gt; &lt;repository&gt; &lt;id&gt;maven.repo&lt;/id&gt; &lt;name&gt;Local Staging Repository&lt;/name&gt; &lt;!-- 生成到${project}/target/mvn-repo目录下 --&gt; &lt;url&gt;file://${project.build.directory}/mvn-repo&lt;/url&gt; &lt;/repository&gt; &lt;/distributionManagement&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;artifactId&gt;maven-deploy-plugin&lt;/artifactId&gt; &lt;version&gt;2.8.1&lt;/version&gt; &lt;configuration&gt; &lt;altDeploymentRepository&gt;maven.repo::default::file://${project.build.directory}/mvn-repo&lt;/altDeploymentRepository&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt; &lt;/project&gt; 6. 配置Maven插件将本地输出上传到Github # vim testrepo/pom." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BAmaven%E5%BA%93/" /><meta property="article:section" content="docs" />
+
+
+<title>使用Github作为Maven库 | Chris Wiki</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/zh.search.min.73f46323945b51aebfae1e2d8e5f388ca9c80010e50487163b2ffee2bddb4424.js" integrity="sha256-c/RjI5RbUa6/rh4tjl84jKnIABDlBIcWOy/&#43;4r3bRCQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Chris Wiki</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="搜索" aria-label="搜索" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-01a9abdd638ce3226538b97dbfe9e0d5" class="toggle"  />
+    <label for="section-01a9abdd638ce3226538b97dbfe9e0d5" class="flex justify-between">
+      <a href="/docs/examples/" class="">Examples</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/examples/markdown-example/" class="">MarkDown Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="/docs/shortcuts/" class="">Shortcuts</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Wiki</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-55b284f1d1d8ea8e9756ba0437730f93" class="toggle"  />
+    <label for="section-55b284f1d1d8ea8e9756ba0437730f93" class="flex justify-between">
+      <a role="button" class="">Research</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7e17e091a6475277823949d0ecda27ed" class="toggle"  />
+    <label for="section-7e17e091a6475277823949d0ecda27ed" class="flex justify-between">
+      <a role="button" class="">java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-69e6271c7cbfbf74085430ec02bbba5c" class="toggle"  />
+    <label for="section-69e6271c7cbfbf74085430ec02bbba5c" class="flex justify-between">
+      <a role="button" class="">Spring</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b8650b79cdaaeb51e1fda708c92957f6" class="toggle"  />
+    <label for="section-b8650b79cdaaeb51e1fda708c92957f6" class="flex justify-between">
+      <a role="button" class="">Spring Security</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f87c064c1f6d088c4c939042868c188a" class="toggle"  />
+    <label for="section-f87c064c1f6d088c4c939042868c188a" class="flex justify-between">
+      <a role="button" class="">Spring Boot</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="toggle"  />
+    <label for="section-a3e833bd9bf8759dcc9c5198d5d733b8" class="flex justify-between">
+      <a role="button" class="">Spring Cloud</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7debb0148ca8816bc8aef24f5ac0384d" class="toggle"  />
+    <label for="section-7debb0148ca8816bc8aef24f5ac0384d" class="flex justify-between">
+      <a role="button" class="">BIRT</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/birt/%E5%B8%B8%E7%94%A8%E8%B7%AF%E7%94%B1/" class="">Birt常用路由</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6c7f7bd098c93fa7fa4affecc3bc01dc" class="toggle"  />
+    <label for="section-6c7f7bd098c93fa7fa4affecc3bc01dc" class="flex justify-between">
+      <a role="button" class="">Java插件化</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/" class="">后端模块化开发思考与实践</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/" class="">几种实现方式</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/" class="">HotSpot是什么？</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/" class="">保持顺序的Properties类</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6fc3a1d8166a9bd16e7386655c1caf20" class="toggle"  />
+    <label for="section-6fc3a1d8166a9bd16e7386655c1caf20" class="flex justify-between">
+      <a role="button" class="">bigdata</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="toggle"  />
+    <label for="section-2fa5cd1e8d425a332aab7fd6a3c6bd1a" class="flex justify-between">
+      <a role="button" class="">ecmascript</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" class="">环境部署</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-bfdfed148894f5c66f7678fbb72e9b63" class="toggle"  />
+    <label for="section-bfdfed148894f5c66f7678fbb72e9b63" class="flex justify-between">
+      <a role="button" class="">python</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e08891e42827080dbe19b39b7297cee5" class="toggle"  />
+    <label for="section-e08891e42827080dbe19b39b7297cee5" class="flex justify-between">
+      <a role="button" class="">server</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-78f63e3f1d7137fdd5def7aabd188b68" class="toggle"  />
+    <label for="section-78f63e3f1d7137fdd5def7aabd188b68" class="flex justify-between">
+      <a role="button" class="">kubenetes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/kubenetes/overview/" class="">Overview</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-78f14cfd37f81ea6255ac33f349e9bc7" class="toggle" checked />
+    <label for="section-78f14cfd37f81ea6255ac33f349e9bc7" class="flex justify-between">
+      <a role="button" class="">Resources</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8677ac40f74b0778dfe9af060940096a" class="toggle"  />
+    <label for="section-8677ac40f74b0778dfe9af060940096a" class="flex justify-between">
+      <a role="button" class="">windows</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-066eec9db899891794ed5270712deaff" class="toggle"  />
+    <label for="section-066eec9db899891794ed5270712deaff" class="flex justify-between">
+      <a href="/docs/wiki/resources/macosx/" class="">macosx</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/iterm/" class="">iTerm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/alfred/" class="">Alfred</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e4ec56a36961c6ce5535f9a0af80c203" class="toggle"  />
+    <label for="section-e4ec56a36961c6ce5535f9a0af80c203" class="flex justify-between">
+      <a role="button" class="">ios</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-e94dbe3ce251c93a4e47358586766dbd" class="toggle"  />
+    <label for="section-e94dbe3ce251c93a4e47358586766dbd" class="flex justify-between">
+      <a role="button" class="">chrome</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ee03214cbea939ca9006ed93b632fbd4" class="toggle"  />
+    <label for="section-ee03214cbea939ca9006ed93b632fbd4" class="flex justify-between">
+      <a href="/docs/wiki/resources/chrome/tampermonkey/" class="">tampermonkey</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/chrome/tampermonkey/%E7%9F%A5%E4%B9%8E%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">知乎去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/chrome/tampermonkey/%E7%AE%80%E4%B9%A6%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">简书去标题和广告</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/chrome/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/" class="">Bilibili去标题和广告</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1dd417a648544b30d1493af059e7b26e" class="toggle"  />
+    <label for="section-1dd417a648544b30d1493af059e7b26e" class="flex justify-between">
+      <a role="button" class="">server</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ff77ea8d647adba761a900a5c221184e" class="toggle"  />
+    <label for="section-ff77ea8d647adba761a900a5c221184e" class="flex justify-between">
+      <a role="button" class="">common</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/server/common/%E5%9F%9F%E5%90%8D%E7%94%B3%E8%AF%B7/" class="">域名申请</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/server/common/cdn/" class="">CDN</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b179178da9845e3d4257e279ef4ccdf" class="toggle"  />
+    <label for="section-8b179178da9845e3d4257e279ef4ccdf" class="flex justify-between">
+      <a role="button" class="">hugo</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/server/hugo/hugo-wiki-example/" class="">Hugo Wiki Example</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="toggle" checked />
+    <label for="section-9ddda78a5df4adc6a4c6a4ffbec23f03" class="flex justify-between">
+      <a role="button" class="">git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="">Git常用命令</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BAmaven%E5%BA%93/" class="active">使用Github作为Maven库</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/amwiki/" class="">AmWiki</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/" class="">使用Github作为资源库(图床)</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="toggle"  />
+    <label for="section-f9b58bcbd7e2e391732ef5afbcbb391d" class="flex justify-between">
+      <a href="/docs/wiki/resources/idea/" class="">idea</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/idea/idea-%E6%8F%92%E4%BB%B6/" class="">IDEA 插件</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0b081a8e45b8f23b35bddfeafc84a3da" class="toggle"  />
+    <label for="section-0b081a8e45b8f23b35bddfeafc84a3da" class="flex justify-between">
+      <a role="button" class="">Work</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-769edb45934884090f96d6b0b0ff663e" class="toggle"  />
+    <label for="section-769edb45934884090f96d6b0b0ff663e" class="flex justify-between">
+      <a role="button" class="">Others</a>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>使用Github作为Maven库</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-创建github-maven-repository">1. 创建Github Maven Repository</a></li>
+    <li><a href="#2-创建github免密token">2. 创建Github免密token</a></li>
+    <li><a href="#3-配置maven-github链接">3. 配置Maven Github链接</a></li>
+    <li><a href="#4-创建待上传的库项目">4. 创建待上传的库项目</a></li>
+    <li><a href="#5-配置maven插件生成依赖包格式输出到本地">5. 配置Maven插件生成依赖包格式输出到本地</a></li>
+    <li><a href="#6-配置maven插件将本地输出上传到github">6. 配置Maven插件将本地输出上传到Github</a></li>
+    <li><a href="#7-打包部署">7. 打包部署</a></li>
+    <li><a href="#8-使用方式">8. 使用方式</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h2 id="1-创建github-maven-repository">
+  1. 创建Github Maven Repository
+  <a class="anchor" href="#1-%e5%88%9b%e5%bb%bagithub-maven-repository">#</a>
+</h2>
+<p><a href="https://www.github.com">https://www.github.com</a></p>
+<h2 id="2-创建github免密token">
+  2. 创建Github免密token
+  <a class="anchor" href="#2-%e5%88%9b%e5%bb%bagithub%e5%85%8d%e5%af%86token">#</a>
+</h2>
+<p>Settings -&gt; Development Settings<br>
+<img src="/images/DX-20230425@2x.png" alt="" /></p>
+<h2 id="3-配置maven-github链接">
+  3. 配置Maven Github链接
+  <a class="anchor" href="#3-%e9%85%8d%e7%bd%aemaven-github%e9%93%be%e6%8e%a5">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim ~/.m2/settings.xml
+</span></span></code></pre></div><p>两种方式:</p>
+<ol>
+<li>通过账号密码的形式</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&lt;id&gt;</span>github<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;username&gt;</span>YOUR_USERNAME<span style="color:#f92672">&lt;/username&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;password&gt;</span>YOUR_PASSWORD<span style="color:#f92672">&lt;/password&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/server&gt;</span>
+</span></span></code></pre></div><ol start="2">
+<li>通过免密token</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;id&gt;</span>github<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;password&gt;</span>OAUTH2TOKEN<span style="color:#f92672">&lt;/password&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/server&gt;</span>
+</span></span></code></pre></div><h2 id="4-创建待上传的库项目">
+  4. 创建待上传的库项目
+  <a class="anchor" href="#4-%e5%88%9b%e5%bb%ba%e5%be%85%e4%b8%8a%e4%bc%a0%e7%9a%84%e5%ba%93%e9%a1%b9%e7%9b%ae">#</a>
+</h2>
+<p>eg: org.test:testrepo</p>
+<h2 id="5-配置maven插件生成依赖包格式输出到本地">
+  5. 配置Maven插件生成依赖包格式输出到本地
+  <a class="anchor" href="#5-%e9%85%8d%e7%bd%aemaven%e6%8f%92%e4%bb%b6%e7%94%9f%e6%88%90%e4%be%9d%e8%b5%96%e5%8c%85%e6%a0%bc%e5%bc%8f%e8%be%93%e5%87%ba%e5%88%b0%e6%9c%ac%e5%9c%b0">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim testrepo/pom.xml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;distributionManagement&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;id&gt;</span>maven.repo<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;name&gt;</span>Local Staging Repository<span style="color:#f92672">&lt;/name&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">&lt;!-- 生成到${project}/target/mvn-repo目录下 --&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;url&gt;</span>file://${project.build.directory}/mvn-repo<span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/distributionManagement&gt;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;plugins&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>maven-deploy-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version&gt;</span>2.8.1<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;altDeploymentRepository&gt;</span>maven.repo::default::file://${project.build.directory}/mvn-repo<span style="color:#f92672">&lt;/altDeploymentRepository&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/plugins&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/build&gt;</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="6-配置maven插件将本地输出上传到github">
+  6. 配置Maven插件将本地输出上传到Github
+  <a class="anchor" href="#6-%e9%85%8d%e7%bd%aemaven%e6%8f%92%e4%bb%b6%e5%b0%86%e6%9c%ac%e5%9c%b0%e8%be%93%e5%87%ba%e4%b8%8a%e4%bc%a0%e5%88%b0github">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim testrepo/pom.xml
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;properties&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- 引用settings.xml中的配置 --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;github.global.server&gt;</span>github<span style="color:#f92672">&lt;/github.global.server&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/properties&gt;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;build&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;plugins&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;plugin&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;groupId&gt;</span>com.github.github<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;artifactId&gt;</span>site-maven-plugin<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;version</span> <span style="color:#f92672">&gt;</span>0.12<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;configuration&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">&lt;!-- 提交依赖库的commit message --&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;message&gt;</span>Maven artifacts for ${project.version}<span style="color:#f92672">&lt;/message&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;noJekyll&gt;</span>true<span style="color:#f92672">&lt;/noJekyll&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">&lt;!-- 本地jar地址 --&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;outputDirectory&gt;</span>${project.build.directory}/mvn-repo<span style="color:#f92672">&lt;/outputDirectory&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">&lt;!-- 分支的名称 --&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;branch&gt;</span>refs/heads/master<span style="color:#f92672">&lt;/branch&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;merge&gt;</span>true<span style="color:#f92672">&lt;/merge&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;includes&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;include&gt;</span>**/*<span style="color:#f92672">&lt;/include&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/includes&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">&lt;!-- github 仓库所有者即登录用户名或组织名 --&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;repositoryOwner&gt;</span>nctsc<span style="color:#f92672">&lt;/repositoryOwner&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">&lt;!-- 对应github上创建的仓库名称 name --&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;repositoryName&gt;</span>maven-repository<span style="color:#f92672">&lt;/repositoryName&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/configuration&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;executions&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;execution&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;goals&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&lt;goal&gt;</span>site<span style="color:#f92672">&lt;/goal&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;/goals&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;phase&gt;</span>deploy<span style="color:#f92672">&lt;/phase&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&lt;/execution&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/executions&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/plugin&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/plugins&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/build&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="7-打包部署">
+  7. 打包部署
+  <a class="anchor" href="#7-%e6%89%93%e5%8c%85%e9%83%a8%e7%bd%b2">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mvn deploy
+</span></span></code></pre></div><h2 id="8-使用方式">
+  8. 使用方式
+  <a class="anchor" href="#8-%e4%bd%bf%e7%94%a8%e6%96%b9%e5%bc%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;project&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;dependency&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;groupId&gt;</span>cp.mvnrepo<span style="color:#f92672">&lt;/groupId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;artifactId&gt;</span>testmvnrepo<span style="color:#f92672">&lt;/artifactId&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;version&gt;</span>1.0-SNAPSHOT<span style="color:#f92672">&lt;/version&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/dependency&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/dependencies&gt;</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;repositories&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;repository&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;id&gt;</span>nctsc<span style="color:#f92672">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;url&gt;</span>https://raw.github.com/nctsc/maven-repository/<span style="color:#f92672">&lt;/url&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/repository&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;/repositories&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/project&gt;</span>
+</span></span></code></pre></div><h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<p><a href="https://github.com/nctsc/maven-repository">Github/nstsc/maven-repository</a><br>
+<a href="https://developer.aliyun.com/article/899375">使用site-maven-plugin在github上搭建公有仓库</a><br>
+<a href="https://blog.csdn.net/sunxiaoju/article/details/85331265#commentsedit">GitHub上创建自己的Maven仓库并引用</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-创建github-maven-repository">1. 创建Github Maven Repository</a></li>
+    <li><a href="#2-创建github免密token">2. 创建Github免密token</a></li>
+    <li><a href="#3-配置maven-github链接">3. 配置Maven Github链接</a></li>
+    <li><a href="#4-创建待上传的库项目">4. 创建待上传的库项目</a></li>
+    <li><a href="#5-配置maven插件生成依赖包格式输出到本地">5. 配置Maven插件生成依赖包格式输出到本地</a></li>
+    <li><a href="#6-配置maven插件将本地输出上传到github">6. 配置Maven插件将本地输出上传到Github</a></li>
+    <li><a href="#7-打包部署">7. 打包部署</a></li>
+    <li><a href="#8-使用方式">8. 使用方式</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

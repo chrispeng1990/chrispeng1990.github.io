@@ -16,6 +16,30 @@
     </item>
     
     <item>
+      <title>使用Github作为Maven库</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BAmaven%E5%BA%93/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BAmaven%E5%BA%93/</guid>
+      <description>1. 创建Github Maven Repository # https://www.github.com
+2. 创建Github免密token # Settings -&amp;gt; Development Settings
+3. 配置Maven Github链接 # vim ~/.m2/settings.xml 两种方式:
+通过账号密码的形式 &amp;lt;server&amp;gt; &amp;lt;id&amp;gt;github&amp;lt;/id&amp;gt; &amp;lt;username&amp;gt;YOUR_USERNAME&amp;lt;/username&amp;gt; &amp;lt;password&amp;gt;YOUR_PASSWORD&amp;lt;/password&amp;gt; &amp;lt;/server&amp;gt; 通过免密token &amp;lt;server&amp;gt; &amp;lt;id&amp;gt;github&amp;lt;/id&amp;gt; &amp;lt;password&amp;gt;OAUTH2TOKEN&amp;lt;/password&amp;gt; &amp;lt;/server&amp;gt; 4. 创建待上传的库项目 # eg: org.test:testrepo
+5. 配置Maven插件生成依赖包格式输出到本地 # vim testrepo/pom.xml &amp;lt;project&amp;gt; &amp;lt;distributionManagement&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;maven.repo&amp;lt;/id&amp;gt; &amp;lt;name&amp;gt;Local Staging Repository&amp;lt;/name&amp;gt; &amp;lt;!-- 生成到${project}/target/mvn-repo目录下 --&amp;gt; &amp;lt;url&amp;gt;file://${project.build.directory}/mvn-repo&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;/distributionManagement&amp;gt; &amp;lt;build&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;artifactId&amp;gt;maven-deploy-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.8.1&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;altDeploymentRepository&amp;gt;maven.repo::default::file://${project.build.directory}/mvn-repo&amp;lt;/altDeploymentRepository&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;/build&amp;gt; &amp;lt;/project&amp;gt; 6. 配置Maven插件将本地输出上传到Github # vim testrepo/pom.</description>
+    </item>
+    
+    <item>
+      <title>AmWiki</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
+      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
+支持全文档搜索，自动生成首页索引页等
+References # amwiki</description>
+    </item>
+    
+    <item>
       <title>使用Github作为资源库(图床)</title>
       <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -30,17 +54,6 @@
 4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
-    </item>
-    
-    <item>
-      <title>AmWiki</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
-      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
-支持全文档搜索，自动生成首页索引页等
-References # amwiki</description>
     </item>
     
   </channel>
