@@ -29,17 +29,6 @@
     </item>
     
     <item>
-      <title>AmWiki</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
-      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
-支持全文档搜索，自动生成首页索引页等
-References # amwiki</description>
-    </item>
-    
-    <item>
       <title>使用Github作为资源库(图床)</title>
       <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -54,6 +43,27 @@ References # amwiki</description>
 4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
+    </item>
+    
+    <item>
+      <title>raw.githubusercontent无法访问</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</guid>
+      <description>修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
+85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com References # https://www.jianshu.com/p/51decd726dd1</description>
+    </item>
+    
+    <item>
+      <title>AmWiki</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
+      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
+支持全文档搜索，自动生成首页索引页等
+References # amwiki</description>
     </item>
     
   </channel>

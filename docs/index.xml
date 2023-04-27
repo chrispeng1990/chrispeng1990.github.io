@@ -142,6 +142,15 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
+      <title>阿里云节点异常问题排查流程</title>
+      <link>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</guid>
+      <description>处理流程图 # References # 节点异常问题排查</description>
+    </item>
+    
+    <item>
       <title>环境部署</title>
       <link>http://christh0x.github.io/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -268,17 +277,6 @@ References # </description>
     </item>
     
     <item>
-      <title>AmWiki</title>
-      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
-      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
-支持全文档搜索，自动生成首页索引页等
-References # amwiki</description>
-    </item>
-    
-    <item>
       <title>Bilibili去标题和广告</title>
       <link>http://christh0x.github.io/docs/wiki/resources/chrome/tampermonkey/bilibili%E5%8E%BB%E6%A0%87%E9%A2%98%E5%92%8C%E5%B9%BF%E5%91%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -302,6 +300,27 @@ References # amwiki</description>
 4. 配置 PicGo Github # 5. 使用CDN(jsdelivr)加速资源访问(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文档 # 使用Github+picGo搭建图床</description>
+    </item>
+    
+    <item>
+      <title>raw.githubusercontent无法访问</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</guid>
+      <description>修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
+85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com References # https://www.jianshu.com/p/51decd726dd1</description>
+    </item>
+    
+    <item>
+      <title>AmWiki</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/git/amwiki/</guid>
+      <description>通过atom插件创建amwiki工程，编辑md文档，发布到github
+支持全文档搜索，自动生成首页索引页等
+References # amwiki</description>
     </item>
     
     <item>

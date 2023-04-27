@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 500
 title: "AmWiki"
 ---
 
