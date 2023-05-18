@@ -174,6 +174,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/spring/spring-express-language/" class="">Spring Express Language</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -236,6 +249,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/springcloud/feignclient%E6%89%93%E5%8D%B0%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97/" class="">FeignClient打印请求日志</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -331,6 +357,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/" class="">HotSpot是什么？</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/arthas/" class="">Arthas 使用</a>
   
 
         </li>
@@ -1083,6 +1122,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#3-git统计user的代码量">3. git统计user的代码量</a></li>
     <li><a href="#4-回滚已merge的master代码">4. 回滚已merge的master代码</a></li>
     <li><a href="#5-修改仓库所有commit的用户名和email">5. 修改仓库所有commit的用户名和email</a></li>
+    <li><a href="#6-修改历史commit信息">6. 修改历史commit信息</a></li>
     <li><a href="#常见错误">常见错误</a>
       <ul>
         <li><a href="#1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large</a></li>
@@ -1152,6 +1192,53 @@ https://github.com/alex-shpak/hugo-book
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;</span> --tag-name-filter cat -- --branches --tags
 </span></span></code></pre></div><p>把变更 push 到 Github</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push --force --tags origin <span style="color:#e6db74">&#39;refs/heads/*&#39;</span>
+</span></span></code></pre></div><h2 id="6-修改历史commit信息">
+  6. 修改历史commit信息
+  <a class="anchor" href="#6-%e4%bf%ae%e6%94%b9%e5%8e%86%e5%8f%b2commit%e4%bf%a1%e6%81%af">#</a>
+</h2>
+<ol>
+<li>查看历史提交记录</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
+</span></span></code></pre></div><p><img src="/images/v2-5c863a404dcf6facf17906e9e36f4dc0_b.webp" alt="" /></p>
+<ol start="2">
+<li>找到要修改的commit的上一条commit id</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git rebase -i <span style="color:#f92672">{</span>prevCommitId<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="/images/v2-447b53202cdf075fff6fefc84273f57d_b.webp" alt="" /></p>
+<ol start="3">
+<li>按 &lsquo;O&rsquo; 键进入编辑模式, 将要修改的commit前标记改为 reword<br>
+<img src="/images/v2-f1952404459f8ae3e9818d7c8de76a1e_b.webp" alt="" /></li>
+</ol>
+<ul>
+<li>pick：保留该 commit</li>
+<li>reword：保留该 commit，但我需要修改该commit的 Message</li>
+<li>edit：保留该 commit, 但我要停下来修改该提交(包括修改文件)</li>
+<li>squash：将该 commit 和前一个 commit 合并</li>
+<li>fixup：将该 commit 和前一个 commit 合并，但我不要保留该提交的注释信息</li>
+<li>exec：执行 shell 命令</li>
+<li>drop：丢弃这个 commit</li>
+</ul>
+<ol start="4">
+<li>
+<p>修改完成后按 &lsquo;Esc&rsquo; 后输入 &lsquo;:wq&rsquo; 退出commit历史界面, 进入对应commit编辑界面<br>
+<img src="/images/v2-a08c6c4adff59d4917987defc6f8a2e4_b.webp" alt="" /><br>
+<img src="/images/v2-ee98a4f8a6399a24aebb77fe28a81e47_b.webp" alt="" /></p>
+</li>
+<li>
+<p>输入 &lsquo;:wq&rsquo; 保存变更<br>
+<img src="/images/v2-6b58d564d49be4d3c8b2d027f3c070d5_b.png" alt="" /></p>
+</li>
+<li>
+<p>查看修改记录</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
+</span></span></code></pre></div><p><img src="/images/v2-37513327a616454e79cd9b0f8eb6a018_b.webp" alt="" /></p>
+<ol start="7">
+<li>修改提交到远程</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git push origin <span style="color:#f92672">{</span>branchName<span style="color:#f92672">}</span> -f 
 </span></span></code></pre></div><h2 id="常见错误">
   常见错误
   <a class="anchor" href="#%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af">#</a>
@@ -1165,7 +1252,8 @@ https://github.com/alex-shpak/hugo-book
   References
   <a class="anchor" href="#references">#</a>
 </h2>
-<p><a href="https://www.cnblogs.com/fb010001/p/16785452.html">修改git所有commit中的用户名和email</a></p>
+<p><a href="https://www.cnblogs.com/fb010001/p/16785452.html">修改git所有commit中的用户名和email</a><br>
+<a href="https://www.zhihu.com/tardis/bd/art/401811121?source_id=1001">Git 如何修改历史 Commit message</a></p>
 </article>
  
       
@@ -1212,6 +1300,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#3-git统计user的代码量">3. git统计user的代码量</a></li>
     <li><a href="#4-回滚已merge的master代码">4. 回滚已merge的master代码</a></li>
     <li><a href="#5-修改仓库所有commit的用户名和email">5. 修改仓库所有commit的用户名和email</a></li>
+    <li><a href="#6-修改历史commit信息">6. 修改历史commit信息</a></li>
     <li><a href="#常见错误">常见错误</a>
       <ul>
         <li><a href="#1-git-rpc-failed-http-413-curl-22-the-requested-url-returned-error-413-request-entity-too-large">1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large</a></li>

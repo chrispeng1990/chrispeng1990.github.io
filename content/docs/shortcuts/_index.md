@@ -7,6 +7,7 @@ title: "Shortcuts"
 ## 实用工具
 [JSON格式化](https://www.bejson.com)  
 [Timestamp时间转换](https://tool.chinaz.com/Tools/unixtime.aspx)  
+[正则表达式](https://c.runoob.com/front-end/854/)  
 [UTF8转码](https://tool.chinaz.com/Tools/UTF-8.aspx)  
 [Unicode转码](https://tool.chinaz.com/Tools/Unicode.aspx)  
 [URL转码](https://tool.chinaz.com/tools/urlencode.aspx)  
@@ -24,6 +25,7 @@ title: "Shortcuts"
 
 
 ## 设计素材
+[IconFont矢量图标库](https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=2959078&keyword=&project_type=&page=)  
 
 
 ## 工具盒子

@@ -6,5 +6,14 @@
     <description>Recent content in Spring Cloud on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/java/springcloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FeignClient打印请求日志</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springcloud/feignclient%E6%89%93%E5%8D%B0%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springcloud/feignclient%E6%89%93%E5%8D%B0%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97/</guid>
+      <description>使用方式 # 自定义 FeignLogger # import feign.Request; import feign.Response; import feign.Util; import feign.slf4j.Slf4jLogger; import lombok.extern.slf4j.Slf4j; import java.io.IOException; import static feign.Util.*; @Slf4j public class FeignLogger extends Slf4jLogger { @Override @SuppressWarnings(&amp;#34;deprecation&amp;#34;) protected void logRequest(String configKey, Level logLevel, Request request) { String method = request.httpMethod().name(); String url = request.url(); String requestBody = &amp;#34;&amp;#34;; // log(configKey, &amp;#34;---&amp;gt; %s %s HTTP/1.1&amp;#34;, request.httpMethod().name(), request.url()); if (logLevel.ordinal() &amp;gt;= Level.HEADERS.ordinal()) { for (String field : request.headers().keySet()) { for (String value : valuesOrEmpty(request.</description>
+    </item>
+    
   </channel>
 </rss>

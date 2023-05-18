@@ -32,6 +32,18 @@ java -Xcomp -version Java HotSpot(TM) Client VM (build 14.</description>
     </item>
     
     <item>
+      <title>Arthas 使用</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/arthas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
+      <description>java -jar arthas-boot.jar
+# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
+Arthas不停机热修改代码
+arthas 执行ognl表达式ClassNotFoundException</description>
+    </item>
+    
+    <item>
       <title>保持顺序的Properties类</title>
       <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

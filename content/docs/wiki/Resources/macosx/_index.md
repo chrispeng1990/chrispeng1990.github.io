@@ -19,7 +19,12 @@ bookCollapseSection: true
 sudo spctl --master-disable
 ```
 
-## 2. 开启80端口并设置代理
+## 2. 查看端口占用进程
+```bash
+sudo lsof -i:{port}
+```
+
+## 3. 开启80端口并设置代理
 ```bash
 vim /usr/local/etc/nginx/nginx.conf
 ```

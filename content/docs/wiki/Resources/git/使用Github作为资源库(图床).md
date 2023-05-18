@@ -4,7 +4,7 @@ title: "使用Github作为资源库(图床)"
 ---
 
 ## Tips
-https://raw.githubusercontent.com 域名需要vpn才能访问
+https://raw.githubusercontent.com 域名需要修改dns或vpn才能访问
   
 
 ## 1. 创建一个资源库专用Repository

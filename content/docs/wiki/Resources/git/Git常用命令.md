@@ -60,6 +60,47 @@ fi
 git push --force --tags origin 'refs/heads/*'
 ```
 
+## 6. 修改历史commit信息
+1. 查看历史提交记录  
+```bash
+git log
+```
+![](/images/v2-5c863a404dcf6facf17906e9e36f4dc0_b.webp)  
+
+2. 找到要修改的commit的上一条commit id  
+```bash
+git rebase -i {prevCommitId}
+```
+![](/images/v2-447b53202cdf075fff6fefc84273f57d_b.webp)  
+
+3. 按 'O' 键进入编辑模式, 将要修改的commit前标记改为 reword  
+![](/images/v2-f1952404459f8ae3e9818d7c8de76a1e_b.webp)  
+- pick：保留该 commit  
+- reword：保留该 commit，但我需要修改该commit的 Message  
+- edit：保留该 commit, 但我要停下来修改该提交(包括修改文件)  
+- squash：将该 commit 和前一个 commit 合并  
+- fixup：将该 commit 和前一个 commit 合并，但我不要保留该提交的注释信息  
+- exec：执行 shell 命令  
+- drop：丢弃这个 commit  
+
+4. 修改完成后按 'Esc' 后输入 ':wq' 退出commit历史界面, 进入对应commit编辑界面  
+![](/images/v2-a08c6c4adff59d4917987defc6f8a2e4_b.webp)  
+![](/images/v2-ee98a4f8a6399a24aebb77fe28a81e47_b.webp)  
+
+5. 输入 ':wq' 保存变更  
+![](/images/v2-6b58d564d49be4d3c8b2d027f3c070d5_b.png)  
+
+6. 查看修改记录  
+```bash
+git log
+```
+![](/images/v2-37513327a616454e79cd9b0f8eb6a018_b.webp)  
+
+7. 修改提交到远程  
+```bash
+git push origin {branchName} -f 
+```
+
 ## 常见错误
 ### 1. git RPC failed; HTTP 413 curl 22 The requested URL returned error: 413 Request Entity Too Large
 ```bash
@@ -68,5 +109,5 @@ git config http.postBuffer 524288000
 
 ## References
 [修改git所有commit中的用户名和email](https://www.cnblogs.com/fb010001/p/16785452.html)  
-
+[Git 如何修改历史 Commit message](https://www.zhihu.com/tardis/bd/art/401811121?source_id=1001)  
 

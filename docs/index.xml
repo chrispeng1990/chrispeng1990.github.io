@@ -33,6 +33,15 @@ PS:这里所说的是针对web应用的集成，但是这种方法同样也可�
     </item>
     
     <item>
+      <title>FeignClient打印请求日志</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springcloud/feignclient%E6%89%93%E5%8D%B0%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springcloud/feignclient%E6%89%93%E5%8D%B0%E8%AF%B7%E6%B1%82%E6%97%A5%E5%BF%97/</guid>
+      <description>使用方式 # 自定义 FeignLogger # import feign.Request; import feign.Response; import feign.Util; import feign.slf4j.Slf4jLogger; import lombok.extern.slf4j.Slf4j; import java.io.IOException; import static feign.Util.*; @Slf4j public class FeignLogger extends Slf4jLogger { @Override @SuppressWarnings(&amp;#34;deprecation&amp;#34;) protected void logRequest(String configKey, Level logLevel, Request request) { String method = request.httpMethod().name(); String url = request.url(); String requestBody = &amp;#34;&amp;#34;; // log(configKey, &amp;#34;---&amp;gt; %s %s HTTP/1.1&amp;#34;, request.httpMethod().name(), request.url()); if (logLevel.ordinal() &amp;gt;= Level.HEADERS.ordinal()) { for (String field : request.headers().keySet()) { for (String value : valuesOrEmpty(request.</description>
+    </item>
+    
+    <item>
       <title>Git常用命令</title>
       <link>http://christh0x.github.io/docs/wiki/resources/git/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -142,6 +151,21 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
+      <title>Spring Express Language</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/spring/spring-express-language/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/spring/spring-express-language/</guid>
+      <description>语法 # 静态方法调用 # &amp;quot;T(System).currentTimeMillis()&amp;quot;
+Bean实例方法调用 # &amp;quot;@beanName.method()&amp;quot;
+List # &amp;quot;list[0].property&amp;quot;
+&amp;quot;T(com.google.common.collect.Lists).partition({&#39;a&#39;, &#39;b&#39;, &#39;c&#39;}, 1)&amp;quot;
+Map # &amp;quot;map[key].property&amp;quot;
+&amp;quot;T(com.google.common.collect.Maps).newHashMap({&#39;k&#39;: &#39;v&#39;})&amp;quot;
+使用方式 # 注解使用 # public class Test { @Value(&amp;#34;&amp;#39;Hello World&amp;#39;.concat(&amp;#39;!&amp;#39;)&amp;#34;) private String value; } 代码调用 # public class Test { public static void main(String[] args) { // 1 定义解析器 SpelExpressionParser parser = new SpelExpressionParser(); // 2 使用解析器解析表达式 Expression exp = parser.parseExpression(&amp;#34;&amp;#39;Hello World&amp;#39;.concat(&amp;#39;!&amp;#39;)&amp;#34;); // 3 获取解析结果 String value = (String) exp.</description>
+    </item>
+    
+    <item>
       <title>阿里云节点异常问题排查流程</title>
       <link>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -198,6 +222,18 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
     </item>
     
     <item>
+      <title>Arthas 使用</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/arthas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
+      <description>java -jar arthas-boot.jar
+# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
+Arthas不停机热修改代码
+arthas 执行ognl表达式ClassNotFoundException</description>
+    </item>
+    
+    <item>
       <title>CDN</title>
       <link>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -210,18 +246,6 @@ https://console.cloud.tencent.com/cdn
 2. Github资源库使用免费CDN加速(Deprecated) # 模版:
 https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
-    </item>
-    
-    <item>
-      <title>保持顺序的Properties类</title>
-      <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</guid>
-      <description>保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
-总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
-只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
-import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;Object&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
     </item>
     
     <item>
@@ -286,12 +310,24 @@ References # </description>
     </item>
     
     <item>
+      <title>保持顺序的Properties类</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</guid>
+      <description>保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
+总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
+只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
+import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;Object&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
+    </item>
+    
+    <item>
       <title>使用Github作为资源库(图床)</title>
       <link>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</guid>
-      <description>Tips # https://raw.githubusercontent.com 域名需要vpn才能访问
+      <description>Tips # https://raw.githubusercontent.com 域名需要修改dns或vpn才能访问
 1. 创建一个资源库专用Repository # 2. 生成免密token # 点击用户头像 -&amp;gt; Settings -&amp;gt; Developers Settings;
 创建新token: Personal access tokens -&amp;gt; Tokens -&amp;gt; Generate New Token
 过期时间选择永不过期; 权限范围勾选repo所有权限.
@@ -308,8 +344,10 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</guid>
-      <description>修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
-85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com References # https://www.jianshu.com/p/51decd726dd1</description>
+      <description>1. 修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
+85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com 2. 使用镜像 # gitmirror # https://raw.gitmirror.com/nctsc/resources/master/images/202304281435449.png
+https://raw.githubusercontent.com/nctsc/resources/master/images/202304281435449.png
+References # https://www.jianshu.com/p/51decd726dd1</description>
     </item>
     
     <item>

@@ -34,7 +34,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</guid>
-      <description>Tips # https://raw.githubusercontent.com 域名需要vpn才能访问
+      <description>Tips # https://raw.githubusercontent.com 域名需要修改dns或vpn才能访问
 1. 创建一个资源库专用Repository # 2. 生成免密token # 点击用户头像 -&amp;gt; Settings -&amp;gt; Developers Settings;
 创建新token: Personal access tokens -&amp;gt; Tokens -&amp;gt; Generate New Token
 过期时间选择永不过期; 权限范围勾选repo所有权限.
@@ -51,8 +51,10 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</guid>
-      <description>修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
-85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com References # https://www.jianshu.com/p/51decd726dd1</description>
+      <description>1. 修改 hosts 文件 # 以下任意一条加入 hosts 文件即可.
+85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com 2. 使用镜像 # gitmirror # https://raw.gitmirror.com/nctsc/resources/master/images/202304281435449.png
+https://raw.githubusercontent.com/nctsc/resources/master/images/202304281435449.png
+References # https://www.jianshu.com/p/51decd726dd1</description>
     </item>
     
     <item>
