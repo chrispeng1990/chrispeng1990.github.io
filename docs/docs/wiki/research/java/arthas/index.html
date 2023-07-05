@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
+# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
 Arthas不停机热修改代码
 arthas 执行ognl表达式ClassNotFoundException">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Arthas 使用" />
 <meta property="og:description" content="java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
+# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
 Arthas不停机热修改代码
 arthas 执行ognl表达式ClassNotFoundException" />
 <meta property="og:type" content="article" />
@@ -207,7 +207,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b8650b79cdaaeb51e1fda708c92957f6" class="toggle"  />
     <label for="section-b8650b79cdaaeb51e1fda708c92957f6" class="flex justify-between">
-      <a role="button" class="">Spring Security</a>
+      <a href="/docs/wiki/research/java/springsecurity/" class="">Spring Security</a>
     </label>
   
 
@@ -362,6 +362,40 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-80646043de6a1bb9cf4323ad5a16dd9f" class="toggle"  />
+    <label for="section-80646043de6a1bb9cf4323ad5a16dd9f" class="flex justify-between">
+      <a role="button" class="">poi</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/poi/word2pdf/" class="">word2pdf</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/" class="">HotSpot是什么？</a>
   
 
@@ -376,6 +410,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/wiki/research/java/arthas/" class="active">Arthas 使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/" class="">Jar包操作</a>
   
 
         </li>
@@ -614,6 +661,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="">根目录创建新文件夹</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -716,6 +776,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/chrome/%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACchrome/" class="">安装旧版本Chrome</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -774,6 +847,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/wiki/resources/server/common/cdn/" class="">CDN</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/server/common/vpn/" class="">VPN</a>
   
 
         </li>
@@ -1152,6 +1238,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## 热修改class</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注: 不能增减成员变量和方法, 只能修改代码段</span>
 </span></span><span style="display:flex;"><span>redefine /tmp/Xxx.class
 </span></span></code></pre></div><h2 id="references">
   References

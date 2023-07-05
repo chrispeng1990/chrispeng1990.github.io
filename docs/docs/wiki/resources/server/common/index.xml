@@ -34,5 +34,15 @@ https://cdn.jsdelivr.net/gh/${username}/${repository}/path/to/file.txt eg:
 https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png References # Github 部署 | CDN 加速网页</description>
     </item>
     
+    <item>
+      <title>VPN</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/vpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/vpn/</guid>
+      <description>1. shadowsocketR # 2. v2ray # 3. fecloud # 4. airtcp # https://airtcp6.com/
+https://airtcpweb.top/</description>
+    </item>
+    
   </channel>
 </rss>

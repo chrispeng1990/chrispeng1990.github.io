@@ -166,6 +166,16 @@ Map # &amp;quot;map[key].property&amp;quot;
     </item>
     
     <item>
+      <title>word2pdf</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/poi/word2pdf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/poi/word2pdf/</guid>
+      <description>https://documents4j.com/
+References # Java中Word转PDF解决方案</description>
+    </item>
+    
+    <item>
       <title>阿里云节点异常问题排查流程</title>
       <link>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -228,7 +238,7 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
       <description>java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
+# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
 Arthas不停机热修改代码
 arthas 执行ognl表达式ClassNotFoundException</description>
     </item>
@@ -310,15 +320,47 @@ References # </description>
     </item>
     
     <item>
-      <title>保持顺序的Properties类</title>
-      <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
+      <title>Jar包操作</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</guid>
-      <description>保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
-总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
-只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
-import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;Object&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
+      <guid>http://christh0x.github.io/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/</guid>
+      <description> 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar . 修改 # 注: 待修改的文件必须和jar包内目录一致
+jar -uvf xxx.jar path/to/file.class References # </description>
+    </item>
+    
+    <item>
+      <title>VPN</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/server/common/vpn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/server/common/vpn/</guid>
+      <description>1. shadowsocketR # 2. v2ray # 3. fecloud # 4. airtcp # https://airtcp6.com/
+https://airtcpweb.top/</description>
+    </item>
+    
+    <item>
+      <title>安装旧版本Chrome</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/chrome/%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACchrome/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/chrome/%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACchrome/</guid>
+      <description>旧版本 # http://dl.google.com/chrome/install/[版本号后两位]/chrome_installer.exe
+https://dl.google.com/chrome/mac/universal/dev/googlechromedev.dmg
+https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
+测试版 # 最新稳定版：https://www.google.com/intl/zh-CN/chrome/browser/?standalone=1
+最新测试版：https://www.google.com/intl/zh-CN/chrome/browser/?standalone=1&amp;amp;extra=betachannel
+最新开发版：https://www.google.com/intl/zh-CN/chrome/browser/?standalone=1&amp;amp;extra=devchannel
+关闭自动更新 # mv /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle /Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle.bak References # 如何下载Chrome历史版本</description>
+    </item>
+    
+    <item>
+      <title>根目录创建新文件夹</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/macosx/%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6%E5%A4%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/macosx/%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6%E5%A4%B9/</guid>
+      <description>步骤 # # 第一步：一个说明，想了解为什么要这么做的最好还是看一下 man synthetic.conf # 第二步： sudo vim /etc/synthetic.conf # 第三步：注意 data 和 /System 之间是tab键 data /System/Volumes/Data/data # 第四步：进入到/System/Volumes/Data下，创建文件夹data sudo mkdir data # 第五步：给data设置权限，我给了最高权限 sudo chmod -R 777 data # 第六步：重启 References # 关于：MAC 更新Catalina后根目录没有权限</description>
     </item>
     
     <item>
@@ -348,6 +390,18 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文
 85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com 2. 使用镜像 # gitmirror # https://raw.gitmirror.com/nctsc/resources/master/images/202304281435449.png
 https://raw.githubusercontent.com/nctsc/resources/master/images/202304281435449.png
 References # https://www.jianshu.com/p/51decd726dd1</description>
+    </item>
+    
+    <item>
+      <title>保持顺序的Properties类</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</guid>
+      <description>保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
+总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
+只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
+import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
     </item>
     
     <item>

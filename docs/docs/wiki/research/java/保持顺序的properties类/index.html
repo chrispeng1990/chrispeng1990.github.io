@@ -6,13 +6,13 @@
 <meta name="description" content="保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
 总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
 只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
-import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&lt;Object&gt; keys = new LinkedHashSet&lt;Object&gt;(); public Enumeration&lt;Object&gt; keys() { return Collections.&lt;Object&gt; enumeration(keys); } public Object put(Object key, Object value) { keys.">
+import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&lt;Object&gt; keys = new LinkedHashSet&lt;&gt;(); public Enumeration&lt;Object&gt; keys() { return Collections.&lt;Object&gt; enumeration(keys); } public Object put(Object key, Object value) { keys.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="保持顺序的Properties类" />
 <meta property="og:description" content="保持顺序的Properties类 # Java 的 Properties 加载属性文件后是无法保证输出的顺序与文件中一致的，因为 Properties 是继承自 Hashtable 的， key/value 都是直接存在 Hashtable 中的，而 Hashtable 是不保证进出顺序的。
 总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
 只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
-import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&lt;Object&gt; keys = new LinkedHashSet&lt;Object&gt;(); public Enumeration&lt;Object&gt; keys() { return Collections.&lt;Object&gt; enumeration(keys); } public Object put(Object key, Object value) { keys." />
+import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&lt;Object&gt; keys = new LinkedHashSet&lt;&gt;(); public Enumeration&lt;Object&gt; keys() { return Collections.&lt;Object&gt; enumeration(keys); } public Object put(Object key, Object value) { keys." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/" /><meta property="article:section" content="docs" />
 
@@ -207,7 +207,7 @@ https://github.com/alex-shpak/hugo-book
   
     <input type="checkbox" id="section-b8650b79cdaaeb51e1fda708c92957f6" class="toggle"  />
     <label for="section-b8650b79cdaaeb51e1fda708c92957f6" class="flex justify-between">
-      <a role="button" class="">Spring Security</a>
+      <a href="/docs/wiki/research/java/springsecurity/" class="">Spring Security</a>
     </label>
   
 
@@ -362,6 +362,40 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-80646043de6a1bb9cf4323ad5a16dd9f" class="toggle"  />
+    <label for="section-80646043de6a1bb9cf4323ad5a16dd9f" class="flex justify-between">
+      <a role="button" class="">poi</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/poi/word2pdf/" class="">word2pdf</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/wiki/research/java/hotspot%E6%98%AF%E4%BB%80%E4%B9%88/" class="">HotSpot是什么？</a>
   
 
@@ -376,6 +410,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/wiki/research/java/arthas/" class="">Arthas 使用</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/" class="">Jar包操作</a>
   
 
         </li>
@@ -614,6 +661,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/macosx/%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6%E5%A4%B9/" class="">根目录创建新文件夹</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -716,6 +776,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/chrome/%E5%AE%89%E8%A3%85%E6%97%A7%E7%89%88%E6%9C%ACchrome/" class="">安装旧版本Chrome</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -774,6 +847,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/wiki/resources/server/common/cdn/" class="">CDN</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/wiki/resources/server/common/vpn/" class="">VPN</a>
   
 
         </li>
@@ -1153,7 +1239,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">OrderedProperties</span> <span style="color:#66d9ef">extends</span> Properties <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> serialVersionUID <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">4627607243846121965L</span><span style="color:#f92672">;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> LinkedHashSet<span style="color:#f92672">&lt;</span>Object<span style="color:#f92672">&gt;</span> keys <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedHashSet<span style="color:#f92672">&lt;</span>Object<span style="color:#f92672">&gt;();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">final</span> LinkedHashSet<span style="color:#f92672">&lt;</span>Object<span style="color:#f92672">&gt;</span> keys <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedHashSet<span style="color:#f92672">&lt;&gt;();</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> Enumeration<span style="color:#f92672">&lt;</span>Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">keys</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Collections<span style="color:#f92672">.&lt;</span>Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">enumeration</span><span style="color:#f92672">(</span>keys<span style="color:#f92672">);</span>

@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 400
 title: "保持顺序的Properties类"
 ---
 
@@ -18,7 +18,7 @@ import java.util.Set;
 public class OrderedProperties extends Properties {
 
     private static final long serialVersionUID = -4627607243846121965L;
-    private final LinkedHashSet<Object> keys = new LinkedHashSet<Object>();
+    private final LinkedHashSet<Object> keys = new LinkedHashSet<>();
 
     public Enumeration<Object> keys() {
         return Collections.<Object> enumeration(keys);

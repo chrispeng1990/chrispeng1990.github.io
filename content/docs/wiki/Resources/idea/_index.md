@@ -38,4 +38,5 @@ http://fls.jetbrains-agent.com
 
 ## References
 [https://zhile.io/2018/08/25/jetbrains-license-server-crack.html](https://zhile.io/2018/08/25/jetbrains-license-server-crack.html)  
+[IDEA 2023.1.3激活码永久有效](https://www.exception.site/essay/idea-yongjiu-jihuoma?eqid=f8cd5a8b000a362c000000066433e574)  
 

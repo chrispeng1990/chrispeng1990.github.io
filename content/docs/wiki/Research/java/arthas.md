@@ -22,6 +22,7 @@ ognl -c 22f71333 '@com.xxx.utils.SpringUtils@getBean("beanName").propertyName'
 
 
 ## 热修改class
+# 注: 不能增减成员变量和方法, 只能修改代码段
 redefine /tmp/Xxx.class
 
 ```
