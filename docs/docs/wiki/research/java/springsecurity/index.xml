@@ -6,5 +6,14 @@
     <description>Recent content in Spring Security on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/java/springsecurity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>支持json数据提交</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springsecurity/%E6%94%AF%E6%8C%81json%E6%95%B0%E6%8D%AE%E6%8F%90%E4%BA%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springsecurity/%E6%94%AF%E6%8C%81json%E6%95%B0%E6%8D%AE%E6%8F%90%E4%BA%A4/</guid>
+      <description>1. 替换UsernamePasswordAuthenticationFilter # public class PrincipalsCredentialsAuthenticationFilter extends UsernamePasswordAuthenticationFilter { public PrincipalsCredentialsAuthenticationFilter() {} @Override public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException { super.doFilter(req, res, chain); } @Override public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException { if (request.getContentType().equals(MediaType.APPLICATION_JSON_UTF8_VALUE) || request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)) { Tuple2&amp;lt;String, String&amp;gt; tuple = obtainPrincipalsAndCredentials(request); String principals = tuple.getField(0); String credentials = tuple.getField(1); if (principals == null) { principals = &amp;#34;&amp;#34;; } if (credentials == null) { credentials = &amp;#34;&amp;#34;; } principals = principals.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -6,5 +6,23 @@
     <description>Recent content in Spring Boot on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/java/springboot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>可重复读的ServletHttpRequest</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springboot/%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E7%9A%84servlethttprequest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springboot/%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E7%9A%84servlethttprequest/</guid>
+      <description>1. 定义可重复读输入数据流的 HttpRequest # public class RepeatableStreamHttpServletRequest extends HttpServletRequestWrapper { private final byte[] bytes; public RepeatableStreamHttpServletRequest(HttpServletRequest request) throws IOException { super(request); bytes = IOUtils.toByteArray(request.getInputStream()); } @Override public ServletInputStream getInputStream() throws IOException { return new ServletInputStream() { private int lastIndexRetrieved = -1; private ReadListener readListener = null; @Override public boolean isFinished() { return (lastIndexRetrieved == bytes.length - 1); } @Override public boolean isReady() { // This implementation will never block // We also never need to call the readListener from this method, as this method will never return false return isFinished(); } @Override public void setReadListener(ReadListener readListener) { this.</description>
+    </item>
+    
+    <item>
+      <title>Xss攻击拦截</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springboot/xss%E6%94%BB%E5%87%BB%E6%8B%A6%E6%88%AA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springboot/xss%E6%94%BB%E5%87%BB%E6%8B%A6%E6%88%AA/</guid>
+      <description>1. 引入 jsonp # &amp;lt;project&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.jsoup&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;jsoup&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;/project&amp;gt; 2. 拦截工具类 # public class XssUtils { private XssUtils() {} /** * 使用自带的basicWithImages 白名单 * 允许的便签有a,b,blockquote,br,cite,code,dd,dl,dt,em,i,li,ol,p,pre,q,small,span, * strike,strong,sub,sup,u,ul,img * 以及a标签的href,img标签的src,align,alt,height,width,title属性 */ private static final Whitelist whitelist = Whitelist.basicWithImages(); /* * 配置过滤化参数,不对代码进行格式化 */ private static final Document.OutputSettings outputSettings = new Document.OutputSettings().prettyPrint(false); static { /* * 富文本编辑时一些样式是使用style来进行实现的 比如红色字体 style=&amp;#34;color:red;&amp;#34; 所以需要给所有标签添加style属性 */ whitelist.addAttributes(&amp;#34;:all&amp;#34;, &amp;#34;style&amp;#34;); } public static String clean(String content) { return Jsoup.</description>
+    </item>
+    
   </channel>
 </rss>
