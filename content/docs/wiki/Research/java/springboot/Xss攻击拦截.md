@@ -47,82 +47,57 @@ public class XssUtils {
 
 ## 3. 定义 HttpServletRequest 包装类
 ```java
-public class RepeatableStreamHttpServletRequest extends HttpServletRequestWrapper {
+public class XssHttpServletRequest extends HttpServletRequestWrapper {
 
-    private final byte[] bytes;
-
-    public RepeatableStreamHttpServletRequest(HttpServletRequest request) throws IOException {
+    public XssHttpServletRequest(HttpServletRequest request) {
         super(request);
-        bytes = IOUtils.toByteArray(request.getInputStream());
+    }
+
+    /**
+     * 覆盖getParameter方法，将参数名和参数值都做xss过滤
+     * 如果需要获得原始的值，则通过super.getParameterValues(name)来获取
+     * getParameterNames,getParameterValues和getParameterMap也可能需要覆盖
+     */
+    @Override
+    public String getParameter(String name) {
+        if (("content".equals(name) || name.endsWith("WithHtml"))) {
+            return super.getParameter(name);
+        }
+        name = XssUtils.clean(name);
+        String value = super.getParameter(name);
+        if (StringUtils.isNotBlank(value)) {
+            value = XssUtils.clean(value);
+        }
+        return value;
     }
 
     @Override
-    public ServletInputStream getInputStream() throws IOException {
-        return new ServletInputStream() {
-            private int lastIndexRetrieved = -1;
-            private ReadListener readListener = null;
-
-            @Override
-            public boolean isFinished() {
-                return (lastIndexRetrieved == bytes.length - 1);
-            }
-
-            @Override
-            public boolean isReady() {
-                // This implementation will never block
-                // We also never need to call the readListener from this method, as this method will never return false
-                return isFinished();
-            }
-
-            @Override
-            public void setReadListener(ReadListener readListener) {
-                this.readListener = readListener;
-                if (!isFinished()) {
-                    try {
-                        readListener.onDataAvailable();
-                    } catch (IOException e) {
-                        readListener.onError(e);
-                    }
-                } else {
-                    try {
-                        readListener.onAllDataRead();
-                    } catch (IOException e) {
-                        readListener.onError(e);
-                    }
-                }
-            }
-
-            @Override
-            public int read() throws IOException {
-                int i;
-                if (!isFinished()) {
-                    i = bytes[lastIndexRetrieved + 1];
-                    lastIndexRetrieved++;
-                    if (isFinished() && (readListener != null)) {
-                        try {
-                            readListener.onAllDataRead();
-                        } catch (IOException e) {
-                            readListener.onError(e);
-                            throw e;
-                        }
-                    }
-                    return i;
-                } else {
-                    return -1;
-                }
-            }
-        };
+    public String[] getParameterValues(String name) {
+        String[] arr = super.getParameterValues(name);
+        if (arr != null) {
+            IntStream.range(0, arr.length).forEach(i -> arr[i] = XssUtils.clean(arr[i]));
+        }
+        return arr;
     }
 
+    /**
+     * 覆盖getHeader方法，将参数名和参数值都做xss过滤
+     * 如果需要获得原始的值，则通过super.getHeaders(name)来获取
+     * getHeaderNames 也可能需要覆盖
+     */
     @Override
-    public BufferedReader getReader() throws IOException {
-        ByteArrayInputStream is = new ByteArrayInputStream(bytes);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        return reader;
+    public String getHeader(String name) {
+        name = XssUtils.clean(name);
+        String value = super.getHeader(name);
+        if (StringUtils.isNotBlank(value)) {
+            value = XssUtils.clean(value);
+        }
+        return value;
     }
+
 }
 ```
-> 创建HttpRequest时缓存InputStream为bytes, 重写 getInputStream() 和 getReader() 方法从bytes中读取生成新的流.
+> 重写 getParameter()、getParameterValues()、getHeader() 过滤xss代码
 
 ## 4. 定义拦截的Filter
 ```java

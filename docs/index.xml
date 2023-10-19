@@ -120,6 +120,15 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
+      <title>Linux Cmd</title>
+      <link>http://christh0x.github.io/docs/shortcuts/linux-cmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/shortcuts/linux-cmd/</guid>
+      <description>内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.8 9021 ./falcon-agent 0.0 2.7 9329 /opt/meituan/apps/kms_agent 0.</description>
+    </item>
+    
+    <item>
       <title>MarkDown Example</title>
       <link>http://christh0x.github.io/docs/examples/markdown-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -246,10 +255,7 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
-      <description>java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
-Arthas不停机热修改代码
-arthas 执行ognl表达式ClassNotFoundException</description>
+      <description>启动 # java -jar arthas-boot.jar 运行状态监控 # dashoboard ID NAME GROUP PRIORITY STATE %CPU DELTA_TIME TIME INTERRUPTED DAEMON 9008 http-nio-8999-exec-724 main 5 RUNNABLE 0.41 0.020 0:14.071 false true Memory used total max usage GC heap 5854M 11673M 11673M 50.15% gc.parnew.count 45772 par_eden_space 2139M 4915M 4915M 43.54% gc.parnew.time(ms) 10181844 par_survivor_space 115M 614M 614M 18.73% gc.concurrentmarksweep.count 43836 cms_old_gen 3599M 6144M 6144M 58.58% gc.concurrentmarksweep.time(ms) 47318726 nonheap 203M 278M -1 72.87% code_cache 56M 128M 128M 44.</description>
     </item>
     
     <item>
@@ -343,8 +349,7 @@ References # </description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/</guid>
-      <description> 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar . 修改 # 注: 待修改的文件必须和jar包内目录一致
-jar -uvf xxx.jar path/to/file.class References # </description>
+      <description> 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar ./META-INF/MANIFEST.INF . 修改 # # 待修改的文件必须和jar包内目录一致 # 只能修改类, 如果修改lib包则会导致hash不一致 jar -uvf xxx.jar path/to/file.class References # </description>
     </item>
     
     <item>

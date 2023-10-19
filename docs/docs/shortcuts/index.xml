@@ -6,5 +6,14 @@
     <description>Recent content in Shortcuts on Chris Wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/shortcuts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Cmd</title>
+      <link>http://christh0x.github.io/docs/shortcuts/linux-cmd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/shortcuts/linux-cmd/</guid>
+      <description>内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.8 9021 ./falcon-agent 0.0 2.7 9329 /opt/meituan/apps/kms_agent 0.</description>
+    </item>
+    
   </channel>
 </rss>

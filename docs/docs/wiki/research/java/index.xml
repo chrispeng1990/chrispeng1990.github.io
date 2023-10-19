@@ -37,10 +37,7 @@ java -Xcomp -version Java HotSpot(TM) Client VM (build 14.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
-      <description>java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &amp;gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &amp;#39;@com.xxx.utils.SpringUtils@getBean(&amp;#34;beanName&amp;#34;).propertyName&amp;#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
-Arthas不停机热修改代码
-arthas 执行ognl表达式ClassNotFoundException</description>
+      <description>启动 # java -jar arthas-boot.jar 运行状态监控 # dashoboard ID NAME GROUP PRIORITY STATE %CPU DELTA_TIME TIME INTERRUPTED DAEMON 9008 http-nio-8999-exec-724 main 5 RUNNABLE 0.41 0.020 0:14.071 false true Memory used total max usage GC heap 5854M 11673M 11673M 50.15% gc.parnew.count 45772 par_eden_space 2139M 4915M 4915M 43.54% gc.parnew.time(ms) 10181844 par_survivor_space 115M 614M 614M 18.73% gc.concurrentmarksweep.count 43836 cms_old_gen 3599M 6144M 6144M 58.58% gc.concurrentmarksweep.time(ms) 47318726 nonheap 203M 278M -1 72.87% code_cache 56M 128M 128M 44.</description>
     </item>
     
     <item>
@@ -49,8 +46,7 @@ arthas 执行ognl表达式ClassNotFoundException</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/</guid>
-      <description> 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar . 修改 # 注: 待修改的文件必须和jar包内目录一致
-jar -uvf xxx.jar path/to/file.class References # </description>
+      <description> 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar ./META-INF/MANIFEST.INF . 修改 # # 待修改的文件必须和jar包内目录一致 # 只能修改类, 如果修改lib包则会导致hash不一致 jar -uvf xxx.jar path/to/file.class References # </description>
     </item>
     
     <item>

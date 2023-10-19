@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
-Arthas不停机热修改代码
-arthas 执行ognl表达式ClassNotFoundException">
+<meta name="description" content="启动 # java -jar arthas-boot.jar 运行状态监控 # dashoboard ID NAME GROUP PRIORITY STATE %CPU DELTA_TIME TIME INTERRUPTED DAEMON 9008 http-nio-8999-exec-724 main 5 RUNNABLE 0.41 0.020 0:14.071 false true Memory used total max usage GC heap 5854M 11673M 11673M 50.15% gc.parnew.count 45772 par_eden_space 2139M 4915M 4915M 43.54% gc.parnew.time(ms) 10181844 par_survivor_space 115M 614M 614M 18.73% gc.concurrentmarksweep.count 43836 cms_old_gen 3599M 6144M 6144M 58.58% gc.concurrentmarksweep.time(ms) 47318726 nonheap 203M 278M -1 72.87% code_cache 56M 128M 128M 44.">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Arthas 使用" />
-<meta property="og:description" content="java -jar arthas-boot.jar
-# 反编译代码 jad --source-only com.xxx.xxx.Xxx jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java # 查看bean成员变量 ognl &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; # 若未加载SpringUtils类 # 先查看SpringUtils类hash sc -d com.xxx.utils.SpringUtils # 指定hash加载 ognl -c 22f71333 &#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39; ## 热修改class # 注: 不能增减成员变量和方法, 只能修改代码段 redefine /tmp/Xxx.class References # 如何使用Arthas查看类变量值
-Arthas不停机热修改代码
-arthas 执行ognl表达式ClassNotFoundException" />
+<meta property="og:description" content="启动 # java -jar arthas-boot.jar 运行状态监控 # dashoboard ID NAME GROUP PRIORITY STATE %CPU DELTA_TIME TIME INTERRUPTED DAEMON 9008 http-nio-8999-exec-724 main 5 RUNNABLE 0.41 0.020 0:14.071 false true Memory used total max usage GC heap 5854M 11673M 11673M 50.15% gc.parnew.count 45772 par_eden_space 2139M 4915M 4915M 43.54% gc.parnew.time(ms) 10181844 par_survivor_space 115M 614M 614M 18.73% gc.concurrentmarksweep.count 43836 cms_old_gen 3599M 6144M 6144M 58.58% gc.concurrentmarksweep.time(ms) 47318726 nonheap 203M 278M -1 72.87% code_cache 56M 128M 128M 44." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://christh0x.github.io/docs/wiki/research/java/arthas/" /><meta property="article:section" content="docs" />
 
@@ -113,6 +107,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcuts/linux-cmd/" class="">Linux Cmd</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -1248,6 +1255,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#启动">启动</a></li>
+    <li><a href="#运行状态监控">运行状态监控</a></li>
+    <li><a href="#查看线程">查看线程</a></li>
+    <li><a href="#反编译代码">反编译代码</a></li>
+    <li><a href="#查看spring-bean成员变量">查看spring bean成员变量</a></li>
+    <li><a href="#热修改class">热修改class</a></li>
+    <li><a href="#定位代码耗时">定位代码耗时</a></li>
+    <li><a href="#监控方法的调用情况参数和返回值">监控方法的调用情况(参数和返回值)</a></li>
+    <li><a href="#监控方法被调用栈">监控方法被调用栈</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav>
@@ -1261,31 +1277,154 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p><code>java -jar arthas-boot.jar</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 反编译代码</span>
-</span></span><span style="display:flex;"><span>jad --source-only com.xxx.xxx.Xxx
+  <article class="markdown"><h2 id="启动">
+  启动
+  <a class="anchor" href="#%e5%90%af%e5%8a%a8">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -jar arthas-boot.jar
+</span></span></code></pre></div><h2 id="运行状态监控">
+  运行状态监控
+  <a class="anchor" href="#%e8%bf%90%e8%a1%8c%e7%8a%b6%e6%80%81%e7%9b%91%e6%8e%a7">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dashoboard
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ID       NAME                      GROUP  PRIORITY   STATE   %CPU  DELTA_TIME    TIME   INTERRUPTED  DAEMON
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9008</span>     http-nio-8999-exec-724    main    <span style="color:#ae81ff">5</span>        RUNNABLE  0.41   0.020     0:14.071  false       true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Memory                 used   total    max      usage           GC
+</span></span><span style="display:flex;"><span>heap                   5854M  11673M   11673M   50.15%          gc.parnew.count                  <span style="color:#ae81ff">45772</span>
+</span></span><span style="display:flex;"><span>par_eden_space         2139M  4915M    4915M    43.54%          gc.parnew.time<span style="color:#f92672">(</span>ms<span style="color:#f92672">)</span>               <span style="color:#ae81ff">10181844</span>
+</span></span><span style="display:flex;"><span>par_survivor_space     115M   614M     614M     18.73%          gc.concurrentmarksweep.count     <span style="color:#ae81ff">43836</span>
+</span></span><span style="display:flex;"><span>cms_old_gen            3599M  6144M    6144M    58.58%          gc.concurrentmarksweep.time<span style="color:#f92672">(</span>ms<span style="color:#f92672">)</span>  <span style="color:#ae81ff">47318726</span>
+</span></span><span style="display:flex;"><span>nonheap                203M   278M     -1       72.87%
+</span></span><span style="display:flex;"><span>code_cache             56M    128M     128M     44.31%
+</span></span><span style="display:flex;"><span>metaspace              131M   134M     -1       97.32%
+</span></span><span style="display:flex;"><span>compressed_class_space 15M    15M      1024M    1.48%
+</span></span><span style="display:flex;"><span>direct                 1M     1M       -        100.00%
+</span></span><span style="display:flex;"><span>mapped                 1M     1M       -        100.00%
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Runtime
+</span></span><span style="display:flex;"><span>os.name                     Linux
+</span></span><span style="display:flex;"><span>os.version                  5.10.0-136.16.0.mt20230627.508.x86_64
+</span></span><span style="display:flex;"><span>java.version                1.8.0_201
+</span></span><span style="display:flex;"><span>java.home                   /usr/local/jdk1.8.0_201/jre
+</span></span><span style="display:flex;"><span>systemload.average          0.10
+</span></span><span style="display:flex;"><span>processors                  <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>timestamp/uptime            Thu Oct <span style="color:#ae81ff">19</span> 09:51:53 CST 2023/234199s
+</span></span></code></pre></div><h2 id="查看线程">
+  查看线程
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e7%ba%bf%e7%a8%8b">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看所有线程</span>
+</span></span><span style="display:flex;"><span>thread
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看指定线程调用栈</span>
+</span></span><span style="display:flex;"><span>thread <span style="color:#e6db74">${</span>threadId<span style="color:#e6db74">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看cpu使用率前3的线程调用栈</span>
+</span></span><span style="display:flex;"><span>thread -n <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查找阻塞其他线程的线程</span>
+</span></span><span style="display:flex;"><span>thread -b
+</span></span></code></pre></div><h2 id="反编译代码">
+  反编译代码
+  <a class="anchor" href="#%e5%8f%8d%e7%bc%96%e8%af%91%e4%bb%a3%e7%a0%81">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jad --source-only com.xxx.xxx.Xxx
 </span></span><span style="display:flex;"><span>jad --source-only com.xxx.xxx.Xxx &gt; com.xxx.xxx.Xxx.java
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -source-only表示只打印源码</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果不加这个参数, 在反编译出的内容头部会携带类加载器的信息, 内容过多</span>
+</span></span></code></pre></div><h2 id="查看spring-bean成员变量">
+  查看spring bean成员变量
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8bspring-bean%e6%88%90%e5%91%98%e5%8f%98%e9%87%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ognl <span style="color:#e6db74">&#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看bean成员变量</span>
-</span></span><span style="display:flex;"><span>ognl <span style="color:#e6db74">&#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39;</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 若未加载SpringUtils类</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 先查看SpringUtils类hash</span>
 </span></span><span style="display:flex;"><span>sc -d com.xxx.utils.SpringUtils
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 指定hash加载</span>
 </span></span><span style="display:flex;"><span>ognl -c 22f71333 <span style="color:#e6db74">&#39;@com.xxx.utils.SpringUtils@getBean(&#34;beanName&#34;).propertyName&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">## 热修改class</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注: 不能增减成员变量和方法, 只能修改代码段</span>
+</span></span></code></pre></div><h2 id="热修改class">
+  热修改class
+  <a class="anchor" href="#%e7%83%ad%e4%bf%ae%e6%94%b9class">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 注: 不能增减成员变量和方法, 只能修改代码段</span>
 </span></span><span style="display:flex;"><span>redefine /tmp/Xxx.class
+</span></span></code></pre></div><h2 id="定位代码耗时">
+  定位代码耗时
+  <a class="anchor" href="#%e5%ae%9a%e4%bd%8d%e4%bb%a3%e7%a0%81%e8%80%97%e6%97%b6">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 监听耗时大于2ms的指定方法的调用</span>
+</span></span><span style="display:flex;"><span>trace com.xxx.api.TestController testMethod <span style="color:#e6db74">&#39;#cost &gt; 2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 监听之后请求对应的接口</span>
+</span></span><span style="display:flex;"><span>curl -XGET http://xxx:xxx/xxx/xxx
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Press Q or Ctrl+C to abort.
+</span></span><span style="display:flex;"><span>Affect<span style="color:#f92672">(</span>class count: <span style="color:#ae81ff">1</span> , method count: 1<span style="color:#f92672">)</span> cost in <span style="color:#ae81ff">153</span> ms, listenerId: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>---ts<span style="color:#f92672">=</span>2023-10-19 10:56:11;thread_name<span style="color:#f92672">=</span>http-nio-8999-exec-716;id<span style="color:#f92672">=</span>2328;is_daemon<span style="color:#f92672">=</span>true;priority<span style="color:#f92672">=</span>5;TCCL<span style="color:#f92672">=</span>org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedWebappClassLoader@2a1fdce
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">`</span>---<span style="color:#f92672">[</span>38.102122ms<span style="color:#f92672">]</span> com.xxx.api.TestController:testMethod<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        +---<span style="color:#f92672">[</span>97.94% 37.317399ms <span style="color:#f92672">]</span> com.xxx.service.TestService:testServiceMethod<span style="color:#f92672">()</span> <span style="color:#75715e">#34</span>
+</span></span><span style="display:flex;"><span>        +---<span style="color:#f92672">[</span>0.68% 0.259464ms <span style="color:#f92672">]</span> org.slf4j.Logger:info<span style="color:#f92672">()</span> <span style="color:#75715e">#35</span>
+</span></span><span style="display:flex;"><span>        +---<span style="color:#f92672">[</span>0.02% 0.009237ms <span style="color:#f92672">]</span> com.xxx.constant.ResponseEnum:getIndex<span style="color:#f92672">()</span> <span style="color:#75715e">#40</span>
+</span></span><span style="display:flex;"><span>        +---<span style="color:#f92672">[</span>0.03% 0.00963ms <span style="color:#f92672">]</span> com.xxx.constant.ResponseEnum:getName<span style="color:#f92672">()</span> <span style="color:#75715e">#40</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">`</span>---<span style="color:#f92672">[</span>0.03% 0.012309ms <span style="color:#f92672">]</span> com.xxx.model.response.CommonResponse:&lt;init&gt;<span style="color:#f92672">()</span> <span style="color:#75715e">#40</span>
+</span></span></code></pre></div><h2 id="监控方法的调用情况参数和返回值">
+  监控方法的调用情况(参数和返回值)
+  <a class="anchor" href="#%e7%9b%91%e6%8e%a7%e6%96%b9%e6%b3%95%e7%9a%84%e8%b0%83%e7%94%a8%e6%83%85%e5%86%b5%e5%8f%82%e6%95%b0%e5%92%8c%e8%bf%94%e5%9b%9e%e5%80%bc">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>watch com.xxx.api.TestController testMethod <span style="color:#e6db74">&#34;{params,returnObj}&#34;</span> -x <span style="color:#ae81ff">3</span> -b -s
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -x 3是指定输出结果的属性遍历深度, 默认为 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -b方法调用前观察, 用于返回方法入参</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -s方法调用后观察, 用于返回方法返回值</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 监听之后请求对应的接口</span>
+</span></span><span style="display:flex;"><span>curl -XGET http://xxx:xxx/xxx/xxx
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>method<span style="color:#f92672">=</span>com.xxx.api.TestController testMethod location<span style="color:#f92672">=</span>AtEnter
+</span></span><span style="display:flex;"><span>ts<span style="color:#f92672">=</span>2023-10-19 11:25:19; <span style="color:#f92672">[</span>cost<span style="color:#f92672">=</span>0.052685ms<span style="color:#f92672">]</span> result<span style="color:#f92672">=</span>@ArrayList<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>    @Object<span style="color:#f92672">[][</span>isEmpty<span style="color:#f92672">=</span>true;size<span style="color:#f92672">=</span>0<span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>    null,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>method<span style="color:#f92672">=</span>com.xxx.api.TestController testMethod location<span style="color:#f92672">=</span>AtExit
+</span></span><span style="display:flex;"><span>ts<span style="color:#f92672">=</span>2023-10-19 11:25:19; <span style="color:#f92672">[</span>cost<span style="color:#f92672">=</span>8.009234875327387E9ms<span style="color:#f92672">]</span> result<span style="color:#f92672">=</span>@ArrayList<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>    @Object<span style="color:#f92672">[][</span>isEmpty<span style="color:#f92672">=</span>true;size<span style="color:#f92672">=</span>0<span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>    @CommonResponse<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>        code<span style="color:#f92672">=</span>@Integer<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        message<span style="color:#f92672">=</span>@String<span style="color:#f92672">[]</span>,
+</span></span><span style="display:flex;"><span>        data<span style="color:#f92672">=</span>@ArrayList<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>            @String<span style="color:#f92672">[</span>xxxxx<span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>        OK<span style="color:#f92672">=</span>@CommonResponse<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>            code<span style="color:#f92672">=</span>@Integer<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>            message<span style="color:#f92672">=</span>@String<span style="color:#f92672">[]</span>,
+</span></span><span style="display:flex;"><span>            data<span style="color:#f92672">=</span>null,
+</span></span><span style="display:flex;"><span>            OK<span style="color:#f92672">=</span>@CommonResponse<span style="color:#f92672">[</span>CommonResponse<span style="color:#f92672">{</span>code<span style="color:#f92672">=</span>0, message<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>, data<span style="color:#f92672">=</span>null<span style="color:#f92672">}]</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><h2 id="监控方法被调用栈">
+  监控方法被调用栈
+  <a class="anchor" href="#%e7%9b%91%e6%8e%a7%e6%96%b9%e6%b3%95%e8%a2%ab%e8%b0%83%e7%94%a8%e6%a0%88">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>stack com.xxx.service.TestService testServiceMethod
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ts<span style="color:#f92672">=</span>2023-10-19 11:31:00;thread_name<span style="color:#f92672">=</span>http-nio-8999-exec-710;id<span style="color:#f92672">=</span>2322;is_daemon<span style="color:#f92672">=</span>true;priority<span style="color:#f92672">=</span>5;TCCL<span style="color:#f92672">=</span>org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedWebappClassLoader@2a1fdce
+</span></span><span style="display:flex;"><span>    @com.xxx.service.TestService.testServiceMethod<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        at com.xxx.api.TestController.testMethod<span style="color:#f92672">(</span>TestController.java:34<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at sun.reflect.NativeMethodAccessorImpl.invoke0<span style="color:#f92672">(</span>NativeMethodAccessorImpl.java:-2<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at java.lang.reflect.Method.invoke<span style="color:#f92672">(</span>Method.java:498<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke<span style="color:#f92672">(</span>InvocableHandlerMethod.java:209<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest<span style="color:#f92672">(</span>InvocableHandlerMethod.java:136<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at java.util.concurrent.ThreadPoolExecutor.runWorker<span style="color:#f92672">(</span>ThreadPoolExecutor.java:1149<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at java.util.concurrent.ThreadPoolExecutor$Worker.run<span style="color:#f92672">(</span>ThreadPoolExecutor.java:624<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run<span style="color:#f92672">(</span>TaskThread.java:61<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at java.lang.Thread.run<span style="color:#f92672">(</span>Thread.java:748<span style="color:#f92672">)</span>
 </span></span></code></pre></div><h2 id="references">
   References
   <a class="anchor" href="#references">#</a>
 </h2>
 <p><a href="https://blog.csdn.net/zhuqiuhui/article/details/122381125">如何使用Arthas查看类变量值</a><br>
 <a href="https://blog.csdn.net/qq_41419769/article/details/122847521">Arthas不停机热修改代码</a><br>
-<a href="https://blog.csdn.net/w605283073/article/details/106535170/">arthas 执行ognl表达式ClassNotFoundException</a></p>
+<a href="https://blog.csdn.net/w605283073/article/details/106535170/">arthas 执行ognl表达式ClassNotFoundException</a><br>
+<a href="https://zhuanlan.zhihu.com/p/466098235?utm_id=0">性能调优必备：Arthas安装及常用命令教程</a></p>
 </article>
  
       
@@ -1327,6 +1466,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#启动">启动</a></li>
+    <li><a href="#运行状态监控">运行状态监控</a></li>
+    <li><a href="#查看线程">查看线程</a></li>
+    <li><a href="#反编译代码">反编译代码</a></li>
+    <li><a href="#查看spring-bean成员变量">查看spring bean成员变量</a></li>
+    <li><a href="#热修改class">热修改class</a></li>
+    <li><a href="#定位代码耗时">定位代码耗时</a></li>
+    <li><a href="#监控方法的调用情况参数和返回值">监控方法的调用情况(参数和返回值)</a></li>
+    <li><a href="#监控方法被调用栈">监控方法被调用栈</a></li>
     <li><a href="#references">References</a></li>
   </ul>
 </nav>

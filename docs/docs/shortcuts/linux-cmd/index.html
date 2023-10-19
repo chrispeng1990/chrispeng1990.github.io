@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/&#43; buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &lt;defunct&gt; 0.0 0.0 5165 sg_agent 0.5 9.8 9021 ./falcon-agent 0.0 2.7 9329 /opt/meituan/apps/kms_agent 0.">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="mdp" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://christh0x.github.io/docs/wiki/work/mdp/" />
-<title>mdp | Chris Wiki</title>
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Linux Cmd" />
+<meta property="og:description" content="内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/&#43; buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &lt;defunct&gt; 0.0 0.0 5165 sg_agent 0.5 9.8 9021 ./falcon-agent 0.0 2.7 9329 /opt/meituan/apps/kms_agent 0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://christh0x.github.io/docs/shortcuts/linux-cmd/" /><meta property="article:section" content="docs" />
+
+
+<title>Linux Cmd | Chris Wiki</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/zh.search.min.73f46323945b51aebfae1e2d8e5f388ca9c80010e50487163b2ffee2bddb4424.js" integrity="sha256-c/RjI5RbUa6/rh4tjl84jKnIABDlBIcWOy/&#43;4r3bRCQ=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://christh0x.github.io/docs/wiki/work/mdp/index.xml" title="Chris Wiki" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -114,7 +115,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/shortcuts/linux-cmd/" class="">Linux Cmd</a>
+    <a href="/docs/shortcuts/linux-cmd/" class="active">Linux Cmd</a>
   
 
         </li>
@@ -1086,7 +1087,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-0b081a8e45b8f23b35bddfeafc84a3da" class="toggle" checked />
+    <input type="checkbox" id="section-0b081a8e45b8f23b35bddfeafc84a3da" class="toggle"  />
     <label for="section-0b081a8e45b8f23b35bddfeafc84a3da" class="flex justify-between">
       <a role="button" class="">Work</a>
     </label>
@@ -1123,9 +1124,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-05030d52ac36ba6e110ffccd18b3a1a4" class="toggle" checked />
+    <input type="checkbox" id="section-05030d52ac36ba6e110ffccd18b3a1a4" class="toggle"  />
     <label for="section-05030d52ac36ba6e110ffccd18b3a1a4" class="flex justify-between">
-      <a role="button" class="active">mdp</a>
+      <a role="button" class="">mdp</a>
     </label>
   
 
@@ -1238,7 +1239,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>mdp</strong>
+  <strong>Linux Cmd</strong>
 
   <label for="toc-control">
     
@@ -1252,7 +1253,35 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#内存">内存</a>
+      <ul>
+        <li><a href="#查看内存">查看内存</a></li>
+        <li><a href="#查看进程内存占用占比">查看进程内存占用占比</a></li>
+        <li><a href="#查看swap占用">查看swap占用</a></li>
+      </ul>
+    </li>
+    <li><a href="#磁盘">磁盘</a>
+      <ul>
+        <li><a href="#查看某目录下最大的文件夹列表">查看某目录下最大的文件夹列表</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker">docker</a>
+      <ul>
+        <li><a href="#宿主机上以root进入容器">宿主机上以root进入容器</a></li>
+      </ul>
+    </li>
+    <li><a href="#atop">atop</a>
+      <ul>
+        <li><a href="#查看指定容器的进程">查看指定容器的进程</a></li>
+        <li><a href="#查看指定进程id">查看指定进程ID</a></li>
+        <li><a href="#读取历史日志">读取历史日志</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1263,7 +1292,111 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"></article>
+  <article class="markdown"><h2 id="内存">
+  内存
+  <a class="anchor" href="#%e5%86%85%e5%ad%98">#</a>
+</h2>
+<h3 id="查看内存">
+  查看内存
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e5%86%85%e5%ad%98">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>free -m
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>             total       used       free     shared    buffers     cached
+</span></span><span style="display:flex;"><span>Mem:         <span style="color:#ae81ff">22528</span>      <span style="color:#ae81ff">21781</span>        <span style="color:#ae81ff">746</span>          <span style="color:#ae81ff">0</span>          <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">6403</span>
+</span></span><span style="display:flex;"><span>-/+ buffers/cache:      <span style="color:#ae81ff">15377</span>       <span style="color:#ae81ff">7150</span>
+</span></span><span style="display:flex;"><span>Swap:         <span style="color:#ae81ff">2048</span>       <span style="color:#ae81ff">1648</span>        <span style="color:#ae81ff">399</span>
+</span></span></code></pre></div><h3 id="查看进程内存占用占比">
+  查看进程内存占用占比
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e8%bf%9b%e7%a8%8b%e5%86%85%e5%ad%98%e5%8d%a0%e7%94%a8%e5%8d%a0%e6%af%94">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ps -eo pid,cmd,%mem,%cpu --sort<span style="color:#f92672">=</span>-%mem
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   PID CMD                         %MEM %CPU
+</span></span><span style="display:flex;"><span>     <span style="color:#ae81ff">1</span> /usr/bin/container-init -st  0.0  0.0
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">1191</span> /data/webapps/waimai_servic  0.2  0.3
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4688</span> /opt/meituan/apps/cplugin/c  0.0  0.3
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4752</span> octo_proxy_real -c /opt/mei  0.0  0.6
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">4774</span> <span style="color:#f92672">[</span>sh<span style="color:#f92672">]</span> &lt;defunct&gt;               0.0  0.0
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">5165</span> sg_agent                     0.5  9.8
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">9021</span> ./falcon-agent               0.0  2.7
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">9329</span> /opt/meituan/apps/kms_agent  0.1  0.3
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">77103</span> /opt/meituan/apps/direwolf/  0.0  0.3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">147582</span> /usr/local/java11/bin/java  99.9  <span style="color:#ae81ff">422</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">147886</span> /data/webapps/waimai_servic  0.1  0.5
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">154263</span> /opt/meituan/apps/direwolf/  0.0  0.3
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">171644</span> bash                         0.0  0.0
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">171782</span> ps -eo pid,cmd,%mem,%cpu --  0.0  0.0
+</span></span></code></pre></div><h3 id="查看swap占用">
+  查看swap占用
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8bswap%e5%8d%a0%e7%94%a8">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> file in /proc/*/status ; <span style="color:#66d9ef">do</span> awk <span style="color:#e6db74">&#39;/VmSwap|Name/{printf $2 &#34; &#34; $3}END{ print &#34;&#34;}&#39;</span> $file; <span style="color:#66d9ef">done</span> | sort -k <span style="color:#ae81ff">2</span> -n -r
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java <span style="color:#ae81ff">1122636</span> kB
+</span></span><span style="display:flex;"><span>sg_agent <span style="color:#ae81ff">477700</span> kB
+</span></span><span style="display:flex;"><span>log_agent <span style="color:#ae81ff">24656</span> kB
+</span></span><span style="display:flex;"><span>octo-proxy <span style="color:#ae81ff">9560</span> kB
+</span></span><span style="display:flex;"><span>supervisord <span style="color:#ae81ff">8684</span> kB
+</span></span><span style="display:flex;"><span>mls-agent <span style="color:#ae81ff">4708</span> kB
+</span></span><span style="display:flex;"><span>dw_1011 <span style="color:#ae81ff">3996</span> kB
+</span></span><span style="display:flex;"><span>jumper-agent <span style="color:#ae81ff">3960</span> kB
+</span></span></code></pre></div><h2 id="磁盘">
+  磁盘
+  <a class="anchor" href="#%e7%a3%81%e7%9b%98">#</a>
+</h2>
+<h3 id="查看某目录下最大的文件夹列表">
+  查看某目录下最大的文件夹列表
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%9f%90%e7%9b%ae%e5%bd%95%e4%b8%8b%e6%9c%80%e5%a4%a7%e7%9a%84%e6%96%87%e4%bb%b6%e5%a4%b9%e5%88%97%e8%a1%a8">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>du -h --max-depth<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> /opt | sort -hr | head -10
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>61G	/opt/logs
+</span></span><span style="display:flex;"><span>22G	/opt/logs/com.sankuai.wmadsvc.dsa
+</span></span><span style="display:flex;"><span>16G	/opt/logs/dsa_pvlog/com.sankuai.wmadsvc.dsa
+</span></span><span style="display:flex;"><span>16G	/opt/logs/dsa_pvlog
+</span></span><span style="display:flex;"><span>9.5G	/opt/logs/com.sankuai.inf.sg_agent
+</span></span><span style="display:flex;"><span>6.0G	/opt/logs/logs
+</span></span><span style="display:flex;"><span>4.8G	/opt/logs/roma_backtrack/com.sankuai.wmadsvc.dsa
+</span></span><span style="display:flex;"><span>4.8G	/opt/logs/roma_backtrack
+</span></span><span style="display:flex;"><span>1.3G	/opt/logs/logs/inf
+</span></span><span style="display:flex;"><span>1.2G	/opt/logs/log_agent_file/logs
+</span></span></code></pre></div><h2 id="docker">
+  docker
+  <a class="anchor" href="#docker">#</a>
+</h2>
+<h3 id="宿主机上以root进入容器">
+  宿主机上以root进入容器
+  <a class="anchor" href="#%e5%ae%bf%e4%b8%bb%e6%9c%ba%e4%b8%8a%e4%bb%a5root%e8%bf%9b%e5%85%a5%e5%ae%b9%e5%99%a8">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec --privileged -ti &lt;容器ID&gt; bash
+</span></span></code></pre></div><h2 id="atop">
+  atop
+  <a class="anchor" href="#atop">#</a>
+</h2>
+<h3 id="查看指定容器的进程">
+  查看指定容器的进程
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%8c%87%e5%ae%9a%e5%ae%b9%e5%99%a8%e7%9a%84%e8%bf%9b%e7%a8%8b">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>atop
+</span></span><span style="display:flex;"><span>J
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输入CID</span>
+</span></span></code></pre></div><h3 id="查看指定进程id">
+  查看指定进程ID
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e6%8c%87%e5%ae%9a%e8%bf%9b%e7%a8%8bid">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>atop
+</span></span><span style="display:flex;"><span>I
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输入PID</span>
+</span></span></code></pre></div><h3 id="读取历史日志">
+  读取历史日志
+  <a class="anchor" href="#%e8%af%bb%e5%8f%96%e5%8e%86%e5%8f%b2%e6%97%a5%e5%bf%97">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>atop -r /path/to/file
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># t键向前翻页，T键向后翻页</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># b键跳转到指定时间，时间格式为hh:mm</span>
+</span></span></code></pre></div><h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<p><a href="https://baijiahao.baidu.com/s?id=1658884324200587364&amp;wfr=spider&amp;for=pc">Linux系统监控工具atop</a></p>
+</article>
  
       
 
@@ -1288,6 +1421,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1298,7 +1435,35 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#内存">内存</a>
+      <ul>
+        <li><a href="#查看内存">查看内存</a></li>
+        <li><a href="#查看进程内存占用占比">查看进程内存占用占比</a></li>
+        <li><a href="#查看swap占用">查看swap占用</a></li>
+      </ul>
+    </li>
+    <li><a href="#磁盘">磁盘</a>
+      <ul>
+        <li><a href="#查看某目录下最大的文件夹列表">查看某目录下最大的文件夹列表</a></li>
+      </ul>
+    </li>
+    <li><a href="#docker">docker</a>
+      <ul>
+        <li><a href="#宿主机上以root进入容器">宿主机上以root进入容器</a></li>
+      </ul>
+    </li>
+    <li><a href="#atop">atop</a>
+      <ul>
+        <li><a href="#查看指定容器的进程">查看指定容器的进程</a></li>
+        <li><a href="#查看指定进程id">查看指定进程ID</a></li>
+        <li><a href="#读取历史日志">读取历史日志</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
 
  

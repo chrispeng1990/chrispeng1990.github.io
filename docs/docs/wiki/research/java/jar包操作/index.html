@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar . 修改 # 注: 待修改的文件必须和jar包内目录一致
-jar -uvf xxx.jar path/to/file.class References # ">
+<meta name="description" content=" 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar ./META-INF/MANIFEST.INF . 修改 # # 待修改的文件必须和jar包内目录一致 # 只能修改类, 如果修改lib包则会导致hash不一致 jar -uvf xxx.jar path/to/file.class References # ">
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Jar包操作" />
-<meta property="og:description" content=" 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar . 修改 # 注: 待修改的文件必须和jar包内目录一致
-jar -uvf xxx.jar path/to/file.class References # " />
+<meta property="og:description" content=" 解压 # jar -xvf xxx.jar 压缩 # jar -cvf0m xxx.jar ./META-INF/MANIFEST.INF . 修改 # # 待修改的文件必须和jar包内目录一致 # 只能修改类, 如果修改lib包则会导致hash不一致 jar -uvf xxx.jar path/to/file.class References # " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://christh0x.github.io/docs/wiki/research/java/jar%E5%8C%85%E6%93%8D%E4%BD%9C/" /><meta property="article:section" content="docs" />
 
@@ -109,6 +107,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/shortcuts/linux-cmd/" class="">Linux Cmd</a>
+  
+
+        </li>
+      
     
   </ul>
 
@@ -1269,13 +1280,14 @@ https://github.com/alex-shpak/hugo-book
   压缩
   <a class="anchor" href="#%e5%8e%8b%e7%bc%a9">#</a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jar -cvf0m xxx.jar .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jar -cvf0m xxx.jar ./META-INF/MANIFEST.INF .
 </span></span></code></pre></div><h2 id="修改">
   修改
   <a class="anchor" href="#%e4%bf%ae%e6%94%b9">#</a>
 </h2>
-<p>注: 待修改的文件必须和jar包内目录一致</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jar -uvf xxx.jar path/to/file.class
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 待修改的文件必须和jar包内目录一致</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 只能修改类, 如果修改lib包则会导致hash不一致</span>
+</span></span><span style="display:flex;"><span>jar -uvf xxx.jar path/to/file.class
 </span></span></code></pre></div><h2 id="references">
   References
   <a class="anchor" href="#references">#</a>

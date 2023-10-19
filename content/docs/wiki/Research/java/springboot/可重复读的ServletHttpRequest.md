@@ -81,6 +81,8 @@ public class RepeatableStreamHttpServletRequest extends HttpServletRequestWrappe
 
 }
 ```
+> 创建HttpRequest时缓存InputStream为bytes, 重写 getInputStream() 和 getReader() 方法从bytes中读取生成新的流.
+
 
 ## 2. 定义转换可重复读Request的Filter
 ```java
