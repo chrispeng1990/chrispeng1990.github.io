@@ -16,5 +16,23 @@
 1.2. 配置nvm源 # nvm node_mirror https://npm.taobao.org/mirrors/node/ nvm npm_mirror https://npm.taobao.org/mirrors/npm/ 2. 安装nodejs # 2.1. 安装node # # 查看远程库可用版本列表 nvm list available # 安装指定版本 nvm instsall 8.11.2 # 查看本地版本列表 nvm ls 2.2. 使用指定版本 # nvm use 8.11.2 2.3. 设置默认版本 # nvm alias default 8.11.2 nvm ls 2.4. 设置版本别名 # nvm alias nickname 8.11.2 nvm use nickname 2.5. 取消别名 # nvm unalias nickname 3.</description>
     </item>
     
+    <item>
+      <title>运行环境和项目环境</title>
+      <link>http://christh0x.github.io/docs/wiki/research/ecmascript/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/ecmascript/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/</guid>
+      <description>运行环境 # 使用 NODE_ENV 进行区分,
+vue2中在 /config/xxx.env.js 中进行配置,
+运行时通过 package.json 的 scripts 指定.
+通常项目中一般分为三个环境:
+本地开发环境: NODE_ENV=dev, 后端接口使用mock数据 本地测试环境: NODE_ENV=test(或testing), 后端接口连接真实的dev环境后端地址, 需要通过代理实现 生产环境: NODE_ENV=prod(或dist), 该环境中才存在项目环境 代理后端接口 # /config/index.js 中判断当NODE_ENV=test时, 指定 proxyTable
+CORS # 本地测试环境通过proxyTable可以实现跨 CORS 请求,
+生产环境中通过如下两种方式:
+前后端项目部署后, 通过nginx代理相同一个域名, 通过路由前缀区分请求前端还是后端; 后端服务配置 CORS 白名单, 将前端域名配置进白名单中. 项目环境 # 即部署环境, 根据自己项目特性, 一般有四种:
+dev环境: 前后端都是部署后的服务, 作为开发联调环境 test环境: 前后端都是部署后的服务, 作为线下测试环境 staging环境: 前后端都是部署后的服务, 作为生产预备环境 prod环境: 前后端都是部署后的服务, 作为正式生产环境 生产环境和项目环境 # 项目环境的本地开发环境和本地测试环境无需指定项目环境, 项目环境只存在与部署环境中.
+在 axios 中, 根据当前域名识别前端的项目环境, 然后通过配置将请求转发到对应项目环境的后端服务上.</description>
+    </item>
+    
   </channel>
 </rss>

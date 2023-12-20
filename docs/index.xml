@@ -125,7 +125,7 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://christh0x.github.io/docs/shortcuts/linux-cmd/</guid>
-      <description>内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.8 9021 ./falcon-agent 0.0 2.7 9329 /opt/meituan/apps/kms_agent 0.</description>
+      <description>CPU # 查看进程cpu使用清空 # top 内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.</description>
     </item>
     
     <item>
@@ -194,6 +194,15 @@ References # Java中Word转PDF解决方案</description>
     </item>
     
     <item>
+      <title>常用命令</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>CPU # 查看进程cpu使用清空 # top 内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.</description>
+    </item>
+    
+    <item>
       <title>环境部署</title>
       <link>http://christh0x.github.io/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -201,6 +210,33 @@ References # Java中Word转PDF解决方案</description>
       <guid>http://christh0x.github.io/docs/wiki/research/ecmascript/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/</guid>
       <description>1. 安装node版本管理器 - nvm # 1.1. 下载nvm # Github/nvm
 1.2. 配置nvm源 # nvm node_mirror https://npm.taobao.org/mirrors/node/ nvm npm_mirror https://npm.taobao.org/mirrors/npm/ 2. 安装nodejs # 2.1. 安装node # # 查看远程库可用版本列表 nvm list available # 安装指定版本 nvm instsall 8.11.2 # 查看本地版本列表 nvm ls 2.2. 使用指定版本 # nvm use 8.11.2 2.3. 设置默认版本 # nvm alias default 8.11.2 nvm ls 2.4. 设置版本别名 # nvm alias nickname 8.11.2 nvm use nickname 2.5. 取消别名 # nvm unalias nickname 3.</description>
+    </item>
+    
+    <item>
+      <title>基础配置</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</guid>
+      <description>基础配置 # [mysqld] bind-address = 0.0.0.0 port = 3306 lower_case_table_names = 1 default-time-zone = &amp;#39;Asia/Shanghai&amp;#39; MT生产环境服务器配置 # [mysql] port=5002 prompt=\\u@\\d\\r:\\m:\\s&amp;gt; no-auto-rehash [client] port=5002 socket=/opt/tmp/mysql.sock [mysqld] optimizer_switch=index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,duplicateweedout=on,subquery_materialization_cost_based=on,use_index_extensions=on,condition_fanout_filter=on,derived_merge=on,prefer_ordering_index=on core_file basedir=/usr datadir=/opt/local/mysql/var/ tmpdir=/opt/tmp log-error=mysql.err # MySQL5.7的错误日志时间默认为UTC时间 调整为本地时间 log_timestamps=SYSTEM slow_query_log_file=/opt/tmp/mysql.slow general_log_file=/opt/tmp/mysql.genlog socket=/opt/tmp/mysql.sock pid-file=/opt/local/mysql/var/mysql.pid #mtsql loose_innodb_mtsql_faster_ddl=ON loose_mtsql_ddl_optimize_no_binlog=ON loose_transaction_write_set_extraction=XXHASH64 loose_binlog_transaction_dependency_tracking=WRITESET #innodb innodb_file_format=Barracuda innodb_data_home_dir=/opt/local/mysql/var/ innodb_log_group_home_dir=/opt/local/mysql/var/ innodb_data_file_path=ibdata1:100M:autoextend innodb_buffer_pool_size=40G innodb_buffer_pool_instances=4 innodb_log_files_in_group=3 innodb_log_file_size=1G innodb_log_buffer_size=16M innodb_checksum_algorithm=crc32 innodb_default_row_format=DYNAMIC internal_tmp_disk_storage_engine=innodb innodb_fast_shutdown=1 innodb_doublewrite=1 innodb_adaptive_hash_index=OFF # TODO 在打开了group commit后 是否需要设置为双1 需要进行性能测试 innodb_flush_log_at_trx_commit=1 innodb_flush_log_at_timeout=1 innodb_max_dirty_pages_pct=75 # 兼顾物理机和虚拟机 统一使用2000 对性能的提升有限 innodb_io_capacity_max默认是innodb_io_capacity的2倍 innodb_io_capacity=2000 innodb_thread_concurrency=0 innodb_read_io_threads=4 innodb_write_io_threads=16 innodb_open_files=60000 innodb_file_per_table=1 innodb_flush_method=O_DIRECT innodb_flush_neighbors=0 innodb_change_buffering=all innodb_adaptive_flushing=1 innodb_old_blocks_time=1000 innodb_use_native_aio=1 lock_wait_timeout=60 innodb_print_all_deadlocks=ON # 默认不回滚整个事务 当事务因为获得锁而超时时 交给应用处理 决定是否回滚或重试 innodb_rollback_on_timeout=0 # oltp类型的应用 应该设置的更小 innodb_lock_wait_timeout=50 innodb_buffer_pool_dump_at_shutdown=ON innodb_buffer_pool_load_at_startup=ON # MySQL5.</description>
+    </item>
+    
+    <item>
+      <title>基础配置</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/nginx/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/nginx/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</guid>
+      <description>将本地80端口转发到指定端口 # http { server { listen 80; server_name 127.0.0.1; location / { proxy_pass http://127.0.0.1:8080; proxy_set_header Host $host:$server_port; } } } 将域名的80端口转发到域名的指定端口 # http { server { listen 80; server_name localhost.domain.com; location / { proxy_pass http://localhost.domain.com:8086; proxy_set_header Host $host:$server_port; } } } 配置解析 # http { server { # 监听 HTTP 协议默认的 [80] 端口。 listen 80; # 绑定主机名 [example.com]。 server_name example.com; # 服务器站点根目录 [/example.com/public]。 root /example.com/public; # 添加几条有关安全的响应头；与 Google+ 的配置类似，详情参见文末。 add_header X-Frame-Options &amp;#34;SAMEORIGIN&amp;#34;; add_header X-XSS-Protection &amp;#34;1; mode=block&amp;#34;; add_header X-Content-Type-Options &amp;#34;nosniff&amp;#34;; # 站点默认页面；可指定多个，将顺序查找。 # 例如，访问 http://example.</description>
+    </item>
+    
+    <item>
+      <title>启用本地http服务</title>
+      <link>http://christh0x.github.io/docs/wiki/research/python/%E5%90%AF%E7%94%A8%E6%9C%AC%E5%9C%B0http%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/python/%E5%90%AF%E7%94%A8%E6%9C%AC%E5%9C%B0http%E6%9C%8D%E5%8A%A1/</guid>
+      <description> python2方式一 # python -m SimpltHTTPServer 8080 python2方式二 # python -c &amp;#34;import socket,SocketServer,CGIHTTPServer;SocketServer.TCPServer.address_family=socket.AF_INET6;CGIHTTPServer.test()&amp;#34; 8080 References # </description>
     </item>
     
     <item>
@@ -274,6 +310,33 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png Reference
     </item>
     
     <item>
+      <title>grep</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/grep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/grep/</guid>
+      <description>简介 # 全称：Global Regular Expression Print
+格式:
+grep [option] pattern file 参数:
+-a --text #不要忽略二进制的数据。 -A&amp;lt;显示行数&amp;gt; --after-context=&amp;lt;显示行数&amp;gt; #除了显示符合范本样式的那一列之外，并显示该行之后的内容。 -b --byte-offset #在显示符合样式的那一行之前，标示出该行第一个字符的编号。 -B&amp;lt;显示行数&amp;gt; --before-context=&amp;lt;显示行数&amp;gt; #除了显示符合样式的那一行之外，并显示该行之前的内容。 -c --count #计算符合样式的列数。 -C&amp;lt;显示行数&amp;gt; --context=&amp;lt;显示行数&amp;gt;或-&amp;lt;显示行数&amp;gt; #除了显示符合样式的那一行之外，并显示该行之前后的内容。 -d &amp;lt;动作&amp;gt; --directories=&amp;lt;动作&amp;gt; #当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。 -e&amp;lt;范本样式&amp;gt; --regexp=&amp;lt;范本样式&amp;gt; #指定字符串做为查找文件内容的样式。 -E --extended-regexp #将样式为延伸的普通表示法来使用。 -f&amp;lt;规则文件&amp;gt; --file=&amp;lt;规则文件&amp;gt; #指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。 -F --fixed-regexp #将样式视为固定字符串的列表。 -G --basic-regexp #将样式视为普通的表示法来使用。 -h --no-filename #在显示符合样式的那一行之前，不标示该行所属的文件名称。 -H --with-filename #在显示符合样式的那一行之前，表示该行所属的文件名称。 -i --ignore-case #忽略字符大小写的差别。 -l --file-with-matches #列出文件内容符合指定的样式的文件名称。 -L --files-without-match #列出文件内容不符合指定的样式的文件名称。 -n --line-number #在显示符合样式的那一行之前，标示出该行的列数编号。 -q --quiet或--silent #不显示任何信息。 -r --recursive #此参数的效果和指定“-d recurse”参数相同。 -s --no-messages #不显示错误信息。 -v --revert-match #显示不包含匹配文本的所有行。 -V --version #显示版本信息。 -w --word-regexp #只显示全字符合的列。 -x --line-regexp #只显示全列符合的列。 -y #此参数的效果和指定“-i”参数相同。 规则表达式:</description>
+    </item>
+    
+    <item>
+      <title>SpringSecurityOauth认证过程</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springsecurity/springsecurityoauth%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springsecurity/springsecurityoauth%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/</guid>
+      <description>涉及的地址 # OAuth服务提供商中配置的回调地址 后端服务中配置的redirectTemplate地址 前端地址 后端地址 实现方式 # oauth认证完成后无需中间redirect.html页面 # 需要前后端保持同域, 这样小窗和主页面使用相同的session
+即上述四个地址需要同域
+实现方式: 小窗完成认证后在 OauthAuthenticationSuccessHandler 中将登录信息写入session, 前端页面打开小窗口后一直轮询是否登录成功即可
+前后端分离项目且不同域 # 前端域名无需与oauth有关
+通过中间页面redirect.html实现
+参考下面请求过程
+请求过程 # 用户 前端地址(主页面) 小窗 后端地址 Oauth提供方 browser -&amp;gt; 页面点击按钮 -&amp;gt; 打开小窗 -&amp;gt; 解析请求 跳转到提供方 -&amp;gt; 解析请求 页面 &amp;lt;------------------------- 展示授权页面 输入账密 -------------------------&amp;gt; 认证完成 解析oauth_token &amp;lt;- 跳转回调地址 生成认证用户存储缓存 登录中页面 &amp;lt;- 带缓存的key值跳转 获取key &amp;lt;- 将key传播到主页面并关闭小窗 登录 -----------------------------&amp;gt; 查询key的缓存 登录成功 &amp;lt;----------------------------- 认证完成 end &amp;lt;- 跳转首页 处理逻辑 # http.and().oauth2Login().authorizationEndpoint().baseUri(securitySettings.getLogin().getProcessor()) // 点击跳转oauth服务器的链接地址 /{baseUri}/{registrationId}</description>
+    </item>
+    
+    <item>
       <title>后端模块化开发思考与实践</title>
       <link>http://christh0x.github.io/docs/wiki/research/java/java%E6%8F%92%E4%BB%B6%E5%8C%96/%E5%90%8E%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91%E6%80%9D%E8%80%83%E4%B8%8E%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -332,6 +395,24 @@ References # </description>
 3. 配置Maven Github链接 # vim ~/.m2/settings.xml 两种方式:
 通过账号密码的形式 &amp;lt;server&amp;gt; &amp;lt;id&amp;gt;github&amp;lt;/id&amp;gt; &amp;lt;username&amp;gt;YOUR_USERNAME&amp;lt;/username&amp;gt; &amp;lt;password&amp;gt;YOUR_PASSWORD&amp;lt;/password&amp;gt; &amp;lt;/server&amp;gt; 通过免密token &amp;lt;server&amp;gt; &amp;lt;id&amp;gt;github&amp;lt;/id&amp;gt; &amp;lt;password&amp;gt;OAUTH2TOKEN&amp;lt;/password&amp;gt; &amp;lt;/server&amp;gt; 4. 创建待上传的库项目 # eg: org.test:testrepo
 5. 配置Maven插件生成依赖包格式输出到本地 # vim testrepo/pom.xml &amp;lt;project&amp;gt; &amp;lt;distributionManagement&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;maven.repo&amp;lt;/id&amp;gt; &amp;lt;name&amp;gt;Local Staging Repository&amp;lt;/name&amp;gt; &amp;lt;!-- 生成到${project}/target/mvn-repo目录下 --&amp;gt; &amp;lt;url&amp;gt;file://${project.build.directory}/mvn-repo&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;/distributionManagement&amp;gt; &amp;lt;build&amp;gt; &amp;lt;plugins&amp;gt; &amp;lt;plugin&amp;gt; &amp;lt;artifactId&amp;gt;maven-deploy-plugin&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;2.8.1&amp;lt;/version&amp;gt; &amp;lt;configuration&amp;gt; &amp;lt;altDeploymentRepository&amp;gt;maven.repo::default::file://${project.build.directory}/mvn-repo&amp;lt;/altDeploymentRepository&amp;gt; &amp;lt;/configuration&amp;gt; &amp;lt;/plugin&amp;gt; &amp;lt;/plugins&amp;gt; &amp;lt;/build&amp;gt; &amp;lt;/project&amp;gt; 6. 配置Maven插件将本地输出上传到Github # vim testrepo/pom.</description>
+    </item>
+    
+    <item>
+      <title>运行环境和项目环境</title>
+      <link>http://christh0x.github.io/docs/wiki/research/ecmascript/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/ecmascript/%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E5%92%8C%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83/</guid>
+      <description>运行环境 # 使用 NODE_ENV 进行区分,
+vue2中在 /config/xxx.env.js 中进行配置,
+运行时通过 package.json 的 scripts 指定.
+通常项目中一般分为三个环境:
+本地开发环境: NODE_ENV=dev, 后端接口使用mock数据 本地测试环境: NODE_ENV=test(或testing), 后端接口连接真实的dev环境后端地址, 需要通过代理实现 生产环境: NODE_ENV=prod(或dist), 该环境中才存在项目环境 代理后端接口 # /config/index.js 中判断当NODE_ENV=test时, 指定 proxyTable
+CORS # 本地测试环境通过proxyTable可以实现跨 CORS 请求,
+生产环境中通过如下两种方式:
+前后端项目部署后, 通过nginx代理相同一个域名, 通过路由前缀区分请求前端还是后端; 后端服务配置 CORS 白名单, 将前端域名配置进白名单中. 项目环境 # 即部署环境, 根据自己项目特性, 一般有四种:
+dev环境: 前后端都是部署后的服务, 作为开发联调环境 test环境: 前后端都是部署后的服务, 作为线下测试环境 staging环境: 前后端都是部署后的服务, 作为生产预备环境 prod环境: 前后端都是部署后的服务, 作为正式生产环境 生产环境和项目环境 # 项目环境的本地开发环境和本地测试环境无需指定项目环境, 项目环境只存在与部署环境中.
+在 axios 中, 根据当前域名识别前端的项目环境, 然后通过配置将请求转发到对应项目环境的后端服务上.</description>
     </item>
     
     <item>
@@ -434,6 +515,15 @@ References # https://www.jianshu.com/p/51decd726dd1</description>
 总有时候会有关心顺序一致的需求，恰如有 org.apache.commons.collections.OrderdMap（其实用 LinkedHashMap 就是保证顺序） 一样，我们也想要有个 OrderdProperties。
 只要继承自 Properties，覆盖原来的 put/keys,keySet,stringPropertyNames 即可，其中用一个 LinkedHashSet 来保存它的所有 key。完整代码如下:
 import java.util.Collections; import java.util.Enumeration; import java.util.LinkedHashSet; import java.util.Properties; import java.util.Set; public class OrderedProperties extends Properties { private static final long serialVersionUID = -4627607243846121965L; private final LinkedHashSet&amp;lt;Object&amp;gt; keys = new LinkedHashSet&amp;lt;&amp;gt;(); public Enumeration&amp;lt;Object&amp;gt; keys() { return Collections.&amp;lt;Object&amp;gt; enumeration(keys); } public Object put(Object key, Object value) { keys.</description>
+    </item>
+    
+    <item>
+      <title>限制某个进程的CPU</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/macosx/%E9%99%90%E5%88%B6%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8Bcpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/macosx/%E9%99%90%E5%88%B6%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8Bcpu/</guid>
+      <description>cputhrottle</description>
     </item>
     
     <item>

@@ -2,6 +2,13 @@
 weight: 100
 title: "Linux Cmd"
 ---
+## CPU
+
+### 查看进程cpu使用清空
+```bash
+top
+```
+
 ## 内存
 
 ### 查看内存  
@@ -70,6 +77,13 @@ du -h --max-depth=2 /opt | sort -hr | head -10
 4.8G	/opt/logs/roma_backtrack
 1.3G	/opt/logs/logs/inf
 1.2G	/opt/logs/log_agent_file/logs
+```
+
+### 清空某个文件
+```bash
+echo -n '' > /logs/test.log
+# rm 大文件可能导致磁盘占用不释放
+# echo '' > /logs/test.log 删除不掉时, 加 -n 参数尝试
 ```
 
 ## docker

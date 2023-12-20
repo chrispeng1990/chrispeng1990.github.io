@@ -15,5 +15,20 @@
       <description>1. 替换UsernamePasswordAuthenticationFilter # public class PrincipalsCredentialsAuthenticationFilter extends UsernamePasswordAuthenticationFilter { public PrincipalsCredentialsAuthenticationFilter() {} @Override public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException { super.doFilter(req, res, chain); } @Override public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException { if (request.getContentType().equals(MediaType.APPLICATION_JSON_UTF8_VALUE) || request.getContentType().equals(MediaType.APPLICATION_JSON_VALUE)) { Tuple2&amp;lt;String, String&amp;gt; tuple = obtainPrincipalsAndCredentials(request); String principals = tuple.getField(0); String credentials = tuple.getField(1); if (principals == null) { principals = &amp;#34;&amp;#34;; } if (credentials == null) { credentials = &amp;#34;&amp;#34;; } principals = principals.</description>
     </item>
     
+    <item>
+      <title>SpringSecurityOauth认证过程</title>
+      <link>http://christh0x.github.io/docs/wiki/research/java/springsecurity/springsecurityoauth%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/java/springsecurity/springsecurityoauth%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B/</guid>
+      <description>涉及的地址 # OAuth服务提供商中配置的回调地址 后端服务中配置的redirectTemplate地址 前端地址 后端地址 实现方式 # oauth认证完成后无需中间redirect.html页面 # 需要前后端保持同域, 这样小窗和主页面使用相同的session
+即上述四个地址需要同域
+实现方式: 小窗完成认证后在 OauthAuthenticationSuccessHandler 中将登录信息写入session, 前端页面打开小窗口后一直轮询是否登录成功即可
+前后端分离项目且不同域 # 前端域名无需与oauth有关
+通过中间页面redirect.html实现
+参考下面请求过程
+请求过程 # 用户 前端地址(主页面) 小窗 后端地址 Oauth提供方 browser -&amp;gt; 页面点击按钮 -&amp;gt; 打开小窗 -&amp;gt; 解析请求 跳转到提供方 -&amp;gt; 解析请求 页面 &amp;lt;------------------------- 展示授权页面 输入账密 -------------------------&amp;gt; 认证完成 解析oauth_token &amp;lt;- 跳转回调地址 生成认证用户存储缓存 登录中页面 &amp;lt;- 带缓存的key值跳转 获取key &amp;lt;- 将key传播到主页面并关闭小窗 登录 -----------------------------&amp;gt; 查询key的缓存 登录成功 &amp;lt;----------------------------- 认证完成 end &amp;lt;- 跳转首页 处理逻辑 # http.and().oauth2Login().authorizationEndpoint().baseUri(securitySettings.getLogin().getProcessor()) // 点击跳转oauth服务器的链接地址 /{baseUri}/{registrationId}</description>
+    </item>
+    
   </channel>
 </rss>

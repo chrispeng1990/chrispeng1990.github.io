@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/research/server/linux/</link>
+    <description>Recent content in linux on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/server/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常用命令</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>CPU # 查看进程cpu使用清空 # top 内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.</description>
+    </item>
+    
+    <item>
+      <title>grep</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/grep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/grep/</guid>
+      <description>简介 # 全称：Global Regular Expression Print
+格式:
+grep [option] pattern file 参数:
+-a --text #不要忽略二进制的数据。 -A&amp;lt;显示行数&amp;gt; --after-context=&amp;lt;显示行数&amp;gt; #除了显示符合范本样式的那一列之外，并显示该行之后的内容。 -b --byte-offset #在显示符合样式的那一行之前，标示出该行第一个字符的编号。 -B&amp;lt;显示行数&amp;gt; --before-context=&amp;lt;显示行数&amp;gt; #除了显示符合样式的那一行之外，并显示该行之前的内容。 -c --count #计算符合样式的列数。 -C&amp;lt;显示行数&amp;gt; --context=&amp;lt;显示行数&amp;gt;或-&amp;lt;显示行数&amp;gt; #除了显示符合样式的那一行之外，并显示该行之前后的内容。 -d &amp;lt;动作&amp;gt; --directories=&amp;lt;动作&amp;gt; #当指定要查找的是目录而非文件时，必须使用这项参数，否则grep指令将回报信息并停止动作。 -e&amp;lt;范本样式&amp;gt; --regexp=&amp;lt;范本样式&amp;gt; #指定字符串做为查找文件内容的样式。 -E --extended-regexp #将样式为延伸的普通表示法来使用。 -f&amp;lt;规则文件&amp;gt; --file=&amp;lt;规则文件&amp;gt; #指定规则文件，其内容含有一个或多个规则样式，让grep查找符合规则条件的文件内容，格式为每行一个规则样式。 -F --fixed-regexp #将样式视为固定字符串的列表。 -G --basic-regexp #将样式视为普通的表示法来使用。 -h --no-filename #在显示符合样式的那一行之前，不标示该行所属的文件名称。 -H --with-filename #在显示符合样式的那一行之前，表示该行所属的文件名称。 -i --ignore-case #忽略字符大小写的差别。 -l --file-with-matches #列出文件内容符合指定的样式的文件名称。 -L --files-without-match #列出文件内容不符合指定的样式的文件名称。 -n --line-number #在显示符合样式的那一行之前，标示出该行的列数编号。 -q --quiet或--silent #不显示任何信息。 -r --recursive #此参数的效果和指定“-d recurse”参数相同。 -s --no-messages #不显示错误信息。 -v --revert-match #显示不包含匹配文本的所有行。 -V --version #显示版本信息。 -w --word-regexp #只显示全字符合的列。 -x --line-regexp #只显示全列符合的列。 -y #此参数的效果和指定“-i”参数相同。 规则表达式:</description>
+    </item>
+    
+  </channel>
+</rss>

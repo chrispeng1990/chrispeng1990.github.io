@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/research/server/nginx/</link>
+    <description>Recent content in nginx on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/server/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基础配置</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/nginx/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/nginx/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</guid>
+      <description>将本地80端口转发到指定端口 # http { server { listen 80; server_name 127.0.0.1; location / { proxy_pass http://127.0.0.1:8080; proxy_set_header Host $host:$server_port; } } } 将域名的80端口转发到域名的指定端口 # http { server { listen 80; server_name localhost.domain.com; location / { proxy_pass http://localhost.domain.com:8086; proxy_set_header Host $host:$server_port; } } } 配置解析 # http { server { # 监听 HTTP 协议默认的 [80] 端口。 listen 80; # 绑定主机名 [example.com]。 server_name example.com; # 服务器站点根目录 [/example.com/public]。 root /example.com/public; # 添加几条有关安全的响应头；与 Google+ 的配置类似，详情参见文末。 add_header X-Frame-Options &amp;#34;SAMEORIGIN&amp;#34;; add_header X-XSS-Protection &amp;#34;1; mode=block&amp;#34;; add_header X-Content-Type-Options &amp;#34;nosniff&amp;#34;; # 站点默认页面；可指定多个，将顺序查找。 # 例如，访问 http://example.</description>
+    </item>
+    
+  </channel>
+</rss>

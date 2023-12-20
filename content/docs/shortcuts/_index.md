@@ -18,7 +18,7 @@ title: "Shortcuts"
 [Draw.io](https://app.diagrams.net)  
 [webgraphviz](http://www.webgraphviz.com)  
 [Shell解析](https://www.explainshell.com)  
-
+[orc识别&PDF转换](https://www.geekersoft.cn/pdf-converter-online.html)  
 
 
 ## 资源搜索

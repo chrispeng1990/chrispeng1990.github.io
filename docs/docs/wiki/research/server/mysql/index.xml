@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on Chris Wiki</title>
+    <link>http://christh0x.github.io/docs/wiki/research/server/mysql/</link>
+    <description>Recent content in mysql on Chris Wiki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/server/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基础配置</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</guid>
+      <description>基础配置 # [mysqld] bind-address = 0.0.0.0 port = 3306 lower_case_table_names = 1 default-time-zone = &amp;#39;Asia/Shanghai&amp;#39; MT生产环境服务器配置 # [mysql] port=5002 prompt=\\u@\\d\\r:\\m:\\s&amp;gt; no-auto-rehash [client] port=5002 socket=/opt/tmp/mysql.sock [mysqld] optimizer_switch=index_merge=on,index_merge_union=on,index_merge_sort_union=on,index_merge_intersection=on,engine_condition_pushdown=on,index_condition_pushdown=on,mrr=on,mrr_cost_based=on,block_nested_loop=on,batched_key_access=off,materialization=on,semijoin=on,loosescan=on,firstmatch=on,duplicateweedout=on,subquery_materialization_cost_based=on,use_index_extensions=on,condition_fanout_filter=on,derived_merge=on,prefer_ordering_index=on core_file basedir=/usr datadir=/opt/local/mysql/var/ tmpdir=/opt/tmp log-error=mysql.err # MySQL5.7的错误日志时间默认为UTC时间 调整为本地时间 log_timestamps=SYSTEM slow_query_log_file=/opt/tmp/mysql.slow general_log_file=/opt/tmp/mysql.genlog socket=/opt/tmp/mysql.sock pid-file=/opt/local/mysql/var/mysql.pid #mtsql loose_innodb_mtsql_faster_ddl=ON loose_mtsql_ddl_optimize_no_binlog=ON loose_transaction_write_set_extraction=XXHASH64 loose_binlog_transaction_dependency_tracking=WRITESET #innodb innodb_file_format=Barracuda innodb_data_home_dir=/opt/local/mysql/var/ innodb_log_group_home_dir=/opt/local/mysql/var/ innodb_data_file_path=ibdata1:100M:autoextend innodb_buffer_pool_size=40G innodb_buffer_pool_instances=4 innodb_log_files_in_group=3 innodb_log_file_size=1G innodb_log_buffer_size=16M innodb_checksum_algorithm=crc32 innodb_default_row_format=DYNAMIC internal_tmp_disk_storage_engine=innodb innodb_fast_shutdown=1 innodb_doublewrite=1 innodb_adaptive_hash_index=OFF # TODO 在打开了group commit后 是否需要设置为双1 需要进行性能测试 innodb_flush_log_at_trx_commit=1 innodb_flush_log_at_timeout=1 innodb_max_dirty_pages_pct=75 # 兼顾物理机和虚拟机 统一使用2000 对性能的提升有限 innodb_io_capacity_max默认是innodb_io_capacity的2倍 innodb_io_capacity=2000 innodb_thread_concurrency=0 innodb_read_io_threads=4 innodb_write_io_threads=16 innodb_open_files=60000 innodb_file_per_table=1 innodb_flush_method=O_DIRECT innodb_flush_neighbors=0 innodb_change_buffering=all innodb_adaptive_flushing=1 innodb_old_blocks_time=1000 innodb_use_native_aio=1 lock_wait_timeout=60 innodb_print_all_deadlocks=ON # 默认不回滚整个事务 当事务因为获得锁而超时时 交给应用处理 决定是否回滚或重试 innodb_rollback_on_timeout=0 # oltp类型的应用 应该设置的更小 innodb_lock_wait_timeout=50 innodb_buffer_pool_dump_at_shutdown=ON innodb_buffer_pool_load_at_startup=ON # MySQL5.</description>
+    </item>
+    
+  </channel>
+</rss>

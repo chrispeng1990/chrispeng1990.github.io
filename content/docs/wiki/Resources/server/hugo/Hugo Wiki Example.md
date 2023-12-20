@@ -96,7 +96,14 @@ eg: https://coostdocs.gitee.io/cn/about/co/
 
 ## 常见问题
 1. [hugo-book 同时支持中英文搜索](https://blog.csdn.net/weixin_42425959/article/details/126849231)  
-  
+
+
+## 其他产品
+### 1. hexo
+[Github Page 个人主页——Hexo博客](https://blog.csdn.net/m0_47520749/article/details/124897399)  
+[Hexo Theme Lib](https://hexo.io/themes/)  
+[Hexo Theme Fluid](https://hexo.fluid-dev.com/posts/hexo-nodeppt/)  
+
 
 ## References
 [Hugo](https://gohugo.io/)  

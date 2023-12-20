@@ -44,5 +44,14 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
       <description>步骤 # # 第一步：一个说明，想了解为什么要这么做的最好还是看一下 man synthetic.conf # 第二步： sudo vim /etc/synthetic.conf # 第三步：注意 data 和 /System 之间是tab键 data /System/Volumes/Data/data # 第四步：进入到/System/Volumes/Data下，创建文件夹data sudo mkdir data # 第五步：给data设置权限，我给了最高权限 sudo chmod -R 777 data # 第六步：重启 References # 关于：MAC 更新Catalina后根目录没有权限</description>
     </item>
     
+    <item>
+      <title>限制某个进程的CPU</title>
+      <link>http://christh0x.github.io/docs/wiki/resources/macosx/%E9%99%90%E5%88%B6%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8Bcpu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/resources/macosx/%E9%99%90%E5%88%B6%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8Bcpu/</guid>
+      <description>cputhrottle</description>
+    </item>
+    
   </channel>
 </rss>
