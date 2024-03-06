@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="description" content="常用操作 # 按冒号或逗号分隔, 取第2，4，6位置的值 # awk -F &#39;:|,&#39; &#39;{print $2, $4, $6}&#39; log References # awk 命令快速入门">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="chrome" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://christh0x.github.io/docs/wiki/resources/chrome/" />
-<title>chrome | Chris Wiki</title>
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="awk" />
+<meta property="og:description" content="常用操作 # 按冒号或逗号分隔, 取第2，4，6位置的值 # awk -F &#39;:|,&#39; &#39;{print $2, $4, $6}&#39; log References # awk 命令快速入门" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://christh0x.github.io/docs/wiki/research/server/linux/awk/" /><meta property="article:section" content="docs" />
+
+
+<title>awk | Chris Wiki</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/zh.search.min.73f46323945b51aebfae1e2d8e5f388ca9c80010e50487163b2ffee2bddb4424.js" integrity="sha256-c/RjI5RbUa6/rh4tjl84jKnIABDlBIcWOy/&#43;4r3bRCQ=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://christh0x.github.io/docs/wiki/resources/chrome/index.xml" title="Chris Wiki" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -132,7 +133,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-55b284f1d1d8ea8e9756ba0437730f93" class="toggle"  />
+    <input type="checkbox" id="section-55b284f1d1d8ea8e9756ba0437730f93" class="toggle" checked />
     <label for="section-55b284f1d1d8ea8e9756ba0437730f93" class="flex justify-between">
       <a role="button" class="">Research</a>
     </label>
@@ -600,7 +601,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e08891e42827080dbe19b39b7297cee5" class="toggle"  />
+    <input type="checkbox" id="section-e08891e42827080dbe19b39b7297cee5" class="toggle" checked />
     <label for="section-e08891e42827080dbe19b39b7297cee5" class="flex justify-between">
       <a role="button" class="">server</a>
     </label>
@@ -616,7 +617,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-403ea633adab7061d651dfeb41d62f4f" class="toggle"  />
+    <input type="checkbox" id="section-403ea633adab7061d651dfeb41d62f4f" class="toggle" checked />
     <label for="section-403ea633adab7061d651dfeb41d62f4f" class="flex justify-between">
       <a role="button" class="">linux</a>
     </label>
@@ -645,7 +646,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/wiki/research/server/linux/awk/" class="">awk</a>
+    <a href="/docs/wiki/research/server/linux/awk/" class="active">awk</a>
   
 
         </li>
@@ -814,7 +815,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-78f14cfd37f81ea6255ac33f349e9bc7" class="toggle" checked />
+    <input type="checkbox" id="section-78f14cfd37f81ea6255ac33f349e9bc7" class="toggle"  />
     <label for="section-78f14cfd37f81ea6255ac33f349e9bc7" class="flex justify-between">
       <a role="button" class="">Resources</a>
     </label>
@@ -945,9 +946,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-e94dbe3ce251c93a4e47358586766dbd" class="toggle" checked />
+    <input type="checkbox" id="section-e94dbe3ce251c93a4e47358586766dbd" class="toggle"  />
     <label for="section-e94dbe3ce251c93a4e47358586766dbd" class="flex justify-between">
-      <a role="button" class="active">chrome</a>
+      <a role="button" class="">chrome</a>
     </label>
   
 
@@ -1431,7 +1432,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>chrome</strong>
+  <strong>awk</strong>
 
   <label for="toc-control">
     
@@ -1445,7 +1446,16 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#常用操作">常用操作</a>
+      <ul>
+        <li><a href="#按冒号或逗号分隔-取第246位置的值">按冒号或逗号分隔, 取第2，4，6位置的值</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1456,7 +1466,21 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"></article>
+  <article class="markdown"><h2 id="常用操作">
+  常用操作
+  <a class="anchor" href="#%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c">#</a>
+</h2>
+<h3 id="按冒号或逗号分隔-取第246位置的值">
+  按冒号或逗号分隔, 取第2，4，6位置的值
+  <a class="anchor" href="#%e6%8c%89%e5%86%92%e5%8f%b7%e6%88%96%e9%80%97%e5%8f%b7%e5%88%86%e9%9a%94-%e5%8f%96%e7%ac%ac246%e4%bd%8d%e7%bd%ae%e7%9a%84%e5%80%bc">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk -F <span style="color:#e6db74">&#39;:|,&#39;</span> <span style="color:#e6db74">&#39;{print $2, $4, $6}&#39;</span> log
+</span></span></code></pre></div><h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/186289624">awk 命令快速入门</a></p>
+</article>
  
       
 
@@ -1481,6 +1505,10 @@ https://github.com/alex-shpak/hugo-book
 
       
   
+  <div class="book-comments">
+
+</div>
+  
  
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -1491,7 +1519,16 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#常用操作">常用操作</a>
+      <ul>
+        <li><a href="#按冒号或逗号分隔-取第246位置的值">按冒号或逗号分隔, 取第2，4，6位置的值</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
 
  

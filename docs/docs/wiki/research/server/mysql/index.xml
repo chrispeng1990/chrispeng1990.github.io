@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="http://christh0x.github.io/docs/wiki/research/server/mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>常用SQL</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%B8%B8%E7%94%A8sql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%B8%B8%E7%94%A8sql/</guid>
+      <description> 常用SQL # 复制表和数据并清空原表 # CREATE TABLE newTable LIKE oldTable; INSERT INTO newTable SELECT * FROM oldTable; DELETE FROM oldTable; # 效率较慢且不会重置主键自增序列, 可以使用 TRUNCATE TABLE 替代 References # </description>
+    </item>
+    
+    <item>
       <title>基础配置</title>
       <link>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

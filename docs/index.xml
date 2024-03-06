@@ -120,15 +120,6 @@ References # https://zhuanlan.zhihu.com/p/290737828</description>
     </item>
     
     <item>
-      <title>Linux Cmd</title>
-      <link>http://christh0x.github.io/docs/shortcuts/linux-cmd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://christh0x.github.io/docs/shortcuts/linux-cmd/</guid>
-      <description>CPU # 查看进程cpu使用清空 # top 内存 # 查看内存 # free -m total used free shared buffers cached Mem: 22528 21781 746 0 0 6403 -/+ buffers/cache: 15377 7150 Swap: 2048 1648 399 查看进程内存占用占比 # ps -eo pid,cmd,%mem,%cpu --sort=-%mem PID CMD %MEM %CPU 1 /usr/bin/container-init -st 0.0 0.0 1191 /data/webapps/waimai_servic 0.2 0.3 4688 /opt/meituan/apps/cplugin/c 0.0 0.3 4752 octo_proxy_real -c /opt/mei 0.0 0.6 4774 [sh] &amp;lt;defunct&amp;gt; 0.0 0.0 5165 sg_agent 0.5 9.</description>
-    </item>
-    
-    <item>
       <title>MarkDown Example</title>
       <link>http://christh0x.github.io/docs/examples/markdown-example/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -191,6 +182,15 @@ References # Java中Word转PDF解决方案</description>
       
       <guid>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</guid>
       <description>处理流程图 # References # 节点异常问题排查</description>
+    </item>
+    
+    <item>
+      <title>常用SQL</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%B8%B8%E7%94%A8sql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%B8%B8%E7%94%A8sql/</guid>
+      <description> 常用SQL # 复制表和数据并清空原表 # CREATE TABLE newTable LIKE oldTable; INSERT INTO newTable SELECT * FROM oldTable; DELETE FROM oldTable; # 效率较慢且不会重置主键自增序列, 可以使用 TRUNCATE TABLE 替代 References # </description>
     </item>
     
     <item>
@@ -292,6 +292,15 @@ on alfred_script(q) if application &amp;#34;iTerm2&amp;#34; is running or applic
       
       <guid>http://christh0x.github.io/docs/wiki/research/java/arthas/</guid>
       <description>启动 # java -jar arthas-boot.jar 运行状态监控 # dashoboard ID NAME GROUP PRIORITY STATE %CPU DELTA_TIME TIME INTERRUPTED DAEMON 9008 http-nio-8999-exec-724 main 5 RUNNABLE 0.41 0.020 0:14.071 false true Memory used total max usage GC heap 5854M 11673M 11673M 50.15% gc.parnew.count 45772 par_eden_space 2139M 4915M 4915M 43.54% gc.parnew.time(ms) 10181844 par_survivor_space 115M 614M 614M 18.73% gc.concurrentmarksweep.count 43836 cms_old_gen 3599M 6144M 6144M 58.58% gc.concurrentmarksweep.time(ms) 47318726 nonheap 203M 278M -1 72.87% code_cache 56M 128M 128M 44.</description>
+    </item>
+    
+    <item>
+      <title>awk</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/awk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/awk/</guid>
+      <description>常用操作 # 按冒号或逗号分隔, 取第2，4，6位置的值 # awk -F &amp;#39;:|,&amp;#39; &amp;#39;{print $2, $4, $6}&amp;#39; log References # awk 命令快速入门</description>
     </item>
     
     <item>
@@ -503,6 +512,15 @@ https://cdn.jsdelivr.net/gh/nctsc/resources/images/202304171701090.png 参考文
 85.199.108.133 raw.githubusercontent.com 85.199.109.133 raw.githubusercontent.com 85.199.110.133 raw.githubusercontent.com 85.199.111.133 raw.githubusercontent.com 2. 使用镜像 # gitmirror # https://raw.gitmirror.com/nctsc/resources/master/images/202304281435449.png
 https://raw.githubusercontent.com/nctsc/resources/master/images/202304281435449.png
 References # https://www.jianshu.com/p/51decd726dd1</description>
+    </item>
+    
+    <item>
+      <title>split</title>
+      <link>http://christh0x.github.io/docs/wiki/research/server/linux/split/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://christh0x.github.io/docs/wiki/research/server/linux/split/</guid>
+      <description>常用操作 # 将文件按行分隔 # # 查看文件总行数 wc -l filename # 将文件分割成多个文件, 每个文件100行, 分割文件以filenameprefix_为前缀, 序号部分为aa、ab、ac..依次 split -l 100 filename filenameprefix_ &amp;gt; ls -l 总用量 36K -rw-r--r-- 1 root root 10K 9月 30 11:46 filename -rw-r--r-- 1 root root 2.0K 9月 30 11:54 filenameprefix_aa -rw-r--r-- 1 root root 2.0K 9月 30 11:54 filenameprefix_ab -rw-r--r-- 1 root root 2.0K 9月 30 11:54 filenameprefix_ac -rw-r--r-- 1 root root 2.0K 9月 30 11:54 filenameprefix_ad References # Linux下如何切割与合并大文件</description>
     </item>
     
     <item>

@@ -88,8 +88,6 @@
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/resources/macosx/iterm/</loc>
   </url><url>
-    <loc>http://christh0x.github.io/docs/shortcuts/linux-cmd/</loc>
-  </url><url>
     <loc>http://christh0x.github.io/docs/examples/markdown-example/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/research/java/spring/spring-express-language/</loc>
@@ -97,6 +95,8 @@
     <loc>http://christh0x.github.io/docs/wiki/research/java/poi/word2pdf/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/work/mdp/k8s%E6%95%85%E9%9A%9C%E7%AE%A1%E7%90%86/%E9%98%BF%E9%87%8C%E4%BA%91%E8%8A%82%E7%82%B9%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E6%B5%81%E7%A8%8B/</loc>
+  </url><url>
+    <loc>http://christh0x.github.io/docs/wiki/research/server/mysql/%E5%B8%B8%E7%94%A8sql/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/research/server/linux/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
   </url><url>
@@ -117,6 +117,8 @@
     <loc>http://christh0x.github.io/docs/wiki/resources/macosx/alfred/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/research/java/arthas/</loc>
+  </url><url>
+    <loc>http://christh0x.github.io/docs/wiki/research/server/linux/awk/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/resources/server/common/cdn/</loc>
   </url><url>
@@ -151,6 +153,8 @@
     <loc>http://christh0x.github.io/docs/wiki/resources/git/%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E8%B5%84%E6%BA%90%E5%BA%93%E5%9B%BE%E5%BA%8A/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/resources/git/raw.githubusercontent%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE/</loc>
+  </url><url>
+    <loc>http://christh0x.github.io/docs/wiki/research/server/linux/split/</loc>
   </url><url>
     <loc>http://christh0x.github.io/docs/wiki/research/java/%E4%BF%9D%E6%8C%81%E9%A1%BA%E5%BA%8F%E7%9A%84properties%E7%B1%BB/</loc>
   </url><url>
